@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio - Balaji K</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        :root {
+            --background: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent: #0ea5e9;
+            --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        html.dark {
+            --background: #0f172a;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-secondary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-primary);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 999px;
+            transition: width 0.5s ease;
+        }
+
+        .section-title:hover::after {
+            width: 100px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-gradient);
+            border: 3px solid var(--background);
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.2);
+        }
+        
+        .tag {
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .tag:hover::before {
+            left: 100%;
+        }
+        
+        html.dark .tag {
+            background-color: #075985;
+            color: #e0f2fe;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--text-secondary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--accent-gradient);
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Dots -->
+    <nav class="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 flex flex-col space-y-4">
+        <a href="#header" class="nav-dot active" data-section="header"></a>
+        <a href="#case-studies" class="nav-dot" data-section="case-studies"></a>
+        <a href="#projects" class="nav-dot" data-section="projects"></a>
+    </nav>
+
+    <!-- Controls -->
+    <div class="fixed top-4 right-4 z-50 flex items-center space-x-3">
+        <button id="theme-toggle" class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm p-3 rounded-full shadow-md hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+            <i class="fa-solid fa-moon text-slate-600 dark:text-slate-300" id="theme-icon"></i>
+        </button>
+    </div>
+
+    <main class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto bg-[var(--card-bg)] rounded-2xl shadow-2xl shadow-slate-900/10 dark:shadow-slate-900/50 p-8 sm:p-12 lg:p-16">
+            
+            <!-- Header -->
+            <header id="header" class="text-center border-b border-[var(--border-color)] pb-8 mb-12 reveal-up">
+                <h1 class="text-4xl sm:text-5xl font-bold text-[var(--text-primary)] floating">My Professional Portfolio</h1>
+                <p class="text-xl sm:text-2xl font-semibold mt-2 gradient-text">Balaji K - CA Finalist</p>
+            </header>
+
+            <!-- Objective -->
+            <section id="objective" class="mb-12 reveal-left">
+                <h2 class="text-2xl font-bold section-title">Objective</h2>
+                <p class="text-base leading-relaxed">
+                    This portfolio provides a detailed look into my key projects, technical capabilities, and problem-solving approach developed during my CA articleship. The case studies presented here are based on real-world engagements (with all client information anonymized) and demonstrate my hands-on experience in audit, valuation, and process automation.
+                </p>
+            </section>
+
+            <!-- Case Studies -->
+            <section id="case-studies" class="mb-12 reveal-right">
+                <h2 class="text-2xl font-bold section-title">Case Studies</h2>
+                <div class="relative border-l-2 border-[var(--border-color)] pl-8 space-y-12">
+                    
+                    <!-- Case Study 1 -->
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold text-[var(--text-primary)]">Business Valuation for a Corporate Restructuring</h3>
+                        <p class="text-sm font-medium text-[var(--text-secondary)] mb-4">Demonstrating analytical rigor in complex financial modeling.</p>
+                        
+                        <div class="space-y-4 text-sm">
+                            <p><strong class="text-[var(--text-primary)]">Client Background:</strong> A mid-sized company in the manufacturing sector.</p>
+                            <p><strong class="text-[var(--text-primary)]">The Challenge:</strong> To determine the fair value of a business division for a slump sale and to conduct annual goodwill impairment testing as required by Ind AS 103.</p>
+                            <div>
+                                <h4 class="font-semibold text-[var(--text-primary)] mb-2">My Approach & Actions:</h4>
+                                <ul class="list-disc list-outside ml-5 space-y-2">
+                                    <li><strong>Methodology Selection:</strong> Chose the Discounted Cash Flow (DCF) method as the primary valuation tool due to its ability to capture future earning potential. Cross-verified the results using Net Asset Value (NAV) and Comparable Companies methods for a robust conclusion.</li>
+                                    <li><strong>Data Collection & Analysis:</strong> Rigorously validated management's financial projections by performing sensitivity analysis and comparing them against industry benchmarks. My process for calculating WACC involved determining beta for the non-listed entity and selecting an appropriate risk-free rate.</li>
+                                    <li><strong>Reporting:</strong> Consolidated all findings, assumptions, and methodologies into a comprehensive valuation report suitable for both client decision-making and statutory audit purposes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Financial Modeling</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Business Valuation</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Ind AS 103</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Critical Analysis</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Assumption Validation</span>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2 -->
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold text-[var(--text-primary)]">Ind AS Audit for an NBFC</h3>
+                         <p class="text-sm font-medium text-[var(--text-secondary)] mb-4">Highlighting adaptability and technical accounting knowledge.</p>
+                        <div class="space-y-4 text-sm">
+                           <p><strong class="text-[var(--text-primary)]">Client Background:</strong> A Public Sector Undertaking (PSU) in the Non-Banking Financial Company (NBFC) sector, specializing in power infrastructure financing.</p>
+                           <p><strong class="text-[var(--text-primary)]">The Challenge:</strong> The engagement required establishing audit procedures from scratch without prior precedent in the firm.</p>
+                           <div>
+                                <h4 class="font-semibold text-[var(--text-primary)] mb-2">My Approach & Actions:</h4>
+                                <ul class="list-disc list-outside ml-5 space-y-2">
+                                    <li><strong>Preparation:</strong> Took the initiative to develop a complete set of audit checklists and working paper templates tailored for an NBFC under Ind AS, focusing on financial instruments and loan portfolios.</li>
+                                    <li><strong>Execution:</strong> Identified that the client's interest accrual method was not fully compliant with Ind AS. I meticulously documented the deviation and calculated the financial impact.</li>
+                                    <li><strong>Reporting & Recommendations:</strong> Drafted the formal audit qualification related to the non-compliant interest accrual. Further, I prepared a detailed management report recommending stronger internal controls over GST, CRAR ratio calculations, and other key RBI regulations.</li>
+                                </ul>
+                           </div>
+                           <p><strong class="text-[var(--text-primary)]">Results & Impact:</strong> My work ensured a rigorous audit and transparent financial statements. The management report provided a clear roadmap for improving financial controls and ensuring future compliance.</p>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Ind AS (Financial Instruments)</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Statutory Audit</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Process Development</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Regulatory Compliance (RBI)</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Report Writing</span>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3 -->
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold text-[var(--text-primary)]">Enhancing Internal Controls for a PSU</h3>
+                         <p class="text-sm font-medium text-[var(--text-secondary)] mb-4">Showcasing risk assessment and strategic communication skills.</p>
+                        <div class="space-y-4 text-sm">
+                            <p><strong class="text-[var(--text-primary)]">Client Background:</strong> A large PSU managing the state-wide public distribution of essential commodities with a turnover of ~₹25,000 Crores.</p>
+                            <p><strong class="text-[var(--text-primary)]">The Challenge:</strong> The audit was severely hampered by a complete reliance on manual inventory records, creating a high risk of misstatement or fraud and making verification difficult.</p>
+                           <div>
+                                <h4 class="font-semibold text-[var(--text-primary)] mb-2">My Approach & Actions:</h4>
+                                <ul class="list-disc list-outside ml-5 space-y-2">
+                                    <li><strong>Problem Identification:</strong> Through audit procedures, I identified and documented the significant financial and operational risks associated with the manual inventory system.</li>
+                                    <li><strong>Recommendation & Justification:</strong> I prepared and presented a formal recommendation to senior management. My proposal detailed how a modern, integrated IT system would not only improve auditability but also enhance operational efficiency, reduce the risk of theft, and provide real-time data for decision-making.</li>
+                                </ul>
+                           </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Risk Assessment</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Internal Controls</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Process Improvement</span>
+                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Communication</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects & Automation -->
+            <section id="projects" class="mb-12 reveal-left">
+                <h2 class="text-2xl font-bold section-title">Projects & Automation Showcase</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card rounded-lg p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-file-excel text-blue-600 dark:text-blue-300"></i>
+                            </div>
+                            <h3 class="font-bold text-[var(--text-primary)]">26AS Conversion Tool</h3>
+                        </div>
+                        <p class="text-sm mt-1"><strong>Problem:</strong> Manually comparing Form 26AS text files is tedious. <br><strong>Solution:</strong> Built an Excel tool with Power Query to instantly ingest and structure the text file for analysis.</p>
+                        <a href="#" class="text-sm font-semibold gradient-text mt-3 inline-block">View on GitHub &rarr;</a>
+                    </div>
+                     <div class="card rounded-lg p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-robot text-green-600 dark:text-green-300"></i>
+                            </div>
+                            <h3 class="font-bold text-[var(--text-primary)]">Payroll Automation for Tally</h3>
+                        </div>
+                        <p class="text-sm mt-1"><strong>Problem:</strong> A client manually re-formatted payroll data for Tally import. <br><strong>Solution:</strong> Created a macro-enabled Excel sheet to auto-convert raw data into Tally's required import format.</p>
+                    </div>
+                     <div class="card rounded-lg p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-bolt text-purple-600 dark:text-purple-300"></i>
+                            </div>
+                            <h3 class="font-bold text-[var(--text-primary)]">Automated Regulatory Feed</h3>
+                        </div>
+                        <p class="text-sm mt-1"><strong>Problem:</strong> Keeping the team updated on regulatory changes. <br><strong>Solution:</strong> Built a Power Automate flow to monitor official websites (GST, MCA) and post updates to a Microsoft Teams channel.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Theme Toggler ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && userPrefersDark)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // --- ScrollReveal Animations ---
+        const sr = ScrollReveal({
+            distance: '60px',
+            duration: 1000,
+            delay: 200,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            reset: false
+        });
+
+        sr.reveal('.reveal-up', { origin: 'bottom' });
+        sr.reveal('.reveal-left', { origin: 'left' });
+        sr.reveal('.reveal-right', { origin: 'right' });
+
+        // --- Navigation Dots ---
+        const sections = document.querySelectorAll('section, header');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        function updateActiveNavDot() {
+            let currentSectionId = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150; // Adjusted offset
+                if (window.scrollY >= sectionTop) {
+                    currentSectionId = section.id;
+                }
+            });
+            
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href') === '#' + currentSectionId) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveNavDot);
+        updateActiveNavDot(); // Initial check
+    });
+</script>
+
+</body>
+</html>

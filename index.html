@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <!-- Preconnect to the blogspot domain for faster fetching -->
     <link rel="preconnect" href="https://balaji--k.blogspot.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -175,12 +176,14 @@
     <!-- Header & Navigation -->
     <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-slate-800 font-serif-display">Balaji K</a>
+            <a href="#" class="flex items-center gap-3 text-2xl font-bold text-slate-800 font-serif-display">
+                <img src="images/logo.png" alt="Balaji K Logo" class="h-12 w-12"> <span>Balaji K</span>
+            </a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="nav-link active text-slate-600 hover:text-sky-500 font-medium">Home</a>
                 <a href="#about" class="nav-link text-slate-600 hover:text-sky-500 font-medium">About</a>
                 <a href="#blog" class="nav-link text-slate-600 hover:text-sky-500 font-medium">Blog</a>
-                <a href="#cv" class="nav-link text-slate-600 hover:text-sky-500 font-medium">CV</a>
+                <a href="#cv" class="nav-link text-slate-600 hover:text-sky-500 font-medium">CV & Portfolio</a>
                 <a href="#contact" class="nav-link text-slate-600 hover:text-sky-500 font-medium">Contact</a>
             </nav>
             <div class="flex items-center gap-4">
@@ -294,19 +297,25 @@
         </section>
 
         <!-- Portfolio/CV Highlight -->
-        <section id="cv" class="py-20 bg-slate-800 text-white">
+               <section id="cv" class="py-20 bg-slate-800 text-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold font-serif-display mb-4 reveal-fade">My Portfolio & CV</h2>
+                <h2 class="text-4xl font-bold font-serif-display mb-4 reveal-fade">My CV & Portfolio</h2>
                 <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8 reveal-fade" style="animation-delay: 200ms;">
                     My articleship training involved active participation in PSU audits, tax audits, concurrent audits, valuation, accounting and regulatory compliances. Download my CV for a detailed overview of my qualifications and experience.
                 </p>
-                <div class="reveal-fade" style="animation-delay: 400ms;">
-                    <a href="images/CV.pdf" download="balajik-cv.pdf" class="bg-sky-500 text-white font-bold py-4 px-10 rounded-lg text-xl hover:bg-sky-600 transition-transform transform hover:scale-105 shadow-2xl hover:shadow-sky-500/50 inline-block">
-                        Download CV (PDF)
-                    </a>
+                <div class="reveal-fade flex flex-wrap justify-center gap-6" style="animation-delay: 400ms;">
+                    <a href="Interactive CV.html"
+                    class="flex-1 max-w-[200px] bg-sky-500 text-white font-bold py-4 px-10 rounded-lg text-xl text-center hover:bg-sky-600 transition-transform transform hover:scale-105 shadow-2xl hover:shadow-sky-500/50">
+                    CV
+                </a>
+
+                <a href="Interactive portfolio.html"
+                    class="flex-1 max-w-[200px] bg-sky-500 text-white font-bold py-4 px-10 rounded-lg text-xl text-center hover:bg-sky-600 transition-transform transform hover:scale-105 shadow-2xl hover:shadow-sky-500/50">
+                    Portfolio
+                </a>
                 </div>
-            </div>
-        </section>
+                </div>
+                </section>
         
         <!-- Contact Section -->
         <section id="contact" class="py-24 bg-white">
@@ -405,7 +414,7 @@
                 <a href="#home" class="hover:text-sky-400 transition">Home</a>
                 <a href="#about" class="hover:text-sky-400 transition">About</a>
                 <a href="#blog" class="hover:text-sky-400 transition">Blog</a>
-                <a href="#cv" class="hover:text-sky-400 transition">CV</a>
+                <a href="#cv" class="hover:text-sky-400 transition">CV & Portfolio</a>
                 <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
             </div>
         </div>
