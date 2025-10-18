@@ -63,6 +63,8 @@
             background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('images/hero-background.jpg') no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
+            position: relative; /* Added for particles positioning */
+            overflow: hidden; /* Added to contain particles */
         }
         
         .card {
@@ -94,6 +96,41 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #64748b; /* slate-500 */
+        }
+
+        /* Particles CSS */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -135,9 +172,10 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section with Particles -->
         <section id="home" class="hero-section h-screen flex items-center justify-center text-white text-center pt-20">
-            <div class="container mx-auto px-6">
+            <div class="particles" id="particles"></div>
+            <div class="container mx-auto px-6 relative z-10">
                 <img src="images/balajicropped.webp" alt="Balaji K" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-slate-300 shadow-2xl">
                 <h1 class="text-5xl md:text-7xl font-extrabold font-serif-display mb-4 leading-tight reveal-up">Balaji K</h1>
                 <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto reveal-up" style="animation-delay: 200ms;">An aspiring Chartered Accountant dedicated to excellence in finance, auditing, and taxation.</p>
@@ -244,7 +282,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- Portfolio/CV Highlight -->
         <section id="cv" class="py-20 bg-slate-800 text-white">
@@ -358,6 +395,8 @@
                 <a href="#blog" class="hover:text-sky-400 transition">Blog</a>
                 <a href="#cv" class="hover:text-sky-400 transition">CV</a>
                 <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -425,7 +464,7 @@
                 observer.observe(section);
             });
             
-             // On-scroll animations with ScrollReveal
+            // On-scroll animations with ScrollReveal
             const sr = ScrollReveal({
                 origin: 'bottom',
                 distance: '60px',
@@ -440,8 +479,20 @@
             sr.reveal('.reveal-left', { origin: 'left' });
             sr.reveal('.reveal-right', { origin: 'right' });
             sr.reveal('.reveal-card', { interval: 100 });
+
+            // Create floating particles
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+                particlesContainer.appendChild(particle);
+            }
         });
     </script>
 </body>
 </html>
-
