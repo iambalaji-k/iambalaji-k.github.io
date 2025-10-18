@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preconnect to the blogspot domain for faster fetching -->
+    <link rel="preconnect" href="https://balaji--k.blogspot.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     
@@ -117,21 +119,44 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
+
+        /* --- STYLES FOR BLOG LOADER --- */
+        .loader {
+            border: 8px solid #e2e8f0; /* slate-200 */
+            border-top: 8px solid #0ea5e9; /* sky-500 */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 50px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .loader { animation-duration: 3s; }
+        }
+        /* --- END OF STYLES FOR BLOG LOADER --- */
     </style>
 </head>
 <body class="bg-slate-50 text-slate-700">
@@ -206,40 +231,16 @@
                     <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-4 reveal-fade">Latest Insights</h2>
                     <p class="text-lg text-slate-500 max-w-2xl mx-auto reveal-fade" style="animation-delay: 200ms;">Exploring the latest trends and topics</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Blog Post 1 -->
-                    <div class="card bg-white rounded-xl shadow-lg overflow-hidden reveal-card" style="animation-delay: 100ms;">
-                        <img src="https://placehold.co/600x400/38bdf8/ffffff?text=Finance" alt="Blog Post Image" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <span class="text-sm text-slate-500">Oct 12, 2025</span>
-                            <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">The Future of Digital Auditing</h3>
-                            <p class="text-slate-600 mb-4">An overview of how technology is reshaping the landscape of statutory audits and financial assurance.</p>
-                            <a href="#" class="font-semibold text-sky-600 hover:text-sky-700">Read More &rarr;</a>
-                        </div>
+                <!-- DYNAMIC BLOG POSTS CONTAINER -->
+                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Loader Animation -->
+                    <div id="loader" class="loader col-span-full" role="status" aria-live="polite">
+                        <span class="sr-only">Loading blog posts...</span>
                     </div>
-                    <!-- Blog Post 2 -->
-                    <div class="card bg-white rounded-xl shadow-lg overflow-hidden reveal-card" style="animation-delay: 200ms;">
-                        <img src="https://placehold.co/600x400/fb923c/ffffff?text=Taxation" alt="Blog Post Image" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <span class="text-sm text-slate-500">Sep 28, 2025</span>
-                            <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">Navigating Complex GST Compliances</h3>
-                            <p class="text-slate-600 mb-4">Key considerations and best practices for businesses to ensure seamless GST compliance and reporting.</p>
-                            <a href="#" class="font-semibold text-sky-600 hover:text-sky-700">Read More &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Blog Post 3 -->
-                    <div class="card bg-white rounded-xl shadow-lg overflow-hidden reveal-card" style="animation-delay: 300ms;">
-                        <img src="https://placehold.co/600x400/4ade80/ffffff?text=Career" alt="Blog Post Image" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <span class="text-sm text-slate-500">Sep 15, 2025</span>
-                            <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">The CA Journey: First Attempt Success</h3>
-                            <p class="text-slate-600 mb-4">Sharing my personal strategies and tips for clearing CA Foundation and Intermediate exams on the first try.</p>
-                            <a href="#" class="font-semibold text-sky-600 hover:text-sky-700">Read More &rarr;</a>
-                        </div>
-                    </div>
+                    <!-- Blog posts will be injected here by JavaScript -->
                 </div>
                 <div class="text-center mt-12 reveal-fade">
-                    <a href="#" class="bg-slate-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-900 transition-colors duration-300 shadow-lg">View All Posts</a>
+                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="bg-slate-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-900 transition-colors duration-300 shadow-lg">View All Posts</a>
                 </div>
             </div>
         </section>
@@ -492,7 +493,87 @@
                 particle.style.animationDuration = Math.random() * 10 + 15 + 's';
                 particlesContainer.appendChild(particle);
             }
+
+            // --- BLOG POSTS LOADER SCRIPT ---
+            const container = document.getElementById('blog-posts-container');
+            const loader = document.getElementById('loader');
+
+            if (container && loader) {
+                let errorTimeout;
+
+                window.displayPosts = function(json) {
+                    clearTimeout(errorTimeout);
+                    loader.style.display = 'none';
+
+                    try {
+                        const entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
+                        if (entries.length === 0) {
+                            container.innerHTML = `<p class="text-center col-span-full text-slate-500">No blog posts found.</p>`;
+                            return;
+                        }
+                        
+                        const postsToShow = entries.slice(0, 3);
+                        let postsHTML = '';
+
+                        postsToShow.forEach(entry => {
+                            const title = entry.title?.$t || 'Untitled';
+                            const link = entry.link?.find(l => l.rel === 'alternate')?.href || '#';
+                            const content = entry.content?.$t || '';
+                            const sanitizedTitle = title.replace(/"/g, '&quot;');
+                            let imageUrl = 'https://placehold.co/600x400/38bdf8/ffffff?text=Blog+Post';
+                            
+                            if (content) {
+                                const tempDiv = document.createElement('div');
+                                tempDiv.innerHTML = content;
+                                const firstImage = tempDiv.querySelector('img');
+                                if (firstImage) imageUrl = firstImage.src;
+                            }
+
+                            postsHTML += `
+                                <div class="card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-transform duration-300 ease-in-out">
+                                    <img class="w-full h-48 object-cover"
+                                         src="${imageUrl}"
+                                         alt="Blog post image for ${sanitizedTitle}"
+                                         loading="lazy"
+                                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/d1d5db/ffffff?text=Image+Error';">
+                                    <div class="p-6 flex-grow flex flex-col">
+                                        <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">${title}</h3>
+                                        <div class="flex-grow"></div>
+                                        <a href="${link}"
+                                           target="_blank" rel="noopener noreferrer"
+                                           class="font-semibold text-sky-600 hover:text-sky-700 self-start mt-4">
+                                            Read More &rarr;
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        container.innerHTML = postsHTML;
+                        // Re-run ScrollReveal on the new cards
+                        sr.reveal('#blog-posts-container .card', { interval: 100 });
+                    } catch (error) {
+                        console.error('Error processing blog posts:', error);
+                        container.innerHTML = `<p class="text-center col-span-full text-red-500">An error occurred while displaying posts.</p>`;
+                    }
+                };
+
+                errorTimeout = setTimeout(() => {
+                    if(loader) loader.style.display = 'none';
+                    container.innerHTML = `<p class="text-center col-span-full text-red-500">Request to load blog posts timed out.</p>`;
+                }, 8000);
+                
+                const script = document.createElement('script');
+                script.src = 'https://balaji--k.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayPosts';
+                script.onerror = () => {
+                    clearTimeout(errorTimeout);
+                    if(loader) loader.style.display = 'none';
+                    container.innerHTML = `<p class="text-center col-span-full text-red-500">Failed to load blog post script.</p>`;
+                };
+                document.body.appendChild(script);
+            }
+            // --- END OF BLOG POSTS LOADER SCRIPT ---
         });
     </script>
 </body>
 </html>
+
