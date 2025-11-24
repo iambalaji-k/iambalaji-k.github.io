@@ -185,15 +185,15 @@
     <!-- Header & Navigation -->
     <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 text-2xl font-bold text-slate-800 font-serif-display">
+            <a href="#" class="flex items-center gap-3 text-3xl font-bold text-slate-800 font-serif-display">
                 <img src="images/logo.png" alt="Balaji K Logo" class="h-12 w-12"> <span>Balaji K</span>
             </a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link active text-slate-600 hover:text-sky-500 font-medium">Home</a>
-                <a href="#about" class="nav-link text-slate-600 hover:text-sky-500 font-medium">About</a>
-                <a href="#blog" class="nav-link text-slate-600 hover:text-sky-500 font-medium">Blog</a>
-                <a href="#cv" class="nav-link text-slate-600 hover:text-sky-500 font-medium">CV & Portfolio</a>
-                <a href="#contact" class="nav-link text-slate-600 hover:text-sky-500 font-medium">Contact</a>
+                <a href="#home" class="nav-link text-lg font-semibold active text-slate-600 hover:text-sky-500 font-medium">Home</a>
+                <a href="#about" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">About</a>
+                <a href="#blog" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">Blog</a>
+                <a href="#cv" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">CV & Portfolio</a>
+                <a href="#contact" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">Contact</a>
             </nav>
             <div class="flex items-center gap-4">
                  <a href="#contact" class="hidden md:inline-block bg-sky-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-sky-600 transition-colors duration-300 shadow-lg hover:shadow-sky-500/50">
@@ -206,14 +206,11 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#home" class="block py-2 text-slate-600 hover:text-sky-500">Home</a>
-            <a href="#about" class="block py-2 text-slate-600 hover:text-sky-500">About</a>
-            <a href="#blog" class="block py-2 text-slate-600 hover:text-sky-500">Blog</a>
-            <a href="#cv" class="block py-2 text-slate-600 hover:text-sky-500">CV</a>
-            <a href="#contact" class="block py-2 text-slate-600 hover:text-sky-500">Contact</a>
-             <a href="#contact" class="mt-2 w-full text-center bg-sky-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-sky-600 transition-colors duration-300 shadow-lg">
-                Get In Touch
-            </a>
+            <a href="#home" class="block py-2 text-lg text-slate-600 hover:text-sky-500">Home</a>
+            <a href="#about" class="block py-2 text-lg text-slate-600 hover:text-sky-500">About</a>
+            <a href="#blog" class="block py-2 text-lg text-slate-600 hover:text-sky-500">Blog</a>
+            <a href="#cv" class="block py-2 text-lg text-slate-600 hover:text-sky-500">CV</a>
+            <a href="#contact" class="block py-2 text-lg text-slate-600 hover:text-sky-500">Contact</a>
         </div>
     </header>
 
@@ -233,45 +230,23 @@
         </section>
 
         <!-- About Me Snippet -->
-        <section class="py-20 bg-white">
+        <section  id="about" class="py-10 bg-white scroll-mt-24">
             <div class="container mx-auto px-6 text-center">
                 <div class="max-w-4xl mx-auto">
                     <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-6 reveal-fade">About Me</h2>
                     <p class="text-lg text-slate-600 leading-relaxed mb-6 reveal-fade" style="animation-delay: 200ms;">
                         I'm Balaji, an aspiring Chartered Accountant driven by a dedication to hone my skills in the fields of finance, auditing, and taxation. I'm a hard worker with a keen eye for detail, and I thrive on continuous learning and growth. Having cleared CA foundation and CA Intermediate in my first attempt, I am eager to embrace diverse challenges and gain invaluable experiences.
                     </p>
-                    <a href="#about" class="text-sky-600 font-semibold hover:underline reveal-fade" style="animation-delay: 400ms;">Read More...</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Latest Blog Posts -->
-        <section id="blog" class="py-20 bg-slate-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-4 reveal-fade">Latest Insights</h2>
-                    <p class="text-lg text-slate-500 max-w-2xl mx-auto reveal-fade" style="animation-delay: 200ms;">Exploring the latest trends and topics</p>
-                </div>
-                <!-- DYNAMIC BLOG POSTS CONTAINER -->
-                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Loader Animation -->
-                    <div id="loader" class="loader col-span-full" role="status" aria-live="polite">
-                        <span class="sr-only">Loading blog posts...</span>
-                    </div>
-                    <!-- Blog posts will be injected here by JavaScript -->
-                </div>
-                <div class="text-center mt-12 reveal-fade">
-                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="bg-slate-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-900 transition-colors duration-300 shadow-lg">View All Posts</a>
                 </div>
             </div>
         </section>
 
         <!-- Full About Me -->
-        <section id="about" class="py-24 bg-white">
+        <section class="py-15 bg-white">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <div class="lg:w-1/3 reveal-left">
-                        <img src="images/balaji.png" alt="Balaji K Professional Photo" class="rounded-xl shadow-2xl w-full">
+                        <img src="images/balaji.png" alt="Balaji K Professional Photo" class="rounded-xl shadow-2xl w-full max-w-sm mx-auto">
                     </div>
                     <div class="lg:w-2/3 reveal-right">
                         <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-6">My Professional Journey</h2>
@@ -305,8 +280,29 @@
             </div>
         </section>
 
+        <!-- Latest Blog Posts -->
+        <section id="blog" class="py-20 bg-slate-50 scroll-mt-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-4 reveal-fade">Latest Insights</h2>
+                    <p class="text-lg text-slate-500 max-w-2xl mx-auto reveal-fade" style="animation-delay: 200ms;">Exploring the latest trends and topics</p>
+                </div>
+                <!-- DYNAMIC BLOG POSTS CONTAINER -->
+                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Loader Animation -->
+                    <div id="loader" class="loader col-span-full" role="status" aria-live="polite">
+                        <span class="sr-only">Loading blog posts...</span>
+                    </div>
+                    <!-- Blog posts will be injected here by JavaScript -->
+                </div>
+                <div class="text-center mt-12 reveal-fade">
+                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="bg-slate-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-900 transition-colors duration-300 shadow-lg">View All Posts</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Portfolio/CV Highlight -->
-               <section id="cv" class="py-20 bg-slate-800 text-white">
+               <section id="cv" class="py-20 bg-slate-800 text-white scroll-mt-24">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl font-bold font-serif-display mb-4 reveal-fade">My CV & Portfolio</h2>
                 <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8 reveal-fade" style="animation-delay: 200ms;">
@@ -327,7 +323,7 @@
                 </section>
         
         <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-white">
+        <section id="contact" class="py-24 bg-white scroll-mt-12">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-4 reveal-fade">Get In Touch</h2>
@@ -378,10 +374,11 @@
                                 <a href="https://www.linkedin.com/in/balaji--k" target="_blank" class="flex items-center group">
                                     <svg class="w-6 h-6 text-slate-500 group-hover:text-sky-600 transition" fill="currentColor" viewBox="0_0_24_24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                                     <span class="ml-4 text-slate-600 group-hover:text-sky-600 font-medium">LinkedIn</span>
+                                <!-- GitHub -->
                                 </a>
                                 <a href="https://github.com/iambalaji-k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-sky-600 transition" fill="currentColor" viewBox="0_0_24_24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-sky-600 font-medium">GitHub</span>
+                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-black transition" fill="currentColor" viewBox="0_0_24_24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                    <span class="ml-4 text-slate-600 group-hover:text-black font-medium">GitHub</span>
                                 </a>
                                 <!-- Telegram -->
                                 <a href="https://t.me/iambalaji_k" target="_blank" class="flex items-center group">
@@ -390,10 +387,12 @@
                                     </svg>
                                     <span class="ml-4 text-slate-600 group-hover:text-sky-400 font-medium">Telegram</span>
                                 </a>
+                                <!-- X -->
                                 <a href="https://x.com/I_am_Balaji_k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-sky-600 transition" fill="currentColor" viewBox="0_0_24_24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-sky-600 font-medium">X.com</span>
+                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-black transition" fill="currentColor" viewBox="0_0_24_24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                    <span class="ml-4 text-slate-600 group-hover:text-black font-medium">X.com</span>
                                 </a>
+                                <!-- Instagram -->
                                 <a href="https://instagram.com/iambalaji_k" target="_blank" class="flex items-center group">
                                     <svg class="w-6 h-6 text-slate-500 group-hover:text-pink-500 transition" fill="currentColor" viewBox="0_0_24_24">
                                     <path d="M7.75 2h8.5C19.097 2 22 4.903 22 8.75v6.5c0 3.847-2.903 6.75-6.75 6.75h-8.5C4.903 22 2 19.097 2 15.25v-6.5C2 4.903 4.903 2 8.75 2zm0 2C5.903 4 4 5.903 4 8.75v6.5C4 18.097 5.903 20 8.75 20h6.5C18.097 20 20 18.097 20 15.25v-6.5C20 5.903 18.097 4 15.25 4h-6.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/></svg>
