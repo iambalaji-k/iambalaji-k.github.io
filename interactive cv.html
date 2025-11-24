@@ -1,643 +1,1025 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive CV - Balaji K</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Balaji K - Interactive CV</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
         :root {
-            --background: #f8fafc;
-            --text-primary: #1e293b;
+            /* Light Theme Variables */
+            --bg-primary: #f8fafc;
+            --bg-mesh-1: #e0e7ff;
+            --bg-mesh-2: #f0f9ff;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-primary: #0f172a;
             --text-secondary: #475569;
-            --accent: #0ea5e9;
-            --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --card-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+            --nav-bg: rgba(255, 255, 255, 0.8);
         }
 
-        html.dark {
-            --background: #0f172a;
-            --text-primary: #f1f5f9;
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --bg-primary: #020617;
+            --bg-mesh-1: #1e1b4b;
+            --bg-mesh-2: #172554;
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --accent: #38bdf8;
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
-            --card-bg: #1e293b;
-            --border-color: #334155;
+            --accent-glow: rgba(56, 189, 248, 0.25);
+            --card-shadow: 0 20px 50px -20px rgba(0,0,0,0.5);
+            --nav-bg: rgba(2, 6, 23, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.5s ease, border-color 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--text-secondary);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
             color: var(--text-primary);
-        }
-
-        .section-title {
+            line-height: 1.7;
+            overflow-x: hidden;
             position: relative;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-gradient);
-            border-radius: 999px;
-            transition: width 0.5s ease;
-        }
-
-        .section-title:hover::after {
-            width: 100px;
-        }
-        
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
+        /* --- Dynamic Animated Background --- */
+        .background-mesh {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--bg-primary);
         }
 
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
+        .mesh-blob {
             position: absolute;
-            left: -8px;
-            top: 4px;
-            width: 16px;
-            height: 16px;
-            background: var(--accent-gradient);
-            border: 3px solid var(--background);
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out;
             border-radius: 50%;
-            z-index: 1;
-            transition: transform 0.3s ease;
         }
 
-        .timeline-item:hover::before {
-            transform: scale(1.2);
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--bg-mesh-1);
+            animation-delay: 0s;
         }
-        
-        .tag {
-            background-color: #e0f2fe;
-            color: #0c4a6e;
-            transition: all 0.3s ease;
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--bg-mesh-2);
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* --- Progress Bar --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #818cf8);
+            z-index: 2000;
+            transition: width 0.1s linear;
+        }
+
+        /* --- Navigation & Controls --- */
+        .nav-controls {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            padding: 8px;
+            border-radius: 50px;
+            background: var(--glass-border);
+            border: 1px solid var(--glass-border);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .nav-controls.hidden {
+            transform: translateY(-150%);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg) scale(1.2);
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
             position: relative;
-            overflow: hidden;
+            perspective: 1000px; /* For 3D tilt */
         }
-        
-        .tag::before {
+
+        .hero-content {
+            z-index: 2;
+            transform-style: preserve-3d;
+        }
+
+        .profile-pic-placeholder {
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--accent);
+            box-shadow: 0 0 50px var(--accent-glow);
+            margin: 0 auto 2rem auto;
+            position: relative;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .profile-pic-placeholder::after {
             content: '';
             position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+            z-index: -1;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.6s;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px -5px var(--accent-glow);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* --- Scrollytelling Layout --- */
+        .scrolly-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem 2rem;
+        }
+
+        .scrolly-section {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 6rem;
+            margin-bottom: 15vh;
+            position: relative;
+        }
+
+        .section-header {
+            position: sticky;
+            top: 150px;
+            height: fit-content;
+            text-align: right;
+            padding-right: 2rem;
+            border-right: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-content {
+            position: relative;
+            padding-top: 2rem;
+        }
+
+        /* Timeline line */
+        .section-content::before {
+            content: '';
+            position: absolute;
+            left: -3rem; /* Align with gap */
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--glass-border) 20%, var(--glass-border) 80%, transparent);
+            display: block;
         }
-        
-        .tag:hover::before {
-            left: 100%;
+
+        /* --- Advanced Cards --- */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            opacity: 0;
+            transform: translateY(50px) scale(0.95) translateZ(0);
+            box-shadow: var(--card-shadow);
+            transform-style: preserve-3d; /* Enable 3D for children */
         }
-        
-        html.dark .tag {
-            background-color: #075985;
-            color: #e0f2fe;
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) translateZ(0);
+        }
+
+        /* 3D Tilt Effect Class (Applied via JS) */
+        .card-tilt {
+            transform: perspective(1000px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .card-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        .card-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: var(--accent-glow);
+            color: var(--accent);
+            margin-right: 8px;
+            margin-bottom: 8px;
+            transition: transform 0.2s;
+            border: 1px solid transparent;
         }
 
         .tag:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
         }
 
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        /* Staggered List Items Animation */
+        ul.custom-list {
+            list-style: none;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        ul.custom-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            opacity: 0; /* Hidden initially */
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
         }
 
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
-        }
-
-        .gradient-text {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-	#typed-text {
-    	display: inline-block;
-    	vertical-align: bottom;
-	}     
-
-        .progress-bar {
-            height: 6px;
-            background-color: #e2e8f0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 10px;
-            transition: width 1s ease-in-out;
-        }
-
-        .progress-fill[data-width="90"] { width: 90%; }
-        .progress-fill[data-width="85"] { width: 85%; }
-        .progress-fill[data-width="80"] { width: 80%; }
-        .progress-fill[data-width="75"] { width: 75%; }
-
-        .nav-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--text-secondary);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .nav-dot.active {
-            background: var(--accent-gradient);
-            transform: scale(1.5);
-        }
-
-        .nav-dot:hover {
-            transform: scale(1.3);
-        }
-
-        .particles {
+        ul.custom-list li::before {
+            content: '▹';
             position: absolute;
-            top: 0;
             left: 0;
+            color: var(--accent);
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+        }
+
+        /* Reveal list items when parent card is visible */
+        .card.visible ul.custom-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .card.visible ul.custom-list li:nth-child(1) { transition-delay: 0.1s; }
+        .card.visible ul.custom-list li:nth-child(2) { transition-delay: 0.2s; }
+        .card.visible ul.custom-list li:nth-child(3) { transition-delay: 0.3s; }
+        .card.visible ul.custom-list li:nth-child(4) { transition-delay: 0.4s; }
+
+
+        /* --- Skills Section --- */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .skill-bar-container {
             width: 100%;
-            height: 100%;
-            z-index: -1;
+            height: 8px;
+            background: var(--glass-border);
+            border-radius: 10px;
             overflow: hidden;
+            position: relative;
         }
 
-        .particle {
-            position: absolute;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.3;
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #a855f7);
+            width: 0;
+            border-radius: 10px;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        @media print {
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+        /* --- Tech Stack Grid --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.03);
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .tech-item:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background: var(--accent-glow);
+            transform: translateY(-5px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: transparent;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .no-print {
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 968px) {
+            .scrolly-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                margin-bottom: 6rem;
+            }
+
+            .section-header {
+                position: relative;
+                top: 0;
+                text-align: left;
+                padding-right: 0;
+                border-right: none;
+                border-left: 4px solid var(--accent);
+                padding-left: 1.5rem;
+                margin-bottom: 2.5rem;
+                background: linear-gradient(90deg, var(--accent-glow), transparent);
+                padding: 1rem 1.5rem;
+                border-radius: 0 12px 12px 0;
+            }
+
+            .section-content {
+                padding-left: 0;
+            }
+            
+            .section-content::before {
                 display: none;
             }
-            .print-container {
-                max-width: 100% !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                box-shadow: none !important;
-            }
-            main {
-                padding: 0 !important;
+
+            .hero h1 {
+                font-size: 3rem;
             }
         }
     </style>
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E374XQXN4D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-E374XQXN4D');
-	</script>
 </head>
-<body class="antialiased">
-    <!-- Particles Background -->
-    <div class="particles" id="particles"></div>
+<body>
 
-    <!-- Navigation Dots -->
-    <div class="no-print fixed right-6 top-1/2 transform -translate-y-1/2 z-40 flex flex-col space-y-4">
-        <a href="#header" class="nav-dot active" data-section="header"></a>
-        <a href="#summary" class="nav-dot" data-section="summary"></a>
-        <a href="#experience" class="nav-dot" data-section="experience"></a>
-        <a href="#projects" class="nav-dot" data-section="projects"></a>
-        <a href="#skills" class="nav-dot" data-section="skills"></a>
-        <a href="#education" class="nav-dot" data-section="education"></a>
-        <a href="#achievements" class="nav-dot" data-section="achievements"></a>
+    <!-- Background Elements -->
+    <div class="background-mesh">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
     </div>
 
-    <!-- Controls -->
-    <div class="no-print fixed top-4 right-4 z-50 flex items-center space-x-3">
-         <button id="print-btn" title="Print CV" class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm p-3 rounded-full shadow-md hover:bg-slate-200 dark:hover:bg-slate-700 transition pulse">
-             <i class="fa-solid fa-print text-slate-600 dark:text-slate-300"></i>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle Dark Mode">
+            <i data-lucide="moon" id="themeIcon"></i>
         </button>
-        <button id="theme-toggle" class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm p-3 rounded-full shadow-md hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-            <i class="fa-solid fa-moon text-slate-600 dark:text-slate-300" id="theme-icon"></i>
-        </button>
+        <a href="interactive portfolio.html" class="btn btn-primary" download>
+            <span>
+        View Portfolio
+    </span>
+        </a>
+	<a href="images/cv.pdf" class="btn btn-primary" download>
+            <i data-lucide="arrow-down" size="15"></i>
+        </a>
     </div>
 
-    <main class="py-12 px-4 sm:px-6 lg:px-8">
-        <div class="print-container max-w-4xl mx-auto bg-[var(--card-bg)] rounded-2xl shadow-2xl shadow-slate-900/10 dark:shadow-slate-900/50 p-8 sm:p-12 lg:p-16">
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <div class="profile-pic-placeholder">
+                <img src="images/balajiheader.png" alt="Balaji K" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            </div>
+            <h1>Balaji K</h1>
+            <p>CA Finalist</p>
             
-            <!-- Header -->
-            <header id="header" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-[var(--border-color)] pb-8 mb-8 reveal-up">
-                <div class="md:col-span-2">
-                    <h1 class="text-4xl sm:text-5xl font-bold text-[var(--text-primary)] floating">BALAJI K</h1>
-                    <p class="text-lg sm:text-xl font-semibold mt-2 min-h-[28px]">
-                        <span id="typed-text" class="gradient-text"></span>
-                    </p>
-                </div>
-                <div class="text-sm space-y-2 text-right">
-                    <a href="tel:+919943928120" class="flex items-center justify-end gap-2 hover:text-[var(--accent)] transition transform hover:translate-x-1">
-                        <span>+91 99439 28120</span>
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                    <a href="mailto:mail@balajik.in" class="flex items-center justify-end gap-2 hover:text-[var(--accent)] transition transform hover:translate-x-1">
-                        <span>mail@balajik.in</span>
-                        <i class="fa-solid fa-envelope"></i>
-                    </a>
-                     <p class="flex items-center justify-end gap-2">
-                        <span>Chennai, Tamil Nadu</span>
-                        <i class="fa-solid fa-location-dot"></i>
-                    </p>
-                    <a href="https://linkedin.com/in/balaji--k" target="_blank" class="flex items-center justify-end gap-2 hover:text-[var(--accent)] transition transform hover:translate-x-1">
-                        <span>linkedin.com/in/balaji--k</span>
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/iambalaji-k" target="_blank" class="flex items-center justify-end gap-2 hover:text-[var(--accent)] transition transform hover:translate-x-1">
-                        <span>GitHub Profile</span>
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                </div>
-            </header>
-
-            <!-- Professional Summary -->
-            <section id="summary" class="mb-12 reveal-left">
-                <h2 class="text-2xl font-bold section-title">Professional Summary</h2>
-                <p class="text-base leading-relaxed">
-                    A detail-oriented and analytical CA Finalist with extensive articleship experience in statutory audit, business valuation, and statutory compliance for high-turnover PSUs and NBFCs. Proven ability to identify control weaknesses, ensure Ind AS compliance, and deliver actionable recommendations to senior management. Passionate about leveraging technology to drive efficiency, with demonstrated success in developing custom automation tools using Power Query, Power Automate, and Excel to streamline financial processes. Seeking a challenging role in a finance or consulting environment where I can apply my analytical and technical skills to solve complex business problems.
-                </p>
-            </section>
-
-            <!-- Articleship Experience -->
-            <section id="experience" class="mb-12 reveal-left">
-                <h2 class="text-2xl font-bold section-title">Articleship Experience</h2>
-                <div class="relative border-l-2 border-[var(--border-color)] pl-8 space-y-10">
-                    <div class="timeline-item">
-                        <h3 class="text-lg font-bold text-[var(--text-primary)]">ARTICLED ASSISTANT | RVK SAND & ASSOCIATES</h3>
-                        <p class="text-sm font-medium gradient-text mb-3">(Aug 2022 – Sep 2025)</p>
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-semibold text-[var(--text-primary)]">Ind AS Audit & Financial Controls (NBFC - PSU)</h4>
-                                <ul class="list-disc list-outside ml-5 mt-2 space-y-1 text-sm">
-                                    <li>Spearheaded the first-time Ind AS statutory audit, independently developing comprehensive checklists and working papers from the ground up.</li>
-                                    <li>Identified and reported qualifications related to incorrect interest accrual methodologies as per Ind AS, ensuring accurate financial reporting.</li>
-                                    <li>Uncovered significant internal control deficiencies and recommended strengthened controls for GST compliance, interest accrual, CRAR ratio maintenance, and other RBI-mandated regulations.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-[var(--text-primary)]">Internal Control & Process Improvement (PSU)</h4>
-                                <ul class="list-disc list-outside ml-5 mt-2 space-y-1 text-sm">
-                                    <li>Identified critical weaknesses in inventory management due to reliance on manual records during the audit of a state-wide public distribution entity.</li>
-                                    <li>Recommended the implementation of a robust IT system and modern control procedures to senior management (including IAS officers) to mitigate risk and enhance verification accuracy.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-[var(--text-primary)]">Business Valuation & Corporate Finance</h4>
-                                <ul class="list-disc list-outside ml-5 mt-2 space-y-1 text-sm">
-                                    <li>Conducted complex valuations for transactions including slump sales and goodwill impairment testing as per Ind AS.</li>
-                                    <li>Applied the Discounted Cash Flow (DCF) method, rigorously validating key management assumptions for projections and determining variables such as risk-free rate, beta, and market returns.</li>
-                                </ul>
-                            </div>
-                             <div>
-                                <h4 class="font-semibold text-[var(--text-primary)]">Taxation & Compliance</h4>
-                                <ul class="list-disc list-outside ml-5 mt-2 space-y-1 text-sm">
-                                    <li>Represented clients in hearings before Income Tax and GST authorities.</li>
-                                    <li>Identified and advised on tax planning opportunities, particularly concerning capital gains from slump sales for corporate clients and individuals.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects & Automation -->
-            <section id="projects" class="mb-12 reveal-right">
-                <h2 class="text-2xl font-bold section-title">Projects & Automation</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="card rounded-lg p-5">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
-                                <i class="fa-solid fa-file-excel text-blue-600 dark:text-blue-300"></i>
-                            </div>
-                            <h3 class="font-bold text-[var(--text-primary)]">ITR Filing Automation Tool</h3>
-                        </div>
-                        <p class="text-sm mt-1">Developed an open-source Excel tool using Power Query to automate Form 26AS text file conversion, streamlining data comparison for ITR filing.</p>
-                    </div>
-                     <div class="card rounded-lg p-5">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
-                                <i class="fa-solid fa-robot text-green-600 dark:text-green-300"></i>
-                            </div>
-                            <h3 class="font-bold text-[var(--text-primary)]">Payroll Process Automation</h3>
-                        </div>
-                        <p class="text-sm mt-1">Engineered a custom Excel tool to automate formatting and bulk upload of payroll data into Tally, eliminating manual entry.</p>
-                    </div>
-                     <div class="card rounded-lg p-5">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-3">
-                                <i class="fa-solid fa-bolt text-purple-600 dark:text-purple-300"></i>
-                            </div>
-                            <h3 class="font-bold text-[var(--text-primary)]">Automated Regulatory Updates</h3>
-                        </div>
-                        <p class="text-sm mt-1">Designed a Power Automate workflow to aggregate and deliver real-time regulatory updates (GST, Income Tax, MCA) to Microsoft Teams.</p>
-                    </div>
-                     <div class="card rounded-lg p-5">
-                        <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900 flex items-center justify-center mr-3">
-                                <i class="fa-solid fa-chart-line text-amber-600 dark:text-amber-300"></i>
-                            </div>
-                            <h3 class="font-bold text-[var(--text-primary)]">Sales Dashboard Development</h3>
-                        </div>
-                        <p class="text-sm mt-1">Created a daily sales dashboard using Power BI to monitor and analyze region-wise sales performance for a listed company.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Technical Skills -->
-            <section id="skills" class="mb-12 reveal-left">
-                <h2 class="text-2xl font-bold section-title">Technical Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                    <div>
-                        <h3 class="font-semibold text-[var(--text-primary)] mb-2">Data Analysis & Visualization</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                             <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Advanced Excel</span>
-                             <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Power Query</span>
-                             <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Power Pivot</span>
-                             <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Microsoft Power BI</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[var(--text-primary)] mb-2">Automation</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Microsoft Power Automate</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[var(--text-primary)] mb-2">Accounting & ERP</h3>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Tally</span>
-                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Zoho Books</span>
-                            <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Customized Accounting Software</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[var(--text-primary)] mb-2">Accounting Standards</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                             <span class="tag text-xs font-semibold px-3 py-1 rounded-full">Ind AS Proficient</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="75"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Education -->
-            <section id="education" class="mb-12 reveal-right">
-                <h2 class="text-2xl font-bold section-title">Education & Qualifications</h2>
-                 <div class="relative border-l-2 border-[var(--border-color)] pl-8 space-y-6">
-                    <div class="timeline-item">
-                        <h3 class="text-md font-bold text-[var(--text-primary)]">CA Finalist</h3>
-                        <p class="text-sm">The Institute of Chartered Accountants of India (ICAI)</p>
-                    </div>
-                     <div class="timeline-item">
-                        <h3 class="text-md font-bold text-[var(--text-primary)]">B.Com (General) | 77%</h3>
-                        <p class="text-sm">Alagappa University | 2020-2023</p>
-                    </div>
-                     <div class="timeline-item">
-                        <h3 class="text-md font-bold text-[var(--text-primary)]">CA Intermediate | First Attempt, 6 Exemptions</h3>
-                        <p class="text-sm">ICAI | 2022 | Group I (69%), Group II (55%)</p>
-                    </div>
-                     <div class="timeline-item">
-                        <h3 class="text-md font-bold text-[var(--text-primary)]">CA Foundation | 82%, Pass with Distinction</h3>
-                        <p class="text-sm">ICAI | 2020 | First Attempt</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Activities & Achievements -->
-            <section id="achievements" class="reveal-up">
-                <h2 class="text-2xl font-bold section-title">Activities & Achievements</h2>
-                 <ul class="list-disc list-outside ml-5 space-y-2 text-base">
-                    <li>Secured School First in SSLC (98%) and HSC (96%).</li>
-                    <li>Served as School Pupil Leader.</li>
-                    <li>Competed in Tennis at the District Level and attained Yellow Belt in Karate.</li>
-                </ul>
-            </section>
+            <div class="contact-links">
+                <a href="tel:+919943928120" class="btn"><i data-lucide="phone"></i> Call</a>
+                <a href="mailto:mail@balajik.in" class="btn"><i data-lucide="mail"></i> Email</a>
+                <a href="https://linkedin.com/in/balaji--k" target="_blank" class="btn"><i data-lucide="linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/iambalaji-k" target="_blank" class="btn"><i data-lucide="github"></i> GitHub</a>
+            </div>
         </div>
+        
+        <div style="position: absolute; bottom: 10px; opacity: 0; animation: fadeUp 1s forwards 1.2s;">
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px;">SCROLL TO EXPLORE</p>
+            <div style="width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); margin: 0 auto;"></div>
+        </div>
+    </header>
+
+    <main class="scrolly-container">
+
+        <!-- Professional Summary -->
+        <section class="scrolly-section" id="about">
+            <div class="section-header">
+                <h2>About</h2>
+                <p>Professional Summary</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.8;">
+                        A detail-oriented and analytical CA Finalist with extensive articleship experience in statutory audit, business valuation, and statutory compliance for high-turnover PSUs and NBFCs. Proven ability to identify control weaknesses, ensure Ind AS compliance, and deliver actionable recommendations to senior management. Passionate about leveraging technology to drive efficiency, with demonstrated success in developing custom automation tools using Power Query, Power Automate, and Excel to streamline financial processes. Seeking a challenging role in a finance or consulting environment where I can apply my analytical and technical skills to solve complex business problems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="scrolly-section" id="experience">
+            <div class="section-header">
+                <h2>Articleship</h2>
+                <p>Experience</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">R V K S & Associates</div>
+                            <div class="card-subtitle">Audit Executive</div>
+                        </div>
+                        <div class="card-date">Aug 2022 – Sep 2025</div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
+                            <i data-lucide="shield-check" class="text-accent"></i> IND AS AUDIT & FINANCIAL CONTROLS (NBFC - PSU)
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Spearheaded the first-time Ind AS statutory audit, independently developing comprehensive checklists and working papers from the ground up.</li>
+                            <li>Identified and reported qualifications related to incorrect interest accrual methodologies as per Ind AS, ensuring accurate financial reporting.</li>
+                            <li>Uncovered significant internal control deficiencies and recommended strengthened controls for GST compliance, interest accrual, CRAR ratio maintenance, and other RBI-mandated regulations.</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="height: 1px; background: var(--glass-border); margin: 2rem 0;"></div>
+
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
+                            <i data-lucide="search-check" class="text-accent"></i> INTERNAL CONTROL & PROCESS IMPROVEMENT (PSU)
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Identified critical weaknesses in inventory management due to reliance on manual records during the audit of a state-wide public distribution entity.</li>
+                            <li>Recommended the implementation of a robust IT system and modern control procedures to senior management (including IAS officers) to mitigate risk and enhance verification accuracy.</li>
+                        </ul>
+                    </div>
+
+                    <div style="height: 1px; background: var(--glass-border); margin: 2rem 0;"></div>
+
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
+                            <i data-lucide="trending-up" class="text-accent"></i> BUSINESS VALUATION & CORPORATE FINANCE
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Conducted complex valuations for transactions including slump sales and goodwill impairment testing as per Ind AS.</li>
+                            <li>Applied the Discounted Cash Flow (DCF) method, rigorously validating key management assumptions for projections and determining variables such as risk-free rate, beta, and market returns.</li>
+                        </ul>
+                    </div>
+
+                    <div style="height: 1px; background: var(--glass-border); margin: 2rem 0;"></div>
+
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
+                            <i data-lucide="landmark" class="text-accent"></i> TAXATION & COMPLIANCE
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Represented clients in hearings before Income Tax and GST authorities.</li>
+                            <li>Identified and advised on tax planning opportunities, particularly concerning capital gains from slump sales for corporate clients and individuals.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="scrolly-section" id="projects">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Automation & Tech</p>
+            </div>
+            <div class="section-content">
+                
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div class="card-title">ITR Filing Automation Tool</div>
+                        <i data-lucide="file-spreadsheet" class="text-accent" size="28"></i>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Developed an Excel tool using Power Query to automate Form 26AS text file conversion, streamlining data comparison for ITR filing.
+                    </p>
+                    <div>
+                        <span class="tag">Excel</span>
+                        <span class="tag">Power Query</span>
+                        <span class="tag">Macro</span>
+			<span class="tag">ITR</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div class="card-title">Payroll Process Automation</div>
+                        <i data-lucide="database" class="text-accent" size="28"></i>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Engineered a custom Excel tool to automate formatting and bulk upload of payroll data into Tally, eliminating manual entry.
+                    </p>
+                    <div>
+                        <span class="tag">Excel</span>
+                        <span class="tag">Tally Integration</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div class="card-title">Automated Regulatory Updates</div>
+                        <i data-lucide="bot" class="text-accent" size="28"></i>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Designed a Power Automate workflow to aggregate and deliver real-time regulatory updates (GST, Income Tax, MCA) to Microsoft Teams.
+                    </p>
+                    <div>
+                        <span class="tag">Power Automate</span>
+                        <span class="tag">API Integration</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div class="card-title">Sales Dashboard Development</div>
+                        <i data-lucide="bar-chart-2" class="text-accent" size="28"></i>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Created a daily sales dashboard using Power BI to monitor and analyze region-wise sales performance for a publicly listed company.
+                    </p>
+                    <div>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Data Visualization</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="scrolly-section" id="skills">
+            <div class="section-header">
+                <h2>Skills</h2>
+                <p>Stack</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <div class="skill-grid">
+                        <div class="skill-group">
+                            <div class="skill-label"><span>Data Analysis & Visualization</span></div>
+                            <div class="skill-bar-container"><div class="skill-bar-fill" data-width="100%"></div></div>
+                        </div>
+                        
+                        <div class="skill-group">
+                            <div class="skill-label"><span>Ind AS (Accounting Standards)</span></div>
+                            <div class="skill-bar-container"><div class="skill-bar-fill" data-width="100%"></div></div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-label"><span>Automation (Power Automate)</span></div>
+                            <div class="skill-bar-container"><div class="skill-bar-fill" data-width="100%"></div></div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-label"><span>Accounting & ERP</span></div>
+                            <div class="skill-bar-container"><div class="skill-bar-fill" data-width="100%"></div></div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Software Ecosystem</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">Adv. Excel</div>
+                        <div class="tech-item">Power Query</div>
+                        <div class="tech-item">Automation</div>
+                        <div class="tech-item">Power BI</div>
+                        <div class="tech-item">Tally</div>
+                        <div class="tech-item">Zoho Books</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="scrolly-section" id="education">
+            <div class="section-header">
+                <h2>Learn</h2>
+                <p>Education</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">CA Final</div>
+                            <div class="card-subtitle">ICAI</div>
+                       </div>
+                        <div class="card-date">2025</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">First Attempt</span>
+                        <span class="tag">1 Exemption</span>
+                        <span class="tag">Group I </span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">B.COM (General)</div>
+                            <div class="card-subtitle">Alagappa University</div>
+                        </div>
+                        <div class="card-date">2022-2023</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">Percentage :<b> 77%</b> </span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">CA Intermediate</div>
+                            <div class="card-subtitle">ICAI</div>
+                        </div>
+                        <div class="card-date">2022</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">First Attempt</span>
+                        <span class="tag">6 Exemptions</span>
+                        <span class="tag">Group I (69%)</span>
+                        <span class="tag">Group II (55%)</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">CA Foundation</div>
+                            <div class="card-subtitle">ICAI</div>
+                        </div>
+                        <div class="card-date">2020</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">First Attempt</span>
+                        <span class="tag">Pass with Distinction (82%)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements -->
+         <section class="scrolly-section" id="achievements">
+            <div class="section-header">
+                <h2>Achievements</h2>
+                <p>Activities</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                   <ul class="custom-list">
+                        <li>Secured School First in SSLC (98%) and HSC (96%).</li>
+                        <li>Served as School Pupil Leader.</li>
+                        <li>Competed in Tennis at the District Level.</li>
+                        <li>Attained Yellow Belt in Karate.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Theme Toggler ---
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        // Check for saved theme in localStorage
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && userPrefersDark)) {
-            document.documentElement.classList.add('dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            document.documentElement.classList.remove('dark');
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
+    <footer>
+        <div style="margin-bottom: 1rem; display: flex; justify-content: center; gap: 20px;">
+             <a href="#home" style="color: var(--text-secondary); text-decoration: none; display:inline-flex; align-items:center; gap: 8px; font-weight: 600;">
+                <i data-lucide="arrow-up"></i> Back to Top
+            </a>
+        </div>
+        <div class="footer-text" style="color: var(--text-primary); font-weight: 600;">
+            Balaji K
+        </div>
+    </footer>
+
+    <script>
+        // --- Icon Initialization ---
+        lucide.createIcons();
+
+        // --- Theme Toggling ---
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+            lucide.createIcons();
         }
 
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            if (document.documentElement.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
+        // --- Scroll Progress Bar ---
+        window.addEventListener('scroll', () => {
+            const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollCurrent = document.documentElement.scrollTop;
+            const scrollPercentage = (scrollCurrent / scrollTotal) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercentage + "%";
+        });
+
+        // --- Intersection Observer for Reveal Animations ---
+        const observerOptions = {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate Skill Bars if present
+                    const bars = entry.target.querySelectorAll('.skill-bar-fill');
+                    bars.forEach(bar => {
+                        setTimeout(() => {
+                            bar.style.width = bar.getAttribute('data-width');
+                        }, 200);
+                    });
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+        // --- 3D Tilt Effect Logic ---
+        document.querySelectorAll('.js-tilt').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the element
+                const y = e.clientY - rect.top;  // y position within the element
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -5; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 5;
+
+                card.style.setProperty('--rotateX', rotateX + 'deg');
+                card.style.setProperty('--rotateY', rotateY + 'deg');
+                card.classList.add('card-tilt');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('card-tilt');
+                card.style.setProperty('--rotateX', '0deg');
+                card.style.setProperty('--rotateY', '0deg');
+            });
+        });
+
+        // --- Utility Class for Text Accent (CSS Helper) ---
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            .text-accent { color: var(--accent); font-weight: 600; }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // --- Autohide Navigation ---
+        const nav = document.querySelector('.nav-controls');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (lastScrollY < window.scrollY && window.scrollY > 100) {
+                nav.classList.add('hidden');
             } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                nav.classList.remove('hidden');
             }
-        });
-        
-        // --- Print Button ---
-        const printBtn = document.getElementById('print-btn');
-        printBtn.addEventListener('click', () => {
-            window.print();
+            lastScrollY = window.scrollY;
         });
 
-        // --- Typed.js for dynamic text ---
-        const typed = new Typed('#typed-text', {
-            strings: [
-                'CA Finalist',
-                'Finance',
-                'Audit',
-		'Complaince',
-                'Business Valuation',
-                'Process Automation'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|'
-	   
-        });
-
-        // --- ScrollReveal Animations ---
-        const sr = ScrollReveal({
-            distance: '60px',
-            duration: 1000,
-            delay: 200,
-            easing: 'cubic-bezier(0.5, 0, 0, 1)',
-            reset: false
-        });
-
-        sr.reveal('.reveal-up', { origin: 'bottom' });
-        sr.reveal('.reveal-left', { origin: 'left' });
-        sr.reveal('.reveal-right', { origin: 'right' });
-
-        // --- Navigation Dots ---
-        const sections = document.querySelectorAll('section, header');
-        const navDots = document.querySelectorAll('.nav-dot');
-
-        function updateActiveNavDot() {
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.id;
-                }
-            });
-            
-            navDots.forEach(dot => {
-                dot.classList.remove('active');
-                if (dot.getAttribute('data-section') === currentSection) {
-                    dot.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNavDot);
-        
-        // Smooth scroll for navigation dots
-        navDots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = dot.getAttribute('data-section');
-                const targetElement = document.getElementById(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 20,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // --- Particles Background ---
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 2px and 6px
-                const size = Math.random() * 4 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation
-                const duration = Math.random() * 20 + 10;
-                particle.style.animation = `float ${duration}s ease-in-out infinite`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        createParticles();
-    });
-</script>
-
+    </script>
 </body>
 </html>
