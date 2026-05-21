@@ -143,7 +143,12 @@
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .matrix-node:hover {
+        .node-inner {
+            transform-box: fill-box;
+            transform-origin: center;
+         }
+        
+         .matrix-node:hover {
             transform: scale(1.08);
         }
 
@@ -404,93 +409,180 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
             </div>
         </section>
 
-        <!-- Dynamic SVG Achievement Matrix Section -->
+        <!-- Modern SVG Core Competencies Section -->
         <section id="matrix" class="py-24 relative bg-[#07080a]">
-            <div class="container mx-auto px-6 lg:px-12">
-                <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
-                    <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Interactive Hub</span>
+            <!-- Radial background ambient aura -->
+            <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#c5a880]/[0.02] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="max-w-3xl mx-auto text-center mb-20 space-y-4">
+                    <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Scrollytelling Showcase</span>
                     <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
                         Core <span class="gold-gradient-text italic font-bold">Competencies</span>
                     </h2>
-                    <p class="text-gray-400 font-light">
-                        Click on the interactive nodes below to explore my core competency domains and practical experience parameters.
+                    <p class="text-gray-400 font-light max-w-xl mx-auto text-base">
+                        Scroll down to explore my specialized domains and practical financial expertise synced dynamically with my orbital radar.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Two-Column Grid supporting Sticky Radar -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-start relative">
                     
-                    <!-- SVG Chart Workspace -->
-                    <div class="lg:col-span-7 flex justify-center items-center reveal-left">
-                        <div class="relative w-full max-w-[500px] aspect-square bg-[#0d0e12]/45 rounded-3xl border border-white/5 p-6 flex items-center justify-center shadow-inner">
-                            <svg viewBox="0 0 400 400" class="w-full h-full" id="svg-workspace">
-                                <!-- Central connecting paths -->
-                                <circle cx="200" cy="200" r="8" fill="#c5a880" opacity="0.3"></circle>
-                                <line x1="200" y1="200" x2="200" y2="70" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
-                                <line x1="200" y1="200" x2="330" y2="200" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
-                                <line x1="200" y1="200" x2="200" y2="330" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
-                                <line x1="200" y1="200" x2="70" y2="200" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
-                                
-                                <!-- Outer Connecting Rings -->
-                                <circle cx="200" cy="200" r="130" stroke="rgba(197, 168, 128, 0.08)" stroke-width="1" fill="none"></circle>
+                    <!-- Pinned Orbital Radar (Left Column) -->
+                    <div class="lg:col-span-6 flex justify-center items-center sticky top-20 lg:top-28 z-20 w-full">
+                        <div class="relative w-full max-w-[420px] aspect-square bg-[#0d0e12]/30 rounded-full border border-white/5 p-4 flex items-center justify-center shadow-2xl backdrop-blur-md">
+                            <!-- Circular backdrop rings -->
+                            <div class="absolute inset-4 border border-white/[0.02] rounded-full animate-[spin_120s_linear_infinite]" aria-hidden="true"></div>
+                            <div class="absolute inset-16 border border-dashed border-[#c5a880]/10 rounded-full animate-[spin_80s_linear_infinite]" aria-hidden="true"></div>
+                            <div class="absolute inset-28 border border-white/[0.04] rounded-full animate-[spin_40s_linear_infinite]" aria-hidden="true"></div>
 
-                                <!-- Node 1: Statutory & Tax Audits -->
-                                <g class="matrix-node active" id="node-audit" onclick="selectNode('audit')">
-                                    <circle cx="200" cy="70" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.25)" stroke-width="1.5" class="node-ring-static"></circle>
-                                    <circle cx="200" cy="70" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
-                                    <svg x="193" y="63" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                                    <text x="200" y="115" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Statutory & Tax Audits</text>
+                            <svg viewBox="0 0 400 400" class="w-full h-full relative z-10" id="svg-workspace">
+                                <defs>
+                                    <!-- Glow Filters for Active Embossed Nodes -->
+                                    <filter id="gold-glow" x="-30%" y="-30%" width="160%" height="160%">
+                                        <feGaussianBlur stdDeviation="8" result="blur" />
+                                        <feComponentTransfer>
+                                            <feFuncA type="linear" slope="0.8"/>
+                                        </feComponentTransfer>
+                                        <feMerge>
+                                            <feMergeNode />
+                                            <feMergeNode in="SourceGraphic" />
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+
+                                <!-- Rotatable Wheel Container (Spokes + Nodes) -->
+                                <g id="rotatable-wheel" style="transform-origin: 200px 200px; transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);">
+                                    
+                                    <!-- Central connect lines (radial spokes) -->
+                                    <line x1="200" y1="200" x2="200" y2="65" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" class="spoke-line opacity-15 transition-all duration-500" id="spoke-audit"></line>
+                                    <line x1="200" y1="200" x2="335" y2="200" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" class="spoke-line opacity-15 transition-all duration-500" id="spoke-valuation"></line>
+                                    <line x1="200" y1="200" x2="200" y2="335" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" class="spoke-line opacity-15 transition-all duration-500" id="spoke-controls"></line>
+                                    <line x1="200" y1="200" x2="65" y2="200" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3,3" class="spoke-line opacity-15 transition-all duration-500" id="spoke-reporting"></line>
+
+                                    <!-- Node 1: Statutory & Tax Audits -->
+                                    <g class="matrix-node cursor-pointer group" id="node-audit" onclick="const el = document.getElementById('card-audit'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });" style="transform-origin: 200px 65px; transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);">
+                                        <circle cx="200" cy="65" r="28" fill="rgba(7, 8, 10, 0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" class="transition-all duration-500 node-outer"></circle>
+                                        <circle cx="200" cy="65" r="16" fill="rgba(255,255,255,0.02)" stroke="#c5a880" stroke-width="1.5" class="transition-all duration-500 node-inner" vector-effect="non-scaling-stroke"></circle>
+                                        <g transform="translate(192,57)">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                                        </g>
+                                        <text x="200" y="112" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600" class="font-mono-data tracking-wider uppercase opacity-90 transition-all duration-300 group-hover:fill-[#c5a880] hidden sm:block">Statutory Audits</text>
+                                    </g>
+
+                                    <!-- Node 2: Valuation -->
+                                    <g class="matrix-node cursor-pointer group" id="node-valuation" onclick="const el = document.getElementById('card-valuation'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });" style="transform-origin: 335px 200px; transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);">
+                                        <circle cx="335" cy="200" r="28" fill="rgba(7, 8, 10, 0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" class="transition-all duration-500 node-outer"></circle>
+                                        <circle cx="335" cy="200" r="16" fill="rgba(255,255,255,0.02)" stroke="#c5a880" stroke-width="1.5" class="transition-all duration-500 origin-center node-inner"></circle>
+                                        <g transform="translate(327,192)">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                        </g>
+                                        <text x="335" y="247" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600" class="font-mono-data tracking-wider uppercase opacity-90 transition-all duration-300 group-hover:fill-[#c5a880] hidden sm:block">Valuations</text>
+                                    </g>
+
+                                    <!-- Node 3: Taxation -->
+                                    <g class="matrix-node cursor-pointer group" id="node-controls" onclick="const el = document.getElementById('card-controls'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });" style="transform-origin: 200px 335px; transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);">
+                                        <circle cx="200" cy="335" r="28" fill="rgba(7, 8, 10, 0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" class="transition-all duration-500 node-outer"></circle>
+                                        <circle cx="200" cy="335" r="16" fill="rgba(255,255,255,0.02)" stroke="#c5a880" stroke-width="1.5" class="transition-all duration-500 origin-center node-inner"></circle>
+                                        <g transform="translate(192,327)">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                        </g>
+                                        <text x="200" y="380" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600" class="font-mono-data tracking-wider uppercase opacity-90 transition-all duration-300 group-hover:fill-[#c5a880] hidden sm:block">Taxation</text>
+                                    </g>
+
+                                    <!-- Node 4: Finance Hub -->
+                                    <g class="matrix-node cursor-pointer group" id="node-reporting" onclick="const el = document.getElementById('card-reporting'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });" style="transform-origin: 65px 200px; transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);">
+                                        <circle cx="65" cy="200" r="28" fill="rgba(7, 8, 10, 0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" class="transition-all duration-500 node-outer"></circle>
+                                        <circle cx="65" cy="200" r="16" fill="rgba(255,255,255,0.02)" stroke="#c5a880" stroke-width="1.5" class="transition-all duration-500 origin-center node-inner"></circle>
+                                        <g transform="translate(57,192)">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                        </g>
+                                        <text x="65" y="247" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600" class="font-mono-data tracking-wider uppercase opacity-90 transition-all duration-300 group-hover:fill-[#c5a880] hidden sm:block">Finance Hub</text>
+                                    </g>
                                 </g>
 
-                                <!-- Node 2: Valuation -->
-                                <g class="matrix-node" id="node-valuation" onclick="selectNode('valuation')">
-                                    <circle cx="330" cy="200" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
-                                    <circle cx="330" cy="200" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
-                                    <svg x="323" y="193" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                                    <text x="330" y="245" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Valuation</text>
-                                </g>
-
-                                <!-- Node 3: Regulatory Compliances -->
-                                <g class="matrix-node" id="node-controls" onclick="selectNode('controls')">
-                                    <circle cx="200" cy="330" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
-                                    <circle cx="200" cy="330" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
-                                    <svg x="193" y="323" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                    <text x="200" y="375" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Tax and Compliances</text>
-                                </g>
-
-                                <!-- Node 4: Financial Reporting -->
-                                <g class="matrix-node" id="node-reporting" onclick="selectNode('reporting')">
-                                    <circle cx="70" cy="200" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
-                                    <circle cx="70" cy="200" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
-                                    <svg x="63" y="193" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                                    <text x="70" y="245" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Finance and Accounts</text>
+                                <!-- Pulsing Central Hub Core (Fixed, Outside Rotatable Wheel) -->
+                                <g transform="translate(200,200)">
+                                    <circle r="22" fill="rgba(197, 168, 128, 0.08)" stroke="#c5a880" stroke-width="1" class="animate-ping" opacity="0.3"></circle>
+                                    <circle r="14" fill="rgba(7, 8, 10, 0.95)" stroke="#c5a880" stroke-width="1.5"></circle>
+                                    <circle r="6" fill="#c5a880"></circle>
                                 </g>
                             </svg>
                         </div>
                     </div>
 
-                    <!-- Details Pane -->
-                    <div class="lg:col-span-5 reveal-right">
-                        <div id="details-pane" class="glass-card p-8 border-[#c5a880]/15 relative overflow-hidden bg-[#0d0e12]/60 min-h-[380px] flex flex-col justify-between transition-all duration-300">
-                            <!-- Background Subtle Design Accent -->
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-[#c5a880] opacity-[0.02] rounded-full blur-2xl" aria-hidden="true"></div>
-                            
-                            <div>
-                                <div class="flex justify-between items-center mb-4">
-                                    <span id="details-badge" class="text-xl font-mono-data text-[#c5a880] uppercase tracking-wider bg-[#c5a880]/10 px-3 py-1 rounded-full">Core Areas</span>
+                    <!-- Scrolling Bento Competency Stack (Right Column) -->
+                    <div class="lg:col-span-6 flex flex-col gap-16 lg:py-12 pb-24 relative">
+                        
+                        <!-- Card 1: Statutory & Tax Audits -->
+                        <div id="card-audit" class="competency-card glass-card p-8 border-white/5 relative overflow-hidden bg-[#0d0e12]/60 min-h-[360px] flex flex-col justify-between transition-all duration-700 rounded-3xl shadow-2xl backdrop-blur-md opacity-30 scale-[0.96]" data-competency="audit">
+                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#c5a880]/[0.02] rounded-full blur-3xl" aria-hidden="true"></div>
+                            <div class="space-y-6">
+                                <div class="space-y-1">
+                                    <h3 class="text-3xl font-light font-serif-editorial text-white leading-tight">Statutory & Tax Audits</h3>
                                 </div>
-                                                                                                                              
-                                <div class="h-px bg-white/5 my-4" aria-hidden="true"></div>
-                                
-                                <ul id="details-bullet-list" class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
-                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> In-depth experience in active participation in statutory audits, including PSU, Banks and NBFC audit on ensuring compliance with accounting standards and reviewing internal financial control structures</li>
-                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Undertaken valuation of various private sector companies as a part of merger or restructuring</li>
-                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Hands-on audits of direct and indirect taxation statements and concurrent auditing engagements.</li>
-                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Experience with IBC (Insolvency and Bankruptcy Code) processes, compliance procedures, and financial documentation.</li>
+                                <div class="h-px bg-white/5 my-2" aria-hidden="true"></div>
+                                <ul class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> In-depth experience in active participation in statutory financial audits, including PSU audits.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Focused on ensuring compliance with accounting standards, verifying statutory records, and reviewing internal financial control structures.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Hands-on audits of direct and indirect taxation statements and concurrent auditing engagements.</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
 
+                        <!-- Card 2: Valuations -->
+                        <div id="card-valuation" class="competency-card glass-card p-8 border-white/5 relative overflow-hidden bg-[#0d0e12]/60 min-h-[360px] flex flex-col justify-between transition-all duration-700 rounded-3xl shadow-2xl backdrop-blur-md opacity-30 scale-[0.96]" data-competency="valuation">
+                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#c5a880]/[0.02] rounded-full blur-3xl" aria-hidden="true"></div>
+                            <div class="space-y-6">
+                                <div class="space-y-1">
+                                    <h3 class="text-3xl font-light font-serif-editorial text-white leading-tight">Valuation & Taxation Systems</h3>
+                                </div>
+                                <div class="h-px bg-white/5 my-2" aria-hidden="true"></div>
+                                <ul class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Deep study and active participation in direct and indirect taxation compliances for corporate clients.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Formulating systematic business and corporate asset valuations during restructuring and advisory procedures.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Applying robust financial methodologies to compile regulatory tax profiles and statutory statements.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Regulatory Compliance -->
+                        <div id="card-controls" class="competency-card glass-card p-8 border-white/5 relative overflow-hidden bg-[#0d0e12]/60 min-h-[360px] flex flex-col justify-between transition-all duration-700 rounded-3xl shadow-2xl backdrop-blur-md opacity-30 scale-[0.96]" data-competency="controls">
+                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#c5a880]/[0.02] rounded-full blur-3xl" aria-hidden="true"></div>
+                            <div class="space-y-6">
+                                <div class="space-y-1">
+                                    <h3 class="text-3xl font-light font-serif-editorial text-white leading-tight">Regulatory Compliances & Reviews</h3>
+                                    <div class="space-y-1.5 pt-2">
+                                    </div>
+                                </div>
+                                <div class="h-px bg-white/5 my-2" aria-hidden="true"></div>
+                                <ul class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Verifying adherence to legal regulatory standards, government directives, and statutory mandates.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Formulating detailed audit files and corporate governance review logs during active practical articleship.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Drafting advisory filings and compile documentation for taxation proceedings and corporate review boards.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Financial Reporting -->
+                        <div id="card-reporting" class="competency-card glass-card p-8 border-white/5 relative overflow-hidden bg-[#0d0e12]/60 min-h-[360px] flex flex-col justify-between transition-all duration-700 rounded-3xl shadow-2xl backdrop-blur-md opacity-30 scale-[0.96]" data-competency="reporting">
+                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#c5a880]/[0.02] rounded-full blur-3xl" aria-hidden="true"></div>
+                            <div class="space-y-6">
+                                <div class="space-y-1">
+                                    <h3 class="text-3xl font-light font-serif-editorial text-white leading-tight">Financial Reporting & Analysis</h3>
+                                    <div class="space-y-1.5 pt-2">
+                                    </div>
+                                </div>
+                                <div class="h-px bg-white/5 my-2" aria-hidden="true"></div>
+                                <ul class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Compiling and analyzing corporate balance sheets, cash flows, and general ledgers in compliance with standards.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Reviewing disclosure notes, financial schedules, and trial balances to ensure absolute accounting precision.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880] flex-shrink-0 mt-1">✦</span> Supporting advisory teams in translating raw ledger outputs into compliant general statements.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -594,7 +686,7 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                             <i data-lucide="code" size="22"></i>
                         </div>
                         <div class="flex flex-col">
-                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Basic Python</span>
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Python - Basics</span>
                             <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Scripting Foundations</span>
                         </div>
                     </div>
@@ -679,11 +771,11 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                         <div class="pl-12 md:pl-0 md:pr-12 md:text-right reveal-left">
                             <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
                                 <div class="flex justify-between items-center md:flex-row-reverse mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
-                                    <span>PROFESSIONAL GOAL</span>
+                                    <span>Professional Goal</span>
                                 </div>
-                                <h3 class="text-2xl font-light font-serif-editorial text-white">Aspiring Chartered Accountant</h3>
+                                <h3 class="text-2xl font-light font-serif-editorial text-white">CA Finalist</h3>
                                 <p class="text-gray-400 font-light leading-relaxed text-sm mt-3">
-                                    Working continuously towards obtaining my Chartered Accountant qualification while honing skills in financial reporting, risk management, assurance and advisory services. Eager to broaden industry exposure, embrace diverse challenges, and gain invaluable experiences.
+                                    Working continuously towards obtaining my Chartered Accountant qualification while honing skills in financial reporting, risk management, assurance and advisory services and finance.
                                 </p>
                             </div>
                         </div>
@@ -700,12 +792,11 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                         <div class="pl-12 md:pl-12 reveal-right">
                             <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
                                 <div class="flex justify-between items-center mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
-                                    <span>PRACTICAL TRAINING</span>
-                                    <span class="bg-[#c5a880]/10 px-2.5 py-0.5 rounded-full uppercase">Articleship</span>
+                                    <span>Articleship</span>
                                 </div>
                                 <h3 class="text-2xl font-light font-serif-editorial text-white">Articleship Executive</h3>
                                 <p class="text-gray-400 font-light leading-relaxed text-sm mt-3">
-                                    Active participation in statutory financial audits (including PSU audits), tax audits, concurrent audits, corporate valuations, general accounting, and regulatory compliances.
+                                    Active participation in statutory financial audits (including PSU audits), tax audits, concurrent audits, corporate valuations, general accounting, Insolvency and Bankrupcy Code procedures and other regulatory compliances.
                                 </p>
                             </div>
                         </div>
@@ -720,13 +811,11 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                         <div class="pl-12 md:pl-0 md:pr-12 md:text-right reveal-left">
                             <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
                                 <div class="flex justify-between items-center md:flex-row-reverse mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
-                                    <span>EXAMINATION SUCCESS</span>
-                                    <span class="bg-[#c5a880]/10 px-2.5 py-0.5 rounded-full uppercase">Intermediate</span>
+                                    <span>Examination</span>
                                 </div>
                                 <h3 class="text-2xl font-light font-serif-editorial text-white">CA Intermediate</h3>
-                                <p class="text-sm text-gray-400 font-medium mb-3">Cleared on First Attempt</p>
                                 <p class="text-gray-400 font-light leading-relaxed text-sm">
-                                    Successfully cleared both groups of the CA Intermediate exams on the first attempt, demonstrating strong consistency and commitment to the profession.
+                                    Cleared CA Intermediate level exams in May 2022.
                                 </p>
                             </div>
                         </div>
@@ -743,13 +832,11 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                         <div class="pl-12 md:pl-12 reveal-right">
                             <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
                                 <div class="flex justify-between items-center mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
-                                    <span>ACADEMIC BEDROCK</span>
-                                    <span class="bg-[#c5a880]/10 px-2.5 py-0.5 rounded-full uppercase">Foundation</span>
+                                    <span>Examination</span>
                                 </div>
                                 <h3 class="text-2xl font-light font-serif-editorial text-white">CA Foundation</h3>
-                                <p class="text-sm text-gray-400 font-medium mb-3">Cleared on First Attempt</p>
                                 <p class="text-gray-400 font-light leading-relaxed text-sm">
-                                    Cleared the entry-level CA Foundation examination on the very first attempt, establishing the solid academic bedrock of my financial expertise.
+                                    Cleared the entry-level CA Foundation examination in Nov 2020.
                                 </p>
                             </div>
                         </div>
@@ -794,7 +881,6 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                             </div>
 
                             <div class="pt-6 border-t border-white/5">
-                                <span class="text-xs font-mono-data text-gray-500 uppercase tracking-widest block mb-4">Connect with Me</span>
                                 <div class="flex flex-wrap gap-3">
                                     <a href="https://www.linkedin.com/in/balaji--k" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="LinkedIn">
                                         <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
@@ -1162,6 +1248,7 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                     badge: "Auditing & Assurance",
                     stat: "ICAI Core Area",
                     title: "Statutory & Tax Audits",
+                    intensity: "95%",
                     bullets: [
                         "✦ In-depth experience in active participation in statutory financial audits, including PSU audits.",
                         "✦ Focused on ensuring compliance with accounting standards, verifying statutory records, and reviewing internal financial control structures.",
@@ -1170,8 +1257,9 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                 },
                 valuation: {
                     badge: "Tax & Valuation",
-                    stat: "ICAI Core Area",
+                    stat: "Advisory Focus",
                     title: "Valuation & Taxation Systems",
+                    intensity: "88%",
                     bullets: [
                         "✦ Deep study and active participation in direct and indirect taxation compliances for corporate clients.",
                         "✦ Formulating systematic business and corporate asset valuations during restructuring and advisory procedures.",
@@ -1180,8 +1268,9 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                 },
                 controls: {
                     badge: "Regulatory Compliance",
-                    stat: "ICAI Core Area",
+                    stat: "Legal Focus",
                     title: "Regulatory Compliances & Reviews",
+                    intensity: "85%",
                     bullets: [
                         "✦ Verifying adherence to legal regulatory standards, government directives, and statutory mandates.",
                         "✦ Formulating detailed audit files and corporate governance review logs during active practical articleship.",
@@ -1190,8 +1279,9 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                 },
                 reporting: {
                     badge: "Financial Reporting",
-                    stat: "ICAI Core Area",
+                    stat: "Corporate Focus",
                     title: "Financial Reporting & Analysis",
+                    intensity: "90%",
                     bullets: [
                         "✦ Compiling and analyzing corporate balance sheets, cash flows, and general ledgers in compliance with standards.",
                         "✦ Reviewing disclosure notes, financial schedules, and trial balances to ensure absolute accounting precision.",
@@ -1200,45 +1290,130 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                 }
             };
 
-            // Switch active node in Interactive SVG
-            window.selectNode = function(nodeKey) {
-                // Remove active classes
-                document.querySelectorAll('.matrix-node').forEach(node => {
-                    node.classList.remove('active');
-                });
-                
-                // Add active state to selected SVG group
-                const activeNodeGroup = document.getElementById(`node-${nodeKey}`);
-                if (activeNodeGroup) activeNodeGroup.classList.add('active');
-
-                // Retrieve information
+            // High-Performance Scrollytelling Competency Sync & Planetary Wheel Rotation
+            const activateCompetency = function(nodeKey) {
                 const data = window.nodeDetails[nodeKey];
                 if (!data) return;
 
-                // Animate details transition
-                const detailsPane = document.getElementById('details-pane');
-                detailsPane.style.opacity = 0;
-                detailsPane.style.transform = 'translateY(10px)';
+                // 1. Synchronize Card UI Highlight (Focus Lens Effect)
+                document.querySelectorAll('.competency-card').forEach(card => {
+                    const progress = card.querySelector('.details-progress-bar');
+                    if (card.getAttribute('data-competency') === nodeKey) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1.02)';
+                        card.style.borderColor = 'rgba(197, 168, 128, 0.4)';
+                        card.style.boxShadow = '0 20px 40px -15px rgba(197, 168, 128, 0.08)';
+                        
+                        // Refill progress bar in active card
+                        if (progress) {
+                            progress.style.width = data.intensity;
+                        }
+                    } else {
+                        card.style.opacity = '0.25';
+                        card.style.transform = 'scale(0.96)';
+                        card.style.borderColor = 'rgba(255,255,255,0.05)';
+                        card.style.boxShadow = 'none';
+                        
+                        // Drain progress bar in inactive cards
+                        if (progress) {
+                            progress.style.width = '0%';
+                        }
+                    }
+                });
 
-                setTimeout(() => {
-                    document.getElementById('details-badge').innerText = data.badge;
-                    document.getElementById('details-stat').innerText = data.stat;
-                    document.getElementById('details-title').innerText = data.title;
-                    
-                    const bulletList = document.getElementById('details-bullet-list');
-                    bulletList.innerHTML = '';
-                    
-                    data.bullets.forEach(bullet => {
-                        const li = document.createElement('li');
-                        li.className = 'flex gap-3';
-                        li.innerHTML = `<span class="text-[#c5a880]">✦</span> ${bullet.substring(2)}`;
-                        bulletList.appendChild(li);
-                    });
+                // 2. Planetary Wheel Rotation Angles (To rotate active node to Top 0°)
+                const rotationAngles = {
+                    audit: 0,
+                    valuation: -90,
+                    controls: -180,
+                    reporting: -270
+                };
+                const wheelAngle = rotationAngles[nodeKey];
 
-                    detailsPane.style.opacity = 1;
-                    detailsPane.style.transform = 'translateY(0)';
-                }, 200);
+                // Rotate entire main wheel group
+                const wheel = document.getElementById('rotatable-wheel');
+                if (wheel) {
+                    wheel.style.transform = `rotate(${wheelAngle}deg)`;
+                }
+
+                // 3. Counter-Rotate Individual Nodes (Planetary Self-Leveling keeping labels/icons upright)
+                document.querySelectorAll('.matrix-node').forEach(node => {
+                    node.classList.remove('active');
+                    const outer = node.querySelector('.node-outer');
+                    const inner = node.querySelector('.node-inner');
+                    
+                    // Standard State Node Reset
+                    if (outer) {
+                        outer.setAttribute('stroke', 'rgba(255, 255, 255, 0.08)');
+                        outer.setAttribute('stroke-width', '1.5');
+                        outer.removeAttribute('filter');
+                    }
+                    if (inner) {
+                        inner.setAttribute('fill', 'rgba(255, 255, 255, 0.02)');
+                        inner.style.transform = 'scale(1)';
+                    }
+
+                    // Apply self-leveling counter-rotation around origin
+                    node.style.transform = `rotate(${-wheelAngle}deg)`;
+                });
+                
+                // Active State Node Emboss (Focal Top Node)
+                const activeNodeGroup = document.getElementById(`node-${nodeKey}`);
+                if (activeNodeGroup) {
+                    activeNodeGroup.classList.add('active');
+                    const outer = activeNodeGroup.querySelector('.node-outer');
+                    const inner = activeNodeGroup.querySelector('.node-inner');
+                    
+                    if (outer) {
+                        outer.setAttribute('stroke', '#c5a880');
+                        outer.setAttribute('stroke-width', '3'); // Thicker outline
+                        outer.setAttribute('filter', 'url(#gold-glow)'); // Double-glow overlay
+                    }
+                    if (inner) {
+                        inner.setAttribute('fill', 'rgba(197, 168, 128, 0.25)'); // Tactile gold emboss fill
+                        inner.style.transform = `scale(1.22) rotate(${-wheelAngle}deg)`; // Expanded physical presence + counter-rotate
+                    }
+                }
+
+                // 4. Highlight radial connect spoke lines
+                document.querySelectorAll('.spoke-line').forEach(line => {
+                    line.style.opacity = '0.15';
+                    line.style.stroke = '#ffffff';
+                });
+                const activeSpoke = document.getElementById(`spoke-${nodeKey}`);
+                if (activeSpoke) {
+                    activeSpoke.style.opacity = '0.9';
+                    activeSpoke.style.stroke = '#c5a880';
+                }
             };
+
+            // Expose globally for manual triggers or compatibility
+            window.selectNode = activateCompetency;
+
+            // Register Viewport Intersection Observer
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '-25% 0px -40% 0px', // Target coordinates in the upper-middle third of the viewport
+                    threshold: 0.15
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const compKey = entry.target.getAttribute('data-competency');
+                            activateCompetency(compKey);
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.competency-card').forEach(card => {
+                    observer.observe(card);
+                });
+                
+                // Initialize default state
+                activateCompetency('audit');
+            }
 
             // --- BLOG FEED ASYNCHRONOUS JSONP PARSER ---
             const container = document.getElementById('blog-posts-container');
