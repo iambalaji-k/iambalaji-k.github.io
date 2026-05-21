@@ -350,7 +350,7 @@
                 
                 <div class="lg:col-span-5 relative flex justify-center reveal-scale">
                     <!-- Floating Silhouette Container -->
-                    <div id="home-img-container" class="relative w-[280px] h-[340px] md:w-[350px] md:h-[420px] transition-opacity duration-300">
+                    <div id="home-img-container" class="relative w-[280px] h-[340px] md:w-[350px] md:h-[420px]">
                         <!-- Soft Golden Aura -->
                         <div class="absolute inset-0 bg-[#c5a880]/5 blur-3xl rounded-full scale-75" aria-hidden="true"></div>
                         <img src="images/balaji.png" alt="Balaji K" class="w-full h-full object-contain relative z-10 transition-transform duration-700 hover:scale-[1.03]">
@@ -375,7 +375,7 @@
                         <div class="relative group max-w-sm w-full">
                             <!-- Ambient Gold Aura -->
                             <div class="absolute -inset-4 bg-gradient-to-r from-[#c5a880] to-[#b3956d] rounded-full blur-xl opacity-10 group-hover:opacity-20 transition duration-1000" aria-hidden="true"></div>
-                            <div id="about-img-container" class="relative w-full h-[320px] md:h-[400px] transition-opacity duration-300">
+                            <div id="about-img-container" class="relative w-full h-[320px] md:h-[400px]">
                                 <img src="images/balaji.png" alt="Balaji K Professional Photo" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-[1.03]">
                             </div>
                         </div>
@@ -974,15 +974,53 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                 let aboutX = 0, aboutY = 0, aboutW = 0, aboutH = 0;
                 let scrollStart = 0, scrollEnd = 0;
 
+                // Style-Bypassing Coordinate Reader (Neutralizes ScrollReveal offset shifts)
+                const getRestingRect = (element) => {
+                    let el = element;
+                    const styledAncestors = [];
+                    
+                    while (el && el !== document.body) {
+                        const transform = el.style.transform;
+                        const opacity = el.style.opacity;
+                        const visibility = el.style.visibility;
+                        
+                        if (transform || opacity === '0' || visibility === 'hidden' || 
+                            el.classList.contains('reveal-scale') || el.classList.contains('reveal-left') || 
+                            el.classList.contains('reveal-right') || el.classList.contains('reveal-up') ||
+                            el.classList.contains('reveal-fade')) {
+                            
+                            styledAncestors.push({
+                                element: el,
+                                transform: transform,
+                                opacity: opacity,
+                                visibility: visibility
+                            });
+                            
+                            el.style.transform = 'none';
+                            el.style.opacity = '1';
+                            el.style.visibility = 'visible';
+                        }
+                        el = el.parentElement;
+                    }
+
+                    const rect = element.getBoundingClientRect();
+
+                    // Restore ScrollReveal styles in reverse order
+                    styledAncestors.forEach(item => {
+                        item.element.style.transform = item.transform;
+                        item.element.style.opacity = item.opacity;
+                        item.element.style.visibility = item.visibility;
+                    });
+
+                    return rect;
+                };
+
                 const updateMorphMetrics = () => {
-                    const prevHomeOpacity = homeImgContainer.style.opacity;
-                    const prevAboutOpacity = aboutImgContainer.style.opacity;
+                    const wasHidden = morphOverlay.classList.contains('hidden');
+                    morphOverlay.classList.add('hidden');
 
-                    homeImgContainer.style.opacity = '1';
-                    aboutImgContainer.style.opacity = '1';
-
-                    const rectHome = homeImgContainer.getBoundingClientRect();
-                    const rectAbout = aboutImgContainer.getBoundingClientRect();
+                    const rectHome = getRestingRect(homeImgContainer);
+                    const rectAbout = getRestingRect(aboutImgContainer);
 
                     homeX = rectHome.left + window.scrollX;
                     homeY = rectHome.top + window.scrollY;
@@ -994,11 +1032,12 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                     aboutW = rectAbout.width;
                     aboutH = rectAbout.height;
 
-                    homeImgContainer.style.opacity = prevHomeOpacity;
-                    aboutImgContainer.style.opacity = prevAboutOpacity;
-
                     scrollStart = 0;
                     scrollEnd = aboutY - (window.innerHeight - aboutH) / 2;
+                    
+                    if (!wasHidden) {
+                        morphOverlay.classList.remove('hidden');
+                    }
                     
                     renderMorphFrame();
                 };
@@ -1038,6 +1077,7 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                 };
 
                 window.addEventListener('resize', updateMorphMetrics);
+                window.addEventListener('load', updateMorphMetrics);
                 
                 let scrollTicking = false;
                 window.addEventListener('scroll', () => {
@@ -1050,7 +1090,13 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                     }
                 }, { passive: true });
 
-                setTimeout(updateMorphMetrics, 100);
+                // Multi-stage metric calculations for late-loading dynamic resources
+                updateMorphMetrics();
+                setTimeout(updateMorphMetrics, 50);
+                setTimeout(updateMorphMetrics, 200);
+                setTimeout(updateMorphMetrics, 500);
+                setTimeout(updateMorphMetrics, 1000);
+                setTimeout(updateMorphMetrics, 2000);
             }
 
             // Active Menu Element tracking via IntersectionObserver
