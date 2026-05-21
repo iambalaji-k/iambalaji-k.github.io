@@ -181,6 +181,16 @@
             position: relative;
             color: var(--color-text-secondary);
             transition: color 0.3s ease;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            text-transform: none;
+        }
+
+        /* Hide SVG text labels on small viewports (< 500px) */
+        @media (max-width: 500px) {
+            #svg-workspace text {
+                display: none !important;
+            }
         }
 
         .nav-link:hover, .nav-link.active {
@@ -277,11 +287,11 @@
    
             
             <nav class="hidden md:flex items-center space-x-8 font-serif-editorial text-2xl">
-                <a href="#home" class="nav-link active font-medium">Home</a>
-                <a href="#about" class="nav-link font-medium">About</a>
-                <a href="#blog" class="nav-link font-medium">Blog</a>
-                <a href="#cv" class="nav-link font-medium">CV & Portfolio</a>
-                <a href="#contact" class="nav-link font-medium">Contact</a>
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#cv" class="nav-link">CV & Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="flex items-center gap-4">
@@ -430,11 +440,11 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                                 <circle cx="200" cy="200" r="130" stroke="rgba(197, 168, 128, 0.08)" stroke-width="1" fill="none"></circle>
 
                                 <!-- Node 1: Statutory & Tax Audits -->
-                                <g class="matrix-node active" id="node-audit" onclick="selectNode('audit')">
-                                    <circle cx="200" cy="70" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.25)" stroke-width="1.5" class="node-ring-static"></circle>
-                                    <circle cx="200" cy="70" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
-                                    <svg x="193" y="63" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                                    <text x="200" y="115" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Statutory & Tax Audits</text>
+                                <g class="matrix-node" id="node-valuation" onclick="selectNode('valuation')">
+                                    <circle cx="330" cy="200" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
+                                    <circle cx="330" cy="200" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
+                                    <svg x="323" y="193" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                    <text x="330" y="245" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Valuation</text>
                                 </g>
 
                                 <!-- Node 2: Valuation -->
@@ -466,20 +476,23 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
 
                     <!-- Details Pane -->
                     <div class="lg:col-span-5 reveal-right">
-                        <div id="details-pane" class="glass-card p-8 border-[#c5a880]/15 relative overflow-hidden bg-[#0d0e12]/60 min-h-[380px] flex flex-col justify-between">
+                        <div id="details-pane" class="glass-card p-8 border-[#c5a880]/15 relative overflow-hidden bg-[#0d0e12]/60 min-h-[380px] flex flex-col justify-between transition-all duration-300">
                             <!-- Background Subtle Design Accent -->
                             <div class="absolute top-0 right-0 w-32 h-32 bg-[#c5a880] opacity-[0.02] rounded-full blur-2xl" aria-hidden="true"></div>
                             
                             <div>
                                 <div class="flex justify-between items-center mb-4">
-                                    <span id="details-badge" class="text-xl font-mono-data text-[#c5a880] uppercase tracking-wider bg-[#c5a880]/10 px-3 py-1 rounded-full">Core Areas</span>
+                                    <span id="details-badge" class="text-xl font-mono-data text-[#c5a880] uppercase tracking-wider bg-[#c5a880]/10 px-3 py-1 rounded-full">Auditing & Assurance</span>
+                                    <span id="details-stat" class="text-xs font-mono-data text-gray-500 uppercase tracking-widest">ICAI Core Area</span>
                                 </div>
+                                
+                                <h3 id="details-title" class="text-3xl font-light font-serif-editorial text-white mb-4">Statutory & Tax Audits</h3>
                                                                                               
                                 <div class="h-px bg-white/5 my-4" aria-hidden="true"></div>
                                 
                                 <ul id="details-bullet-list" class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
                                     <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> In-depth experience in active participation in statutory audits, including PSU, Banks and NBFC audit on ensuring compliance with accounting standards and reviewing internal financial control structures</li>
-                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Undertaken valuation of various private sector companies as a part of merger or restructuring </li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Undertaken valuation of various private sector companies as a part of merger or restructuring</li>
                                     <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Hands-on audits of direct and indirect taxation statements and concurrent auditing engagements.</li>
                                     <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Experience with IBC (Insolvency and Bankruptcy Code) processes, compliance procedures, and financial documentation.</li>
                                 </ul>
@@ -1125,12 +1138,9 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                             const content = entry.content?.$t || '';
                             const sanitizedTitle = title.replace(/"/g, '&quot;');
                             let imageUrl = 'https://placehold.co/600x400/121316/c5a880?text=Financial+Insight';
-                            
                             if (content) {
-                                const tempDiv = document.createElement('div');
-                                tempDiv.innerHTML = content;
-                                const firstImage = tempDiv.querySelector('img');
-                                if (firstImage) imageUrl = firstImage.src;
+                                const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+                                if (imgMatch) imageUrl = imgMatch[1];
                             }
 
                             postsHTML += `
@@ -1166,19 +1176,21 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                     }
                 };
 
-                errorTimeout = setTimeout(() => {
-                    if (loader) loader.style.display = 'none';
-                    container.innerHTML = `<p class="text-center col-span-full text-[#c5a880] font-mono-data text-xs">Feed request timed out. Showing dynamic link updates.</p>`;
-                }, 8000);
-                
-                const scriptElement = document.createElement('script');
-                scriptElement.src = 'https://balaji--k.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayPosts';
-                scriptElement.onerror = () => {
-                    clearTimeout(errorTimeout);
-                    if (loader) loader.style.display = 'none';
-                    container.innerHTML = `<p class="text-center col-span-full text-red-500 font-mono-data text-xs">Failed to initialize feed server script.</p>`;
-                };
-                document.body.appendChild(scriptElement);
+                setTimeout(() => {
+                    errorTimeout = setTimeout(() => {
+                        if (loader) loader.style.display = 'none';
+                        container.innerHTML = `<p class="text-center col-span-full text-[#c5a880] font-mono-data text-xs">Feed request timed out. Showing dynamic link updates.</p>`;
+                    }, 8000);
+                    
+                    const scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://balaji--k.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayPosts';
+                    scriptElement.onerror = () => {
+                        clearTimeout(errorTimeout);
+                        if (loader) loader.style.display = 'none';
+                        container.innerHTML = `<p class="text-center col-span-full text-red-500 font-mono-data text-xs">Failed to initialize feed server script.</p>`;
+                    };
+                    document.body.appendChild(scriptElement);
+                }, 1200);
             }
 
             // --- AJAX FORM POST VIA WEB3FORMS ---
