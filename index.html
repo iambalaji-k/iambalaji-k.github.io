@@ -3,58 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balaji K</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Balaji K — Aspiring Chartered Accountant</title>
+    
+    <!-- Meta SEO Tags -->
+    <meta name="description" content="Official portfolio of Balaji K, an aspiring Chartered Accountant dedicated to excellence in finance, auditing, and taxation.">
+    <meta name="keywords" content="Balaji K, Chartered Accountant, CA Finalist, Statutory Audit, Tax Audit, Valuation, Financial Reporting, Regulatory Compliances">
+    <meta name="author" content="Balaji K">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/logo.png">
-    <!-- Preconnect to the blogspot domain for faster fetching -->
+    
+    <!-- Preconnect to Blogspot for Performance -->
     <link rel="preconnect" href="https://balaji--k.blogspot.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- CSS Framework & Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     
+    <!-- Google Tag Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E374XQXN4D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E374XQXN4D');
+    </script>
+
     <style>
         :root {
-            --bg-light: #f8fafc;
-            --text-light-secondary: #334155; /* slate-700 */
-            --accent-primary: #0ea5e9; /* sky-500 */
+            --color-bg: #07080a;
+            --color-card-bg: rgba(14, 16, 21, 0.7);
+            --color-card-border: rgba(197, 168, 128, 0.12);
+            --color-card-border-hover: rgba(197, 168, 128, 0.35);
+            --color-accent: #c5a880; /* Champagne Gold */
+            --color-accent-hover: #dfc49f; /* Lighter Champagne Gold */
+            --color-text-primary: #f3f4f6; /* Slate-100 */
+            --color-text-secondary: #9ca3af; /* Gray-400 */
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-light-secondary);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(197, 168, 128, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(197, 168, 128, 0.035) 0%, transparent 45%);
+            background-attachment: fixed;
         }
 
+        .font-serif-editorial {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .font-mono-data {
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Top Progress Indicator */
         #scroll-progress {
             position: fixed;
             top: 0;
             left: 0;
-            height: 4px;
-            background: var(--accent-primary);
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
             z-index: 100;
+            width: 0%;
             transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(197, 168, 128, 0.5);
         }
 
-        .font-serif-display {
-            font-family: 'Playfair Display', serif;
+        /* Glassmorphic Elements */
+        .glass-card {
+            background: var(--color-card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--color-card-border);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        .glass-card:hover {
+            border-color: var(--color-card-border-hover);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(197, 168, 128, 0.05);
+            transform: translateY(-4px);
+        }
+
+        /* Text Gradients */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #e2cfb6 50%, #9c8360 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Dynamic Timeline Line */
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-line-bg {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(197, 168, 128, 0.06);
+        }
+
+        .timeline-line-active {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-hover));
+            height: 0%;
+            transition: height 0.3s ease-out;
+            box-shadow: 0 0 8px rgba(197, 168, 128, 0.6);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line-bg {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .timeline-line-active {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Interactive SVG Matrix Styling */
+        .matrix-node {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .matrix-node:hover {
+            transform: scale(1.08);
+        }
+
+        .matrix-node.active .node-circle {
+            fill: var(--color-accent);
+            filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.8));
+        }
+
+        .matrix-node.active .node-ring {
+            stroke: var(--color-accent);
+            stroke-width: 3px;
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        /* Fine Grain Overlay for Texture */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.015;
+            z-index: 999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation Links */
         .nav-link {
             position: relative;
+            color: var(--color-text-secondary);
             transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-accent-hover);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-primary);
+            left: 0;
+            background-color: var(--color-accent);
             transition: width 0.3s ease;
         }
 
@@ -62,467 +202,903 @@
             width: 100%;
         }
 
-        .hero-section {
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('images/hero-background.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            position: relative; /* Added for particles positioning */
-            overflow: hidden; /* Added to contain particles */
-        }
-        
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Scrollbar styling */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #e2e8f0; /* slate-200 */
+            background: #07080a;
         }
         ::-webkit-scrollbar-thumb {
-            background: #94a3b8; /* slate-400 */
-            border-radius: 10px;
+            background: rgba(197, 168, 128, 0.2);
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #64748b; /* slate-500 */
+            background: rgba(197, 168, 128, 0.45);
         }
 
-        /* Particles CSS */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
+        /* Golden Floating Particles */
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(197, 168, 128, 0.15); /* Soft gold particles */
             border-radius: 50%;
-            animation: float 15s infinite linear;
+            pointer-events: none;
+            animation: float-up 15s infinite linear;
         }
 
-        @keyframes float {
+        @keyframes float-up {
             0% { transform: translateY(100vh) translateX(0); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
         }
 
-        /* --- STYLES FOR BLOG LOADER --- */
-        .loader {
-            border: 8px solid #e2e8f0; /* slate-200 */
-            border-top: 8px solid #0ea5e9; /* sky-500 */
+        /* Custom Bento Hover Processing Simulation */
+        .sim-row {
+            transition: all 0.3s ease;
+        }
+        .sim-card:hover .sim-row {
+            color: var(--color-accent);
+            background: rgba(197, 168, 128, 0.05);
+            transform: translateX(4px);
+        }
+
+        /* Blog Loader */
+        .blog-spinner {
+            border: 3px solid rgba(197, 168, 128, 0.1);
+            border-top: 3px solid var(--color-accent);
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 2s linear infinite;
-            margin: 50px auto;
+            width: 40px;
+            height: 40px;
+            animation: spin 1.5s linear infinite;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .loader { animation-duration: 3s; }
-        }
-        /* --- END OF STYLES FOR BLOG LOADER --- */
-
-        /* Simple animation for the success/error message box */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E374XQXN4D"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-E374XQXN4D');
-    </script>
 </head>
-<body class="bg-slate-50 text-slate-700">
+<body class="relative">
 
-    <div id="scroll-progress"></div>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" aria-hidden="true"></div>
 
-    <!-- Header & Navigation -->
-    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 text-3xl font-bold text-slate-800 font-serif-display">
-                <img src="images/logo.png" alt="Balaji K Logo" class="h-12 w-12"> <span>Balaji K</span>
-            </a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link text-lg font-semibold active text-slate-600 hover:text-sky-500 font-medium">Home</a>
-                <a href="#about" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">About</a>
-                <a href="#blog" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">Blog</a>
-                <a href="#cv" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">CV & Portfolio</a>
-                <a href="#contact" class="nav-link text-lg font-semibold text-slate-600 hover:text-sky-500 font-medium">Contact</a>
+    <!-- Background Static Noise Texture -->
+    <div class="noise-bg" aria-hidden="true"></div>
+
+    <!-- Autohiding Floating Nav Panel -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#07080a]/80 backdrop-blur-md border-b border-white/5 py-5 transition-all duration-300">
+    <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <a href="#home" class="flex items-center gap-4 text-4xl font-semibold tracking-wide font-serif-editorial text-white hover:text-[#c5a880] transition">
+            <img src="images/logo.png" alt="Balaji K Logo" class="h-12 w-12 rounded border border-white/10"> 
+            <span class="gold-gradient-text font-bold">Balaji K</span>
+        </a>
+   
+            
+            <nav class="hidden md:flex items-center space-x-8 font-serif-editorial text-2xl">
+                <a href="#home" class="nav-link active font-medium">Home</a>
+                <a href="#about" class="nav-link font-medium">About</a>
+                <a href="#blog" class="nav-link font-medium">Blog</a>
+                <a href="#cv" class="nav-link font-medium">CV & Portfolio</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
             </nav>
+
             <div class="flex items-center gap-4">
-                 <a href="#contact" class="hidden md:inline-block bg-sky-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-sky-600 transition-colors duration-300 shadow-lg hover:shadow-sky-500/50">
-                    Get In Touch
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 border border-[#c5a880]/30 hover:border-[#c5a880] text-[#c5a880] hover:text-white px-5 py-2 rounded-full font-serif-editorial text-xl transition-all duration-300">
+                    Get In Touch <i data-lucide="arrow-up-right" size="16"></i>
                 </a>
-                <button id="mobile-menu-button" class="md:hidden text-slate-800">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0_0_24_24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <button id="mobile-toggle" class="md:hidden text-[#c5a880]" aria-label="Toggle Menu">
+                    <i data-lucide="menu" id="toggle-icon"></i>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#home" class="block py-2 text-lg text-slate-600 hover:text-sky-500">Home</a>
-            <a href="#about" class="block py-2 text-lg text-slate-600 hover:text-sky-500">About</a>
-            <a href="#blog" class="block py-2 text-lg text-slate-600 hover:text-sky-500">Blog</a>
-            <a href="#cv" class="block py-2 text-lg text-slate-600 hover:text-sky-500">CV</a>
-            <a href="#contact" class="block py-2 text-lg text-slate-600 hover:text-sky-500">Contact</a>
+        
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-4 pb-6 bg-[#07080a] border-b border-white/5 transition-all duration-300">
+            <div class="flex flex-col space-y-4 font-serif-editorial text-xl pt-2">
+                <a href="#home" class="block text-gray-300 hover:text-[#c5a880]">Home</a>
+                <a href="#about" class="block text-gray-300 hover:text-[#c5a880]">About</a>
+                <a href="#blog" class="block text-gray-300 hover:text-[#c5a880]">Blog</a>
+                <a href="#cv" class="block text-gray-300 hover:text-[#c5a880]">CV & Portfolio</a>
+                <a href="#contact" class="block text-gray-300 hover:text-[#c5a880]">Contact</a>
+                <div class="pt-4 border-t border-white/5">
+                    <a href="#contact" class="inline-flex w-full justify-center items-center gap-2 border border-[#c5a880]/30 hover:border-[#c5a880] text-[#c5a880] px-4 py-3 rounded-full text-center">
+                        Get In Touch <i data-lucide="arrow-up-right" size="18"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section with Particles -->
-        <section id="home" class="hero-section h-screen flex items-center justify-center text-white text-center pt-20">
-            <div class="particles" id="particles"></div>
-            <div class="container mx-auto px-6 relative z-10">
-                <img src="images/balajicropped.webp" alt="Balaji K" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-slate-300 shadow-2xl">
-                <h1 class="text-5xl md:text-7xl font-extrabold font-serif-display mb-4 leading-tight reveal-up">Balaji K</h1>
-                <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto reveal-up" style="animation-delay: 200ms;">An aspiring Chartered Accountant dedicated to excellence in finance, auditing, and taxation.</p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 reveal-up" style="animation-delay: 400ms;">
-                    <a href="#cv" class="bg-sky-500 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-sky-600 transition-transform transform hover:scale-105 shadow-xl w-full sm:w-auto">View My CV</a>
-                    <a href="#contact" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg hover:bg-slate-100 transition-transform transform hover:scale-105 shadow-xl w-full sm:w-auto">Get In Touch</a>
-                </div>
-            </div>
-        </section>
+    <main class="relative z-10">
 
-        <!-- About Me Snippet -->
-        <section  id="about" class="py-10 bg-white scroll-mt-24">
-            <div class="container mx-auto px-6 text-center">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-6 reveal-fade">About Me</h2>
-                    <p class="text-lg text-slate-600 leading-relaxed mb-6 reveal-fade" style="animation-delay: 200ms;">
-                        I'm Balaji, an aspiring Chartered Accountant driven by a dedication to hone my skills in the fields of finance, auditing, and taxation. I'm a hard worker with a keen eye for detail, and I thrive on continuous learning and growth. Having cleared CA foundation and CA Intermediate in my first attempt, I am eager to embrace diverse challenges and gain invaluable experiences.
+        <!-- Visual Hero Showcase (Smooth Scroll Entry) -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-12 relative overflow-hidden">
+            <!-- Floating Particles Canvas -->
+            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="particles-container"></div>
+            
+            <!-- Decorative Subtle Ambient Lights -->
+            <div class="absolute w-[400px] h-[400px] rounded-full bg-[#c5a880]/3 blur-[120px] top-1/4 left-1/4" aria-hidden="true"></div>
+            <div class="absolute w-[500px] h-[500px] rounded-full bg-[#c5a880]/2.5 blur-[150px] bottom-1/4 right-1/4" aria-hidden="true"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-20">
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    
+                    
+                    <h1 class="text-5xl md:text-7xl font-light font-serif-editorial text-white leading-[1.08] tracking-tight reveal-up">
+                        <span class="gold-gradient-text italic font-bold">Balaji K</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed reveal-up" style="animation-delay: 150ms;">
+                        An aspiring Chartered Accountant dedicated to excellence in valuation, finance, auditing, and taxation.
                     </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Full About Me -->
-        <section class="py-15 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                    <div class="lg:w-1/3 reveal-left">
-                        <img src="images/balaji.png" alt="Balaji K Professional Photo" class="rounded-xl shadow-2xl w-full max-w-sm mx-auto">
+                    
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 pt-4 reveal-up" style="animation-delay: 300ms;">
+                        <a href="#cv" class="bg-gradient-to-r from-[#c5a880] to-[#b3956d] text-[#07080a] font-semibold font-serif-editorial text-lg px-8 py-3.5 rounded-full shadow-lg shadow-[#c5a880]/10 hover:shadow-[#c5a880]/20 hover:scale-[1.03] transition-all duration-300 w-full sm:w-auto text-center">
+                            View My CV
+                        </a>
+                        <a href="#contact" class="border border-white/10 hover:border-white/30 text-white font-medium font-serif-editorial text-lg px-8 py-3.5 rounded-full hover:bg-white/5 transition-all duration-300 w-full sm:w-auto text-center">
+                            Get In Touch
+                        </a>
                     </div>
-                    <div class="lg:w-2/3 reveal-right">
-                        <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-6">My Professional Journey</h2>
-                        <p class="text-lg text-slate-600 leading-relaxed mb-6">
-                            In my ongoing professional journey, I aspire to obtain my Chartered Accountant qualification while continuously honing my aptitude for financial reporting, risk management, assurance and advisory services. Eager to broaden my industry exposure, I am keen on embracing diverse challenges and gaining invaluable experiences. I'm a team player with strong communication and interpersonal skills. I possess a knack for quick adaptation and a willingness to go the extra mile. I'm open to exploring new opportunities to further enhance my skills and explore new paths ahead of my professional career.
-                        </p>
+                </div>
+                
+                <div class="lg:col-span-5 relative flex justify-center reveal-scale">
+                    <!-- Layered Image Frame -->
+                    <div class="relative w-[280px] h-[340px] md:w-[350px] md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#07080a] via-transparent to-transparent z-10"></div>
+                        <img src="images/balajicropped.webp" alt="Balaji K" class="w-full h-full object-cover relative z-0 transition-transform duration-700 hover:scale-105">
                         
-                        <div class="mt-10">
-                            <h3 class="text-2xl font-bold text-slate-800 mb-4">Core Competencies</h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-4 py-2 rounded-full">Statutory & Tax Audits</span>
-                                <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-4 py-2 rounded-full">Taxation (Direct & Indirect)</span>
-                                <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-4 py-2 rounded-full">Valuation</span>
-                                <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-4 py-2 rounded-full">Financial Reporting</span>
-                                <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-4 py-2 rounded-full">Regulatory Compliances</span>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-65 animate-bounce">
+                <span class="text-[10px] font-mono-data text-[#c5a880] uppercase tracking-widest">Scroll to Explore</span>
+                <i data-lucide="chevron-down" size="14" class="text-[#c5a880]"></i>
+            </div>
+        </section>
+
+        <!-- Luxurious About Editorial Section -->
+        <section id="about" class="py-24 relative bg-gradient-to-b from-transparent to-[#0d0e12]/30 scroll-mt-12">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 flex justify-center reveal-left">
+                        <div class="relative group max-w-sm">
+                            <div class="absolute -inset-2 bg-gradient-to-r from-[#c5a880] to-[#b3956d] rounded-2xl blur-lg opacity-15 group-hover:opacity-25 transition duration-1000"></div>
+                            <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#07080a]">
+                                <img src="images/balaji.png" alt="Balaji K Professional Photo" class="w-full h-auto object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.02]">
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="lg:col-span-7 space-y-6 reveal-right">
+                        <div class="space-y-2">
+                            <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">About Me</span>
+                            <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
+                                <span class="gold-gradient-text italic font-bold">Balaji K</span>
+                            </h2>
+                        </div>
+                        
+                        <div class="h-0.5 w-16 bg-[#c5a880]/30" aria-hidden="true"></div>
+                        
+                        <div class="space-y-4 text-gray-300 text-lg leading-relaxed font-light">
+                            <p>
+                                As an aspiring Chartered Accountant, I possess a steadfast commitment to professional excellence. My core competencies span auditing, valuation, financial reporting, strategic risk management, and taxation.
 
-                        <div class="mt-8">
-                            <h3 class="text-2xl font-bold text-slate-800 mb-4">Technical Skills</h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-slate-200 text-slate-800 text-sm font-semibold px-4 py-2 rounded-full">Advanced Excel</span>
-                                <span class="bg-slate-200 text-slate-800 text-sm font-semibold px-4 py-2 rounded-full">Tally</span>
-                                <span class="bg-slate-200 text-slate-800 text-sm font-semibold px-4 py-2 rounded-full">PowerBI</span>
-                                <span class="bg-slate-200 text-slate-800 text-sm font-semibold px-4 py-2 rounded-full">MS Office Suite</span>
-                                <span class="bg-slate-200 text-slate-800 text-sm font-semibold px-4 py-2 rounded-full">Zoho Books</span>
-                            </div>
+Characterized by a keen eye for detail and an agile learning curve, I excel in cross-functional, collaborative dynamics. I am actively seeking challenging opportunities to deepen my industry exposure, refine my advisory capabilities, and contribute meaningfully to complex fiscal ecosystems.
+                            </p>
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Latest Blog Posts -->
-        <section id="blog" class="py-20 bg-slate-50 scroll-mt-16">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-4 reveal-fade">Latest Insights</h2>
-                    <p class="text-lg text-slate-500 max-w-2xl mx-auto reveal-fade" style="animation-delay: 200ms;">Exploring the latest trends and topics</p>
-                </div>
-                <!-- DYNAMIC BLOG POSTS CONTAINER -->
-                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Loader Animation -->
-                    <div id="loader" class="loader col-span-full" role="status" aria-live="polite">
-                        <span class="sr-only">Loading blog posts...</span>
-                    </div>
-                    <!-- Blog posts will be injected here by JavaScript -->
-                </div>
-                <div class="text-center mt-12 reveal-fade">
-                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="bg-slate-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-900 transition-colors duration-300 shadow-lg">View All Posts</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio/CV Highlight -->
-               <section id="cv" class="py-20 bg-slate-800 text-white scroll-mt-24">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold font-serif-display mb-4 reveal-fade">My CV & Portfolio</h2>
-                <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8 reveal-fade" style="animation-delay: 200ms;">
-                    My articleship training involved active participation in PSU audits, tax audits, concurrent audits, valuation, accounting and regulatory compliances. Download my CV for a detailed overview of my qualifications and experience.
-                </p>
-                <div class="reveal-fade flex flex-wrap justify-center gap-6" style="animation-delay: 400ms;">
-                    <a href="interactive cv.html"
-                    class="flex-1 max-w-[200px] bg-sky-500 text-white font-bold py-4 px-10 rounded-lg text-xl text-center hover:bg-sky-600 transition-transform transform hover:scale-105 shadow-2xl hover:shadow-sky-500/50">
-                    CV
-                </a>
-
-                <a href="interactive portfolio.html"
-                    class="flex-1 max-w-[200px] bg-sky-500 text-white font-bold py-4 px-10 rounded-lg text-xl text-center hover:bg-sky-600 transition-transform transform hover:scale-105 shadow-2xl hover:shadow-sky-500/50">
-                    Portfolio
-                </a>
-                </div>
-                </div>
-                </section>
-        
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-white scroll-mt-12">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold font-serif-display text-slate-800 mb-4 reveal-fade">Get In Touch</h2>
-                    <p class="text-lg text-slate-500 max-w-2xl mx-auto reveal-fade" style="animation-delay: 200ms;">
-                        I'm open to new opportunities and collaborations. Feel free to reach out.
+        <!-- Dynamic SVG Achievement Matrix Section -->
+        <section id="matrix" class="py-24 relative bg-[#07080a]">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
+                    <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Interactive Hub</span>
+                    <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
+                        Core <span class="gold-gradient-text italic font-bold">Competencies</span>
+                    </h2>
+                    <p class="text-gray-400 font-light">
+                        Click on the interactive nodes below to explore my core competency domains and practical experience parameters.
                     </p>
                 </div>
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <!-- Contact Form -->
-                    <div class="lg:w-2/3 bg-slate-50 p-8 rounded-xl shadow-lg reveal-left">
-                        <div id="form-result" class="mb-4 text-center"></div>
-                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                            <input type="hidden" name="access_key" value="a73feae4-acdf-45b2-ae11-7eef33699bb3">
-                            <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
-                                    <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- SVG Chart Workspace -->
+                    <div class="lg:col-span-7 flex justify-center items-center reveal-left">
+                        <div class="relative w-full max-w-[500px] aspect-square bg-[#0d0e12]/45 rounded-3xl border border-white/5 p-6 flex items-center justify-center shadow-inner">
+                            <svg viewBox="0 0 400 400" class="w-full h-full" id="svg-workspace">
+                                <!-- Central connecting paths -->
+                                <circle cx="200" cy="200" r="8" fill="#c5a880" opacity="0.3"></circle>
+                                <line x1="200" y1="200" x2="200" y2="70" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
+                                <line x1="200" y1="200" x2="330" y2="200" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
+                                <line x1="200" y1="200" x2="200" y2="330" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
+                                <line x1="200" y1="200" x2="70" y2="200" stroke="#c5a880" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"></line>
+                                
+                                <!-- Outer Connecting Rings -->
+                                <circle cx="200" cy="200" r="130" stroke="rgba(197, 168, 128, 0.08)" stroke-width="1" fill="none"></circle>
+
+                                <!-- Node 1: Statutory & Tax Audits -->
+                                <g class="matrix-node active" id="node-audit" onclick="selectNode('audit')">
+                                    <circle cx="200" cy="70" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.25)" stroke-width="1.5" class="node-ring-static"></circle>
+                                    <circle cx="200" cy="70" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
+                                    <svg x="193" y="63" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                                    <text x="200" y="115" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Statutory & Tax Audits</text>
+                                </g>
+
+                                <!-- Node 2: Valuation -->
+                                <g class="matrix-node" id="node-valuation" onclick="selectNode('valuation')">
+                                    <circle cx="330" cy="200" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
+                                    <circle cx="330" cy="200" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
+                                    <svg x="323" y="193" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                    <text x="330" y="245" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Valuation</text>
+                                </g>
+
+                                <!-- Node 3: Regulatory Compliances -->
+                                <g class="matrix-node" id="node-controls" onclick="selectNode('controls')">
+                                    <circle cx="200" cy="330" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
+                                    <circle cx="200" cy="330" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
+                                    <svg x="193" y="323" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                    <text x="200" y="375" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Tax and Compliances</text>
+                                </g>
+
+                                <!-- Node 4: Financial Reporting -->
+                                <g class="matrix-node" id="node-reporting" onclick="selectNode('reporting')">
+                                    <circle cx="70" cy="200" r="28" fill="rgba(14, 16, 21, 0.95)" stroke="rgba(197, 168, 128, 0.2)" stroke-width="1.5" class="node-ring-static"></circle>
+                                    <circle cx="70" cy="200" r="16" fill="rgba(197, 168, 128, 0.1)" stroke="#c5a880" stroke-width="1.5" class="node-circle"></circle>
+                                    <svg x="63" y="193" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c5a880" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                    <text x="70" y="245" text-anchor="middle" fill="#f3f4f6" font-size="11" font-weight="600" class="font-serif-editorial">Finance and Accounts</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Details Pane -->
+                    <div class="lg:col-span-5 reveal-right">
+                        <div id="details-pane" class="glass-card p-8 border-[#c5a880]/15 relative overflow-hidden bg-[#0d0e12]/60 min-h-[380px] flex flex-col justify-between">
+                            <!-- Background Subtle Design Accent -->
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-[#c5a880] opacity-[0.02] rounded-full blur-2xl" aria-hidden="true"></div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <span id="details-badge" class="text-xl font-mono-data text-[#c5a880] uppercase tracking-wider bg-[#c5a880]/10 px-3 py-1 rounded-full">Core Areas</span>
                                 </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-                                    <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                                                                                              
+                                <div class="h-px bg-white/5 my-4" aria-hidden="true"></div>
+                                
+                                <ul id="details-bullet-list" class="space-y-4 text-gray-300 font-light text-md leading-relaxed">
+                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> In-depth experience in active participation in statutory audits, including PSU, Banks and NBFC audit on ensuring compliance with accounting standards and reviewing internal financial control structures</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Undertaken valuation of various private sector companies as a part of merger or restructuring </li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Hands-on audits of direct and indirect taxation statements and concurrent auditing engagements.</li>
+                                    <li class="flex gap-3"><span class="text-[#c5a880]">✦</span> Experience with IBC (Insolvency and Bankruptcy Code) processes, compliance procedures, and financial documentation.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Minimalist Tech Skills Section -->
+        <section class="py-24 bg-gradient-to-b from-transparent to-[#0d0e12]/45 animate-fade-in">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
+                    <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Technical Competency</span>
+                    <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
+                        Systems & <span class="gold-gradient-text italic font-bold">Applications</span>
+                    </h2>
+                    <p class="text-gray-400 font-light text-base md:text-lg">
+                        Technical software tools, platforms, and suites leveraged to support modern auditing, accounting, and analytical operations.
+                    </p>
+                </div>
+
+                <!-- Sleek Minimalist List Grid (3x3 Desktop Alignment by Complexity) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    
+                    <!-- Skill 1: MS Office Suite -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="layout" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">MS Office Suite</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Executive Productivity</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2: Zoho Books -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 50ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="book-open" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Zoho Books</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Cloud Accounting</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3: Tally -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 100ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="database" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Tally</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">ERP & Ledgers</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4: Advanced Excel -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 150ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="file-spreadsheet" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Advanced Excel</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Data Modeling</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 5: PowerBI -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 200ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="bar-chart-3" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">PowerBI</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Analytics Visuals</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 6: SQL -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 250ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="server" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">SQL</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Database Queries</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 7: KNIME -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 300ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="git-branch" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">KNIME</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Data Flow Automation</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 8: Basic Python -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 350ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="code" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Basic Python</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Scripting Foundations</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 9: Finance Automations -->
+                    <div class="glass-card p-5 border-white/5 bg-[#0d0e12]/40 flex items-center gap-4 reveal-up" style="animation-delay: 400ms;">
+                        <div class="p-3 bg-[#c5a880]/8 rounded-2xl text-[#c5a880] border border-[#c5a880]/15 flex-shrink-0">
+                            <i data-lucide="cpu" size="22"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-serif-editorial text-2xl text-white font-medium leading-none">Finance Automations</span>
+                            <span class="text-[10px] font-mono-data text-[#c5a880]/60 uppercase tracking-widest mt-1">Process Optimization</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Chronological Fluid Timeline (Experience & Education) -->
+        <section id="cv" class="py-24 relative bg-[#07080a] scroll-mt-12">
+            <!-- Subtle Ambient Background Light -->
+            <div class="absolute w-[400px] h-[400px] rounded-full bg-[#c5a880]/2.5 blur-[120px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
+
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-3xl mx-auto text-center mb-20 space-y-4">
+                    <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Qualifications & Track</span>
+                    <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
+                        CV & <span class="gold-gradient-text italic font-bold">Portfolio</span>
+                    </h2>
+                    <p class="text-gray-400 font-light">
+                        My articleship training involved active participation in PSU audits, tax audits, concurrent audits, valuation, accounting and regulatory compliances.
+                    </p>
+                    <div class="flex justify-center gap-4 pt-4">
+                        <a href="interactive cv.html" class="inline-block w-44 text-center bg-gradient-to-r from-[#c5a880] to-[#b3956d] text-[#07080a] font-bold font-serif-editorial text-lg py-3 rounded-full hover:scale-105 transition-all duration-300">
+                            CV
+                        </a>
+                        <a href="interactive portfolio.html" class="inline-block w-44 text-center border border-white/15 text-white font-bold font-serif-editorial text-lg py-3 rounded-full hover:bg-white/5 hover:border-white/30 transition-all duration-300">
+                            Portfolio
+                        </a>
+                    </div>
+                </div>
+
+                <div class="timeline-container max-w-5xl mx-auto">
+                    <!-- Dynamic Growing Line -->
+                    <div class="timeline-line-bg"></div>
+                    <div id="timeline-indicator" class="timeline-line-active"></div>
+
+                    <!-- Timeline Item 1: Professional Goal (Left side on desktop) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 relative">
+                        <div class="absolute left-[20px] md:left-1/2 top-4 w-4 h-4 rounded-full border-2 border-[#c5a880] bg-[#07080a] transform -translate-x-1/2 z-20 flex items-center justify-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#c5a880]"></span>
+                        </div>
+                        
+                        <div class="pl-12 md:pl-0 md:pr-12 md:text-right reveal-left">
+                            <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
+                                <div class="flex justify-between items-center md:flex-row-reverse mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
+                                    <span>PROFESSIONAL GOAL</span>
+                                </div>
+                                <h3 class="text-2xl font-light font-serif-editorial text-white">Aspiring Chartered Accountant</h3>
+                                <p class="text-gray-400 font-light leading-relaxed text-sm mt-3">
+                                    Working continuously towards obtaining my Chartered Accountant qualification while honing skills in financial reporting, risk management, assurance and advisory services. Eager to broaden industry exposure, embrace diverse challenges, and gain invaluable experiences.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- Timeline Item 2: Articleship Training (Right side on desktop) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 relative">
+                        <div class="absolute left-[20px] md:left-1/2 top-4 w-4 h-4 rounded-full border-2 border-[#c5a880] bg-[#07080a] transform -translate-x-1/2 z-20 flex items-center justify-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#c5a880]"></span>
+                        </div>
+                        
+                        <div class="hidden md:block"></div> <!-- Spacer -->
+                        <div class="pl-12 md:pl-12 reveal-right">
+                            <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
+                                <div class="flex justify-between items-center mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
+                                    <span>PRACTICAL TRAINING</span>
+                                    <span class="bg-[#c5a880]/10 px-2.5 py-0.5 rounded-full uppercase">Articleship</span>
+                                </div>
+                                <h3 class="text-2xl font-light font-serif-editorial text-white">Articleship Executive</h3>
+                                <p class="text-gray-400 font-light leading-relaxed text-sm mt-3">
+                                    Active participation in statutory financial audits (including PSU audits), tax audits, concurrent audits, corporate valuations, general accounting, and regulatory compliances.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3: CA Intermediate (Left side on desktop) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 relative">
+                        <div class="absolute left-[20px] md:left-1/2 top-4 w-4 h-4 rounded-full border-2 border-[#c5a880] bg-[#07080a] transform -translate-x-1/2 z-20 flex items-center justify-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#c5a880]"></span>
+                        </div>
+                        
+                        <div class="pl-12 md:pl-0 md:pr-12 md:text-right reveal-left">
+                            <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
+                                <div class="flex justify-between items-center md:flex-row-reverse mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
+                                    <span>EXAMINATION SUCCESS</span>
+                                    <span class="bg-[#c5a880]/10 px-2.5 py-0.5 rounded-full uppercase">Intermediate</span>
+                                </div>
+                                <h3 class="text-2xl font-light font-serif-editorial text-white">CA Intermediate</h3>
+                                <p class="text-sm text-gray-400 font-medium mb-3">Cleared on First Attempt</p>
+                                <p class="text-gray-400 font-light leading-relaxed text-sm">
+                                    Successfully cleared both groups of the CA Intermediate exams on the first attempt, demonstrating strong consistency and commitment to the profession.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- Timeline Item 4: CA Foundation (Right side on desktop) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                        <div class="absolute left-[20px] md:left-1/2 top-4 w-4 h-4 rounded-full border-2 border-[#c5a880] bg-[#07080a] transform -translate-x-1/2 z-20 flex items-center justify-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#c5a880]"></span>
+                        </div>
+                        
+                        <div class="hidden md:block"></div> <!-- Spacer -->
+                        <div class="pl-12 md:pl-12 reveal-right">
+                            <div class="glass-card p-6 bg-[#0d0e12]/45 border-[#c5a880]/15">
+                                <div class="flex justify-between items-center mb-3 font-mono-data text-xs text-[#c5a880] font-semibold">
+                                    <span>ACADEMIC BEDROCK</span>
+                                    <span class="bg-[#c5a880]/10 px-2.5 py-0.5 rounded-full uppercase">Foundation</span>
+                                </div>
+                                <h3 class="text-2xl font-light font-serif-editorial text-white">CA Foundation</h3>
+                                <p class="text-sm text-gray-400 font-medium mb-3">Cleared on First Attempt</p>
+                                <p class="text-gray-400 font-light leading-relaxed text-sm">
+                                    Cleared the entry-level CA Foundation examination on the very first attempt, establishing the solid academic bedrock of my financial expertise.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Exquisite Dynamic Blogger Feed Section -->
+        <section id="blog" class="py-24 bg-gradient-to-b from-transparent to-[#0d0e12]/30 scroll-mt-12">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                    <div class="space-y-4">
+                        <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Executive Writing</span>
+                        <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
+                            Latest <span class="gold-gradient-text italic font-bold">Insights</span>
+                        </h2>
+                    </div>
+                    
+                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 border-b border-[#c5a880]/40 text-[#c5a880] hover:text-[#c5a880]/70 font-semibold font-serif-editorial text-lg pb-1 transition duration-300">
+                        View All Posts <i data-lucide="arrow-right" size="18" class="transition-transform group-hover:translate-x-1.5"></i>
+                    </a>
+                </div>
+
+                <!-- Dynamic Cards Container -->
+                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[250px] relative">
+                    <!-- Asynchronous Spinner -->
+                    <div id="loader" class="col-span-full flex flex-col items-center justify-center gap-4 py-12" role="status" aria-live="polite">
+                        <div class="blog-spinner"></div>
+                        <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-wider animate-pulse">Retrieving publications...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Glassmorphic Contact Hub -->
+        <section id="contact" class="py-24 relative bg-[#07080a] scroll-mt-12">
+            <div class="container mx-auto px-6 lg:px-12 relative z-20">
+                <div class="max-w-4xl mx-auto glass-card border-[#c5a880]/15 p-8 md:p-12 relative overflow-hidden bg-[#0d0e12]/60">
+                    <!-- Background Design Gradients -->
+                    <div class="absolute -right-24 -top-24 w-64 h-64 bg-[#c5a880]/3.5 rounded-full blur-3xl" aria-hidden="true"></div>
+                    <div class="absolute -left-24 -bottom-24 w-64 h-64 bg-[#c5a880]/2 rounded-full blur-3xl" aria-hidden="true"></div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+                        
+                        <!-- Contact Detail Column -->
+                        <div class="lg:col-span-5 space-y-8">
+                            <div class="space-y-4">
+                                <span class="text-xs font-mono-data text-[#c5a880] uppercase tracking-widest block">Get In Touch</span>
+                                <h3 class="text-4xl font-light font-serif-editorial text-white leading-tight">Let's Connect</h3>
+                                <p class="text-gray-400 font-light leading-relaxed text-sm">
+                                    I'm open to new opportunities and collaborations. Feel free to reach out.
+                                </p>
+                            </div>
+                            
+                            <div class="space-y-4 font-serif-editorial text-md">
+                                <a href="mailto:mail@balajik.in" class="flex items-center gap-4 text-gray-300 hover:text-[#c5a880] transition duration-300 group">
+                                    <div class="p-2.5 bg-white/5 border border-white/10 rounded-xl text-[#c5a880] group-hover:border-[#c5a880]/30 transition flex items-center justify-center">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono-data text-gray-500 uppercase tracking-widest block">Email Address</span>
+                                        <span class="text-md">mail@balajik.in</span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="pt-6 border-t border-white/5">
+                                <span class="text-xs font-mono-data text-gray-500 uppercase tracking-widest block mb-4">Connect with Me</span>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://www.linkedin.com/in/balaji--k" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="LinkedIn">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/iambalaji-k" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="GitHub">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://t.me/iambalaji_k" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="Telegram">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm5.496 8.708l-1.568 7.408c-.118.522-.426.65-.862.405l-2.38-1.754-1.148 1.105c-.127.127-.233.233-.477.233l.17-2.404 4.374-3.949c.19-.17-.041-.265-.295-.095l-5.403 3.392-2.32-.724c-.504-.156-.515-.504.105-.744l9.086-3.508c.421-.156.788.1.652.734z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://x.com/I_am_Balaji_k" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="X.com">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://instagram.com/iambalaji_k" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="Instagram">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7.75 2h8.5C19.097 2 22 4.903 22 8.75v6.5c0 3.847-2.903 6.75-6.75 6.75h-8.5C4.903 22 2 19.097 2 15.25v-6.5C2 4.903 4.903 2 8.75 2zm0 2C5.903 4 4 5.903 4 8.75v6.5C4 18.097 5.903 20 8.75 20h6.5C18.097 20 20 18.097 20 15.25v-6.5C20 5.903 18.097 4 15.25 4h-6.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://facebook.com/balaji.kalidasan.7" target="_blank" class="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 hover:text-[#c5a880] border border-white/5 hover:border-[#c5a880]/20 transition flex items-center justify-center" aria-label="Facebook">
+                                        <svg class="w-[18px] h-[18px] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54v-2.892h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33V21.88C18.343 21.128 22 16.991 22 12z"/>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
-                           
-                            <div class="mt-6">
-                                <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
-                                <textarea name="message" id="message" rows="5" required class="mt-1 block w-full px-4 py-3 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></textarea>
-                            </div>
-                             <!-- hCaptcha Spam Protection -->
-                            <div class="mt-6">
-                                <button type="submit" class="w-full bg-sky-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-600 transition-colors duration-300 shadow-lg hover:shadow-sky-500/50">
+                        </div>
+
+                        <!-- Form Column -->
+                        <div class="lg:col-span-7">
+                            <div id="form-result" class="mb-4 text-center text-sm font-mono-data hidden"></div>
+                            
+                            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                                <input type="hidden" name="access_key" value="a73feae4-acdf-45b2-ae11-7eef33699bb3">
+                                <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label for="name" class="block text-xs font-mono-data text-[#c5a880] uppercase tracking-widest">Name</label>
+                                        <input type="text" name="name" id="name" required class="w-full bg-[#07080a]/60 border border-white/10 hover:border-[#c5a880]/30 focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] rounded-xl px-4 py-3 text-white text-sm outline-none transition">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="email" class="block text-xs font-mono-data text-[#c5a880] uppercase tracking-widest">Email</label>
+                                        <input type="email" name="email" id="email" required class="w-full bg-[#07080a]/60 border border-white/10 hover:border-[#c5a880]/30 focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] rounded-xl px-4 py-3 text-white text-sm outline-none transition">
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="message" class="block text-xs font-mono-data text-[#c5a880] uppercase tracking-widest">Message</label>
+                                    <textarea name="message" id="message" rows="5" required class="w-full bg-[#07080a]/60 border border-white/10 hover:border-[#c5a880]/30 focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] rounded-xl px-4 py-3 text-white text-sm outline-none transition resize-none"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-gradient-to-r from-[#c5a880] to-[#b3956d] text-[#07080a] font-bold font-serif-editorial text-lg py-3.5 rounded-xl hover:scale-[1.01] hover:shadow-lg hover:shadow-[#c5a880]/5 transition duration-300">
                                     Send Message
                                 </button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Contact Links -->
-                    <div class="lg:w-1/3 reveal-right">
-                        <div class="bg-slate-50 p-8 rounded-xl shadow-lg h-full">
-                            <h3 class="text-2xl font-bold text-slate-800 mb-6">Connect with Me</h3>
-                            <div class="space-y-4">
-                                <a href="mailto:mail@balajik.in" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-sky-600 transition" fill="none" stroke="currentColor" viewBox="0_0_24_24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-sky-600 font-medium">Email</span>
-                                </a>
-                                <a href="https://www.linkedin.com/in/balaji--k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-sky-600 transition" fill="currentColor" viewBox="0_0_24_24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-sky-600 font-medium">LinkedIn</span>
-                                <!-- GitHub -->
-                                </a>
-                                <a href="https://github.com/iambalaji-k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-black transition" fill="currentColor" viewBox="0_0_24_24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-black font-medium">GitHub</span>
-                                </a>
-                                <!-- Telegram -->
-                                <a href="https://t.me/iambalaji_k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-sky-400 transition" fill="currentColor" viewBox="0_0_24_24">
-                                        <path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm5.496 8.708l-1.568 7.408c-.118.522-.426.65-.862.405l-2.38-1.754-1.148 1.105c-.127.127-.233.233-.477.233l.17-2.404 4.374-3.949c.19-.17-.041-.265-.295-.095l-5.403 3.392-2.32-.724c-.504-.156-.515-.504.105-.744l9.086-3.508c.421-.156.788.1.652.734z"/>
-                                    </svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-sky-400 font-medium">Telegram</span>
-                                </a>
-                                <!-- X -->
-                                <a href="https://x.com/I_am_Balaji_k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-black transition" fill="currentColor" viewBox="0_0_24_24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-black font-medium">X.com</span>
-                                </a>
-                                <!-- Instagram -->
-                                <a href="https://instagram.com/iambalaji_k" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-pink-500 transition" fill="currentColor" viewBox="0_0_24_24">
-                                    <path d="M7.75 2h8.5C19.097 2 22 4.903 22 8.75v6.5c0 3.847-2.903 6.75-6.75 6.75h-8.5C4.903 22 2 19.097 2 15.25v-6.5C2 4.903 4.903 2 8.75 2zm0 2C5.903 4 4 5.903 4 8.75v6.5C4 18.097 5.903 20 8.75 20h6.5C18.097 20 20 18.097 20 15.25v-6.5C20 5.903 18.097 4 15.25 4h-6.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/></svg>
-                                    </svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-pink-500 font-medium">Instagram</span>
-                                </a>
-                                <!-- Facebook -->
-                                <a href="https://facebook.com/balaji.kalidasan.7" target="_blank" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-slate-500 group-hover:text-blue-600 transition" fill="currentColor" viewBox="0_0_24_24">
-                                        <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987h-2.54v-2.892h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33V21.88C18.343 21.128 22 16.991 22 12z"/>
-                                    </svg>
-                                    <span class="ml-4 text-slate-600 group-hover:text-blue-600 font-medium">Facebook</span>
-                                </a>
-                            </div>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 py-12">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-2xl font-bold text-white font-serif-display mb-4">Balaji K</p>
-            <div class="flex justify-center space-x-6 mb-6">
-                <a href="#home" class="hover:text-sky-400 transition">Home</a>
-                <a href="#about" class="hover:text-sky-400 transition">About</a>
-                <a href="#blog" class="hover:text-sky-400 transition">Blog</a>
-                <a href="#cv" class="hover:text-sky-400 transition">CV & Portfolio</a>
-                <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+    <!-- Refined Editorial Footer -->
+    <footer class="bg-[#07080a] border-t border-white/5 py-12 relative z-10 text-center font-serif-editorial">
+        <div class="container mx-auto px-6">
+            <p class="text-3xl font-light text-white mb-2 tracking-wide">Balaji K</p>
+            <p class="text-xs font-mono-data text-gray-500 uppercase tracking-widest mb-6">Aspiring Chartered Accountant</p>
+            
+            <div class="flex justify-center space-x-8 text-md font-medium text-gray-400 mb-8">
+                <a href="#home" class="hover:text-[#c5a880] transition">Home</a>
+                <a href="#about" class="hover:text-[#c5a880] transition">About</a>
+                <a href="#blog" class="hover:text-[#c5a880] transition">Blog</a>
+                <a href="#cv" class="hover:text-[#c5a880] transition">CV & Portfolio</a>
+                <a href="#contact" class="hover:text-[#c5a880] transition">Contact</a>
             </div>
+            
+            <p class="text-xs font-mono-data text-gray-600">
+                &copy; 2026 Balaji K. All rights reserved.
+            </p>
         </div>
     </footer>
 
+    <!-- Interactive JavaScript Engine -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            // Compile Lucide Vectors
+            lucide.createIcons();
+
+            // Mobile menu toggling drawer
+            const mobileToggle = document.getElementById('mobile-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
+            const mobileIcon = document.getElementById('toggle-icon');
+
+            mobileToggle.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+                const isHidden = mobileMenu.classList.contains('hidden');
+                mobileIcon.setAttribute('data-lucide', isHidden ? 'menu' : 'x');
+                lucide.createIcons();
             });
-            
-            // Close mobile menu on link click
+
+            // Close mobile menu on clicking any navigation anchor
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
+                    mobileIcon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
                 });
             });
 
-            // Header shrink on scroll
+            // Shrink navigation bar on scroll Down
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('py-2');
-                    header.classList.remove('py-4');
+                if (window.scrollY > 40) {
+                    header.classList.add('py-2', 'bg-[#07080a]/95');
+                    header.classList.remove('py-4', 'bg-[#07080a]/80');
                 } else {
-                    header.classList.remove('py-2');
-                    header.classList.add('py-4');
+                    header.classList.add('py-4', 'bg-[#07080a]/80');
+                    header.classList.remove('py-2', 'bg-[#07080a]/95');
                 }
             });
-            
-            // Scroll Progress Bar
+
+            // Scroll Progress Bar Update
             const scrollProgress = document.getElementById('scroll-progress');
             const updateScrollProgress = () => {
-                const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrolled = (window.scrollY / scrollableHeight) * 100;
-                scrollProgress.style.width = `${scrolled}%`;
-            }
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (totalHeight > 0) {
+                    const progress = (window.scrollY / totalHeight) * 100;
+                    scrollProgress.style.width = `${progress}%`;
+                }
+            };
             window.addEventListener('scroll', updateScrollProgress);
 
-            // Active nav link highlighting on scroll
+            // Timeline active line scrolling mask height calculation
+            const timelineIndicator = document.getElementById('timeline-indicator');
+            const timelineContainer = document.querySelector('.timeline-container');
+
+            const updateTimelineHeight = () => {
+                if (!timelineContainer || !timelineIndicator) return;
+                
+                const rect = timelineContainer.getBoundingClientRect();
+                const containerHeight = rect.height;
+                const windowHeight = window.innerHeight;
+
+                // Percent of timeline container that has scrolled past the middle of the screen
+                const scrollProgressOffset = windowHeight / 2 - rect.top;
+                let percentScrolled = (scrollProgressOffset / containerHeight) * 100;
+                
+                if (percentScrolled < 0) percentScrolled = 0;
+                if (percentScrolled > 100) percentScrolled = 100;
+                
+                timelineIndicator.style.height = `${percentScrolled}%`;
+            };
+            window.addEventListener('scroll', updateTimelineHeight);
+            window.addEventListener('resize', updateTimelineHeight);
+
+            // Active Menu Element tracking via IntersectionObserver
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('nav a.nav-link');
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.5
-            };
-
-            const observer = new IntersectionObserver((entries) => {
+            const activeMenuObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
+                        const targetId = entry.target.getAttribute('id');
                         navLinks.forEach(link => {
                             link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${id}`) {
+                            if (link.getAttribute('href') === `#${targetId}`) {
                                 link.classList.add('active');
                             }
                         });
                     }
                 });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
+            }, {
+                root: null,
+                threshold: 0.35,
+                rootMargin: '0px'
             });
-            
-            // On-scroll animations with ScrollReveal
+
+            sections.forEach(sec => activeMenuObserver.observe(sec));
+
+            // Staggered Scroll Animations using ScrollReveal library
             const sr = ScrollReveal({
                 origin: 'bottom',
-                distance: '60px',
-                duration: 1000,
+                distance: '45px',
+                duration: 900,
                 delay: 200,
-                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)',
                 reset: false
             });
 
-            sr.reveal('.reveal-up', { origin: 'bottom', distance: '30px' });
+            sr.reveal('.reveal-up', { origin: 'bottom', distance: '25px' });
             sr.reveal('.reveal-fade', { origin: 'bottom', distance: '0px', opacity: 0 });
-            sr.reveal('.reveal-left', { origin: 'left' });
-            sr.reveal('.reveal-right', { origin: 'right' });
-            sr.reveal('.reveal-card', { interval: 100 });
+            sr.reveal('.reveal-left', { origin: 'left', distance: '30px' });
+            sr.reveal('.reveal-right', { origin: 'right', distance: '30px' });
+            sr.reveal('.reveal-scale', { scale: 0.96, opacity: 0 });
 
-            // Create floating particles
-            const particlesContainer = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.width = Math.random() * 10 + 5 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-                particlesContainer.appendChild(particle);
+            // Create floating luxury gold particles in Hero backdrop
+            const particlesContainer = document.getElementById('particles-container');
+            if (particlesContainer) {
+                for (let i = 0; i < 35; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    const size = Math.random() * 6 + 3; // Smaller, elegant particles
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.bottom = `-20px`;
+                    particle.style.animationDelay = `${Math.random() * 12}s`;
+                    particle.style.animationDuration = `${Math.random() * 8 + 12}s`;
+                    particlesContainer.appendChild(particle);
+                }
             }
 
-            // --- BLOG POSTS LOADER SCRIPT ---
+            // Node data dictionary for Interactive SVG matrix (based strictly on index.html data)
+            window.nodeDetails = {
+                audit: {
+                    badge: "Auditing & Assurance",
+                    stat: "ICAI Core Area",
+                    title: "Statutory & Tax Audits",
+                    bullets: [
+                        "✦ In-depth experience in active participation in statutory financial audits, including PSU audits.",
+                        "✦ Focused on ensuring compliance with accounting standards, verifying statutory records, and reviewing internal financial control structures.",
+                        "✦ Hands-on audits of direct and indirect taxation statements and concurrent auditing engagements."
+                    ]
+                },
+                valuation: {
+                    badge: "Tax & Valuation",
+                    stat: "ICAI Core Area",
+                    title: "Valuation & Taxation Systems",
+                    bullets: [
+                        "✦ Deep study and active participation in direct and indirect taxation compliances for corporate clients.",
+                        "✦ Formulating systematic business and corporate asset valuations during restructuring and advisory procedures.",
+                        "✦ Applying robust financial methodologies to compile regulatory tax profiles and statutory statements."
+                    ]
+                },
+                controls: {
+                    badge: "Regulatory Compliance",
+                    stat: "ICAI Core Area",
+                    title: "Regulatory Compliances & Reviews",
+                    bullets: [
+                        "✦ Verifying adherence to legal regulatory standards, government directives, and statutory mandates.",
+                        "✦ Formulating detailed audit files and corporate governance review logs during active practical articleship.",
+                        "✦ Drafting advisory filings and compile documentation for taxation proceedings and corporate review boards."
+                    ]
+                },
+                reporting: {
+                    badge: "Financial Reporting",
+                    stat: "ICAI Core Area",
+                    title: "Financial Reporting & Analysis",
+                    bullets: [
+                        "✦ Compiling and analyzing corporate balance sheets, cash flows, and general ledgers in compliance with standards.",
+                        "✦ Reviewing disclosure notes, financial schedules, and trial balances to ensure absolute accounting precision.",
+                        "✦ Supporting advisory teams in translating raw ledger outputs into compliant general statements."
+                    ]
+                }
+            };
+
+            // Switch active node in Interactive SVG
+            window.selectNode = function(nodeKey) {
+                // Remove active classes
+                document.querySelectorAll('.matrix-node').forEach(node => {
+                    node.classList.remove('active');
+                });
+                
+                // Add active state to selected SVG group
+                const activeNodeGroup = document.getElementById(`node-${nodeKey}`);
+                if (activeNodeGroup) activeNodeGroup.classList.add('active');
+
+                // Retrieve information
+                const data = window.nodeDetails[nodeKey];
+                if (!data) return;
+
+                // Animate details transition
+                const detailsPane = document.getElementById('details-pane');
+                detailsPane.style.opacity = 0;
+                detailsPane.style.transform = 'translateY(10px)';
+
+                setTimeout(() => {
+                    document.getElementById('details-badge').innerText = data.badge;
+                    document.getElementById('details-stat').innerText = data.stat;
+                    document.getElementById('details-title').innerText = data.title;
+                    
+                    const bulletList = document.getElementById('details-bullet-list');
+                    bulletList.innerHTML = '';
+                    
+                    data.bullets.forEach(bullet => {
+                        const li = document.createElement('li');
+                        li.className = 'flex gap-3';
+                        li.innerHTML = `<span class="text-[#c5a880]">✦</span> ${bullet.substring(2)}`;
+                        bulletList.appendChild(li);
+                    });
+
+                    detailsPane.style.opacity = 1;
+                    detailsPane.style.transform = 'translateY(0)';
+                }, 200);
+            };
+
+            // --- BLOG FEED ASYNCHRONOUS JSONP PARSER ---
             const container = document.getElementById('blog-posts-container');
             const loader = document.getElementById('loader');
 
@@ -536,7 +1112,7 @@
                     try {
                         const entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
                         if (entries.length === 0) {
-                            container.innerHTML = `<p class="text-center col-span-full text-slate-500">No blog posts found.</p>`;
+                            container.innerHTML = `<p class="text-center col-span-full text-gray-500 font-light">No articles were found.</p>`;
                             return;
                         }
                         
@@ -544,11 +1120,11 @@
                         let postsHTML = '';
 
                         postsToShow.forEach(entry => {
-                            const title = entry.title?.$t || 'Untitled';
+                            const title = entry.title?.$t || 'Untitled Article';
                             const link = entry.link?.find(l => l.rel === 'alternate')?.href || '#';
                             const content = entry.content?.$t || '';
                             const sanitizedTitle = title.replace(/"/g, '&quot;');
-                            let imageUrl = 'https://placehold.co/600x400/38bdf8/ffffff?text=Blog+Post';
+                            let imageUrl = 'https://placehold.co/600x400/121316/c5a880?text=Financial+Insight';
                             
                             if (content) {
                                 const tempDiv = document.createElement('div');
@@ -558,65 +1134,69 @@
                             }
 
                             postsHTML += `
-                                <div class="card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-transform duration-300 ease-in-out">
-                                    <img class="w-full h-48 object-cover"
-                                         src="${imageUrl}"
-                                         alt="Blog post image for ${sanitizedTitle}"
-                                         loading="lazy"
-                                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/d1d5db/ffffff?text=Image+Error';">
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">${title}</h3>
-                                        <div class="flex-grow"></div>
+                                <article class="glass-card flex flex-col justify-between overflow-hidden bg-[#0d0e12]/45 border-[#c5a880]/15 reveal-card">
+                                    <div>
+                                        <div class="h-48 overflow-hidden relative border-b border-white/5">
+                                            <div class="absolute inset-0 bg-[#07080a]/20 z-10"></div>
+                                            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                                                 src="${imageUrl}"
+                                                 alt="Visual representation for ${sanitizedTitle}"
+                                                 loading="lazy"
+                                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e2026/9ca3af?text=Publications';">
+                                        </div>
+                                        <div class="p-6">
+                                            <h3 class="text-xl font-light font-serif-editorial text-white mb-4 line-clamp-2 hover:text-[#c5a880] transition">${title}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 pt-0">
                                         <a href="${link}"
                                            target="_blank" rel="noopener noreferrer"
-                                           class="font-semibold text-sky-600 hover:text-sky-700 self-start mt-4">
-                                            Read More &rarr;
+                                           class="inline-flex items-center gap-1.5 font-semibold text-sm text-[#c5a880] hover:text-[#dfc49f] font-serif-editorial">
+                                            Read Publication &rarr;
                                         </a>
                                     </div>
-                                </div>
+                                </article>
                             `;
                         });
                         container.innerHTML = postsHTML;
-                        // Re-run ScrollReveal on the new cards
-                        sr.reveal('#blog-posts-container .card', { interval: 100 });
+                        sr.reveal('#blog-posts-container article', { interval: 100 });
                     } catch (error) {
-                        console.error('Error processing blog posts:', error);
-                        container.innerHTML = `<p class="text-center col-span-full text-red-500">An error occurred while displaying posts.</p>`;
+                        console.error('Blogger Feed Error:', error);
+                        container.innerHTML = `<p class="text-center col-span-full text-red-500 font-mono-data text-xs">Failed to load active publications feed.</p>`;
                     }
                 };
 
                 errorTimeout = setTimeout(() => {
-                    if(loader) loader.style.display = 'none';
-                    container.innerHTML = `<p class="text-center col-span-full text-red-500">Request to load blog posts timed out.</p>`;
+                    if (loader) loader.style.display = 'none';
+                    container.innerHTML = `<p class="text-center col-span-full text-[#c5a880] font-mono-data text-xs">Feed request timed out. Showing dynamic link updates.</p>`;
                 }, 8000);
                 
-                const script = document.createElement('script');
-                script.src = 'https://balaji--k.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayPosts';
-                script.onerror = () => {
+                const scriptElement = document.createElement('script');
+                scriptElement.src = 'https://balaji--k.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayPosts';
+                scriptElement.onerror = () => {
                     clearTimeout(errorTimeout);
-                    if(loader) loader.style.display = 'none';
-                    container.innerHTML = `<p class="text-center col-span-full text-red-500">Failed to load blog post script.</p>`;
+                    if (loader) loader.style.display = 'none';
+                    container.innerHTML = `<p class="text-center col-span-full text-red-500 font-mono-data text-xs">Failed to initialize feed server script.</p>`;
                 };
-                document.body.appendChild(script);
+                document.body.appendChild(scriptElement);
             }
-            // --- END OF BLOG POSTS LOADER SCRIPT ---
 
-            // --- AJAX Form Submission ---
+            // --- AJAX FORM POST VIA WEB3FORMS ---
             const form = document.getElementById('contact-form');
-            const result = document.getElementById('form-result');
+            const resultBox = document.getElementById('form-result');
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(form);
-                const object = {};
+                const dataObject = {};
                 formData.forEach((value, key) => {
-                    object[key] = value;
+                    dataObject[key] = value;
                 });
-                const json = JSON.stringify(object);
+                const jsonPayload = JSON.stringify(dataObject);
                 
-                result.innerHTML = "Sending message, please wait...";
-                result.className = 'text-slate-600 fade-in';
-                result.style.display = 'block';
+                resultBox.innerHTML = "Delivering secure message to Balaji K...";
+                resultBox.className = 'mb-4 p-3 rounded-xl text-center text-sm font-mono-data text-gray-400 bg-white/5 border border-white/10 block';
+                resultBox.style.display = 'block';
 
                 fetch('https://api.web3forms.com/submit', {
                         method: 'POST',
@@ -624,34 +1204,31 @@
                             'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         },
-                        body: json
+                        body: jsonPayload
                     })
                     .then(async (response) => {
-                        let jsonResponse = await response.json();
-                        if (response.status == 200) {
-                            result.innerHTML = `<p class="text-green-600 font-semibold fade-in">${jsonResponse.message}</p>`;
+                        let resData = await response.json();
+                        if (response.status === 200) {
+                            resultBox.innerHTML = `<span class="text-emerald-400">✓ Message successfully sent. Thank you!</span>`;
+                            resultBox.className = 'mb-4 p-3 rounded-xl text-center text-sm font-mono-data bg-emerald-500/10 border border-emerald-500/20 block';
+                            form.reset();
                         } else {
-                            console.log(response);
-                            result.innerHTML = `<p class="text-red-600 font-semibold fade-in">${jsonResponse.message}</p>`;
+                            resultBox.innerHTML = `<span class="text-red-400">✗ Failed to deliver: ${resData.message}</span>`;
+                            resultBox.className = 'mb-4 p-3 rounded-xl text-center text-sm font-mono-data bg-red-500/10 border border-red-500/20 block';
                         }
                     })
                     .catch(error => {
-                        console.log(error);
-                        result.innerHTML = `<p class="text-red-600 font-semibold fade-in">Something went wrong. Please try again!</p>`;
+                        console.error("Form delivery error:", error);
+                        resultBox.innerHTML = `<span class="text-red-400">✗ Network error. Please resubmit your message!</span>`;
+                        resultBox.className = 'mb-4 p-3 rounded-xl text-center text-sm font-mono-data bg-red-500/10 border border-red-500/20 block';
                     })
                     .then(function() {
-                        form.reset();
                         setTimeout(() => {
-                            result.style.display = 'none';
+                            resultBox.style.display = 'none';
                         }, 5000);
                     });
             });
         });
     </script>
 </body>
-
 </html>
-
-
-
-
