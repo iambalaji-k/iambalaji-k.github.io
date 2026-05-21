@@ -350,11 +350,9 @@
                 
                 <div class="lg:col-span-5 relative flex justify-center reveal-scale">
                     <!-- Layered Image Frame -->
-                    <div class="relative w-[280px] h-[340px] md:w-[350px] md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+                    <div id="home-img-container" class="relative w-[280px] h-[340px] md:w-[350px] md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-white/5 transition-opacity duration-300">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#07080a] via-transparent to-transparent z-10"></div>
-                        <img src="images/balajicropped.webp" alt="Balaji K" class="w-full h-full object-cover relative z-0 transition-transform duration-700 hover:scale-105">
-                        
-                        
+                        <img src="images/balaji.png" alt="Balaji K" class="w-full h-full object-cover relative z-0 transition-transform duration-700 hover:scale-105">
                     </div>
                     
                     
@@ -375,7 +373,7 @@
                     <div class="lg:col-span-5 flex justify-center reveal-left">
                         <div class="relative group max-w-sm">
                             <div class="absolute -inset-2 bg-gradient-to-r from-[#c5a880] to-[#b3956d] rounded-2xl blur-lg opacity-15 group-hover:opacity-25 transition duration-1000"></div>
-                            <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#07080a]">
+                            <div id="about-img-container" class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#07080a] transition-opacity duration-300">
                                 <img src="images/balaji.png" alt="Balaji K Professional Photo" class="w-full h-auto object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.02]">
                             </div>
                         </div>
@@ -865,6 +863,14 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
             </div>
         </section>
 
+        <!-- Fixed Overlay for Scroll Morphing -->
+        <div id="morph-overlay" class="fixed top-0 left-0 pointer-events-none z-40 hidden overflow-hidden shadow-2xl border border-white/10 bg-[#07080a]" style="will-change: transform, width, height, border-radius;">
+            <div class="relative w-full h-full">
+                <img id="morph-img-1" src="images/balajicropped.webp" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-150">
+                <img id="morph-img-2" src="images/balaji.png" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-150">
+            </div>
+        </div>
+
     </main>
 
     <!-- Refined Editorial Footer -->
@@ -957,6 +963,103 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
             };
             window.addEventListener('scroll', updateTimelineHeight);
             window.addEventListener('resize', updateTimelineHeight);
+
+            // Scroll Morphing Image Animation Engine
+            const homeImgContainer = document.getElementById('home-img-container');
+            const aboutImgContainer = document.getElementById('about-img-container');
+            const morphOverlay = document.getElementById('morph-overlay');
+            const morphImg1 = document.getElementById('morph-img-1');
+            const morphImg2 = document.getElementById('morph-img-2');
+
+            if (homeImgContainer && aboutImgContainer && morphOverlay) {
+                let homeX = 0, homeY = 0, homeW = 0, homeH = 0;
+                let aboutX = 0, aboutY = 0, aboutW = 0, aboutH = 0;
+                let scrollStart = 0, scrollEnd = 0;
+
+                const updateMorphMetrics = () => {
+                    const prevHomeOpacity = homeImgContainer.style.opacity;
+                    const prevAboutOpacity = aboutImgContainer.style.opacity;
+
+                    homeImgContainer.style.opacity = '1';
+                    aboutImgContainer.style.opacity = '1';
+
+                    const rectHome = homeImgContainer.getBoundingClientRect();
+                    const rectAbout = aboutImgContainer.getBoundingClientRect();
+
+                    homeX = rectHome.left + window.scrollX;
+                    homeY = rectHome.top + window.scrollY;
+                    homeW = rectHome.width;
+                    homeH = rectHome.height;
+
+                    aboutX = rectAbout.left + window.scrollX;
+                    aboutY = rectAbout.top + window.scrollY;
+                    aboutW = rectAbout.width;
+                    aboutH = rectAbout.height;
+
+                    homeImgContainer.style.opacity = prevHomeOpacity;
+                    aboutImgContainer.style.opacity = prevAboutOpacity;
+
+                    scrollStart = 0;
+                    scrollEnd = aboutY - (window.innerHeight - aboutH) / 2;
+                    
+                    renderMorphFrame();
+                };
+
+                const renderMorphFrame = () => {
+                    const scrollY = window.scrollY;
+                    const t = Math.min(Math.max((scrollY - scrollStart) / (scrollEnd - scrollStart), 0), 1);
+
+                    if (t <= 0) {
+                        homeImgContainer.style.opacity = '1';
+                        aboutImgContainer.style.opacity = '0';
+                        morphOverlay.classList.add('hidden');
+                    } else if (t >= 1) {
+                        homeImgContainer.style.opacity = '0';
+                        aboutImgContainer.style.opacity = '1';
+                        morphOverlay.classList.add('hidden');
+                    } else {
+                        homeImgContainer.style.opacity = '0';
+                        aboutImgContainer.style.opacity = '0';
+                        morphOverlay.classList.remove('hidden');
+
+                        const curHomeLeft = homeX - window.scrollX;
+                        const curHomeTop = homeY - window.scrollY;
+
+                        const curAboutLeft = aboutX - window.scrollX;
+                        const curAboutTop = aboutY - window.scrollY;
+
+                        const width = homeW + (aboutW - homeW) * t;
+                        const height = homeH + (aboutH - homeH) * t;
+                        const left = curHomeLeft + (curAboutLeft - curHomeLeft) * t;
+                        const top = curHomeTop + (curAboutTop - curHomeTop) * t;
+
+                        const borderRadius = 24 + (16 - 24) * t;
+
+                        morphOverlay.style.width = `${width}px`;
+                        morphOverlay.style.height = `${height}px`;
+                        morphOverlay.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+                        morphOverlay.style.borderRadius = `${borderRadius}px`;
+
+                        morphImg1.style.opacity = (1 - t).toString();
+                        morphImg2.style.opacity = t.toString();
+                    }
+                };
+
+                window.addEventListener('resize', updateMorphMetrics);
+                
+                let scrollTicking = false;
+                window.addEventListener('scroll', () => {
+                    if (!scrollTicking) {
+                        requestAnimationFrame(() => {
+                            renderMorphFrame();
+                            scrollTicking = false;
+                        });
+                        scrollTicking = true;
+                    }
+                }, { passive: true });
+
+                setTimeout(updateMorphMetrics, 100);
+            }
 
             // Active Menu Element tracking via IntersectionObserver
             const sections = document.querySelectorAll('section');
