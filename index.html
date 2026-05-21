@@ -148,14 +148,16 @@
         }
 
         .matrix-node.active .node-circle {
-            fill: var(--color-accent);
-            filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.8));
+            fill: rgba(197, 168, 128, 0.18);
+            filter: drop-shadow(0 0 12px rgba(197, 168, 128, 0.95));
+            stroke: var(--color-accent);
+            stroke-width: 2px;
         }
 
-        .matrix-node.active .node-ring {
+        .matrix-node.active .node-ring-static {
             stroke: var(--color-accent);
-            stroke-width: 3px;
-            animation: pulse-ring 2s infinite;
+            stroke-width: 2px;
+            filter: drop-shadow(0 0 8px rgba(197, 168, 128, 0.6));
         }
 
         @keyframes pulse-ring {
@@ -623,6 +625,33 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
             </div>
         </section>
 
+        <!-- Exquisite Dynamic Blogger Feed Section -->
+        <section id="blog" class="py-24 bg-gradient-to-b from-transparent to-[#0d0e12]/30 scroll-mt-12">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                    <div class="space-y-4">
+                        <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Executive Writing</span>
+                        <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
+                            Latest <span class="gold-gradient-text italic font-bold">Insights</span>
+                        </h2>
+                    </div>
+                    
+                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 border-b border-[#c5a880]/40 text-[#c5a880] hover:text-[#c5a880]/70 font-semibold font-serif-editorial text-lg pb-1 transition duration-300">
+                        View All Posts <i data-lucide="arrow-right" size="18" class="transition-transform group-hover:translate-x-1.5"></i>
+                    </a>
+                </div>
+
+                <!-- Dynamic Cards Container -->
+                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[250px] relative">
+                    <!-- Asynchronous Spinner -->
+                    <div id="loader" class="col-span-full flex flex-col items-center justify-center gap-4 py-12" role="status" aria-live="polite">
+                        <div class="blog-spinner"></div>
+                        <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-wider animate-pulse">Retrieving publications...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Chronological Fluid Timeline (Experience & Education) -->
         <section id="cv" class="py-24 relative bg-[#07080a] scroll-mt-12">
             <!-- Subtle Ambient Background Light -->
@@ -737,33 +766,6 @@ Characterized by a keen eye for detail and an agile learning curve, I excel in c
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- Exquisite Dynamic Blogger Feed Section -->
-        <section id="blog" class="py-24 bg-gradient-to-b from-transparent to-[#0d0e12]/30 scroll-mt-12">
-            <div class="container mx-auto px-6 lg:px-12">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-                    <div class="space-y-4">
-                        <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-widest block">Executive Writing</span>
-                        <h2 class="text-4xl md:text-5xl font-light font-serif-editorial text-white leading-tight">
-                            Latest <span class="gold-gradient-text italic font-bold">Insights</span>
-                        </h2>
-                    </div>
-                    
-                    <a href="https://balaji--k.blogspot.com/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 border-b border-[#c5a880]/40 text-[#c5a880] hover:text-[#c5a880]/70 font-semibold font-serif-editorial text-lg pb-1 transition duration-300">
-                        View All Posts <i data-lucide="arrow-right" size="18" class="transition-transform group-hover:translate-x-1.5"></i>
-                    </a>
-                </div>
-
-                <!-- Dynamic Cards Container -->
-                <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[250px] relative">
-                    <!-- Asynchronous Spinner -->
-                    <div id="loader" class="col-span-full flex flex-col items-center justify-center gap-4 py-12" role="status" aria-live="polite">
-                        <div class="blog-spinner"></div>
-                        <span class="text-sm font-mono-data text-[#c5a880] uppercase tracking-wider animate-pulse">Retrieving publications...</span>
-                    </div>
                 </div>
             </div>
         </section>
