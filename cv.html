@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balaji K - Interactive CV (Luxury Gold Edition)</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            /* Light Theme (Warm Ivory & Bronze Gold Editorial Paper) */
+            --bg-primary: #faf9f6;
+            --bg-mesh-1: rgba(197, 168, 128, 0.08);
+            --bg-mesh-2: rgba(156, 131, 96, 0.04);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(197, 168, 128, 0.22);
+            --text-primary: #1a1e1b;
+            --text-secondary: #58605c;
+            --accent: #9c8360; /* Soft Bronze Gold */
+            --accent-hover: #b3956d;
+            --accent-glow: rgba(156, 131, 96, 0.15);
+            --card-shadow: 0 10px 40px -10px rgba(197, 168, 128, 0.15), 0 4px 6px rgba(0,0,0,0.02);
+            --nav-bg: rgba(250, 249, 246, 0.85);
+            --color-bg-opaque: #faf9f6;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme (Obsidian & Luxury Champagne Gold) */
+            --bg-primary: #07080a;
+            --bg-mesh-1: rgba(197, 168, 128, 0.02);
+            --bg-mesh-2: rgba(197, 168, 128, 0.04);
+            --glass-bg: rgba(14, 16, 21, 0.7);
+            --glass-border: rgba(197, 168, 128, 0.12);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #c5a880; /* Champagne Gold */
+            --accent-hover: #dfc49f;
+            --accent-glow: rgba(197, 168, 128, 0.25);
+            --card-shadow: 0 20px 50px -20px rgba(0,0,0,0.7), 0 0 25px rgba(197, 168, 128, 0.02);
+            --nav-bg: rgba(7, 8, 10, 0.8);
+            --color-bg-opaque: #07080a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.5s ease, border-color 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .font-serif-editorial {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .font-mono-data {
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* --- Fine Grain Noise Overlay --- */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            opacity: 0.015;
+            z-index: 999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- Dynamic Animated Background --- */
+        .background-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+
+        .mesh-blob {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.5;
+            animation: float 14s infinite ease-in-out;
+            border-radius: 50%;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--bg-mesh-1);
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--bg-mesh-2);
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -60px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.92); }
+        }
+
+        /* --- Golden Floating Particles --- */
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.18;
+            animation: float-up 18s infinite linear;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.22; }
+            90% { opacity: 0.22; }
+            100% { transform: translateY(-20px) translateX(60px); opacity: 0; }
+        }
+
+        /* --- Scroll Progress Bar --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            z-index: 2000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* --- Navigation & Controls --- */
+        .nav-controls {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .nav-controls.hidden {
+            transform: translateY(-150%);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg) scale(1.15);
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-content {
+            z-index: 2;
+            transform-style: preserve-3d;
+        }
+
+        .profile-pic-container {
+            width: 170px;
+            height: 170px;
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            padding: 6px;
+            background: var(--glass-bg);
+            box-shadow: var(--card-shadow);
+            margin: 0 auto 2.5rem auto;
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .profile-pic-container:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+        }
+
+        .profile-pic-container::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), transparent, var(--accent-hover));
+            z-index: -1;
+            opacity: 0.4;
+            animation: spin 6s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .profile-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, var(--accent) 0%, #e2cfb6 50%, #9c8360 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.6s;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--color-bg-opaque);
+            border-color: var(--accent);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px -5px var(--accent-glow);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--color-bg-opaque);
+            border-color: var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        /* --- Scrollytelling Layout --- */
+        .scrolly-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem 2rem;
+        }
+
+        .scrolly-section {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 5rem;
+            margin-bottom: 12vh;
+            position: relative;
+        }
+
+        .section-header {
+            position: sticky;
+            top: 140px;
+            height: fit-content;
+            text-align: right;
+            padding-right: 2rem;
+            border-right: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .section-content {
+            position: relative;
+            padding-top: 1.5rem;
+        }
+
+        /* Elegant gold-fading timeline vertical line */
+        .section-content::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--glass-border) 15%, var(--glass-border) 85%, transparent);
+            display: block;
+        }
+
+        /* --- Advanced Editorial Glass Cards --- */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            transform: translateY(50px) scale(0.96) translateZ(0);
+            box-shadow: var(--card-shadow);
+            transform-style: preserve-3d;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) translateZ(0);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.4), 0 0 25px rgba(197, 168, 128, 0.04);
+        }
+
+        .card-tilt {
+            transform: perspective(1000px) rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(1.01);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .card-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .card-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace;
+            background: rgba(197, 168, 128, 0.05);
+            padding: 4px 14px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: 'Share Tech Mono', monospace;
+            background: rgba(197, 168, 128, 0.06);
+            color: var(--accent);
+            margin-right: 6px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: rgba(197, 168, 128, 0.12);
+        }
+
+        /* Staggered Editorial List Items */
+        ul.custom-list {
+            list-style: none;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        ul.custom-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0.2rem;
+            color: var(--accent);
+            font-size: 0.85rem;
+            line-height: 1.6rem;
+        }
+
+        /* Reveal list items when parent card is visible */
+        .card.visible ul.custom-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .card.visible ul.custom-list li:nth-child(1) { transition-delay: 0.1s; }
+        .card.visible ul.custom-list li:nth-child(2) { transition-delay: 0.2s; }
+        .card.visible ul.custom-list li:nth-child(3) { transition-delay: 0.3s; }
+        .card.visible ul.custom-list li:nth-child(4) { transition-delay: 0.4s; }
+
+        /* --- Skills Section --- */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+        }
+
+        .skill-group {
+            background: rgba(197,168,128, 0.02);
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(197,168,128, 0.04);
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .skill-bar-container {
+            width: 100%;
+            height: 6px;
+            background: var(--glass-border);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            width: 0;
+            border-radius: 50px;
+            transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* --- Software Ecosystem Grid --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: rgba(197,168,128, 0.02);
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .tech-item:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background: rgba(197, 168, 128, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px -8px var(--accent-glow);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: transparent;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 968px) {
+            .scrolly-section {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-bottom: 7rem;
+            }
+
+            .section-header {
+                position: relative;
+                top: 0;
+                text-align: left;
+                padding-right: 0;
+                border-right: none;
+                border-left: 3px solid var(--accent);
+                padding: 0.6rem 1.2rem;
+                margin-bottom: 1.5rem;
+                background: linear-gradient(90deg, rgba(197, 168, 128, 0.05), transparent);
+                border-radius: 0 12px 12px 0;
+            }
+
+            .section-content {
+                padding-left: 0;
+            }
+            
+            .section-content::before {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Elements -->
+    <div class="background-mesh">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+    </div>
+    
+    <!-- Fine Noise Grain Overlay -->
+    <div class="noise-bg" aria-hidden="true"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Dynamic Floating Particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" id="particles-container" style="position: fixed; z-index: 0; height: 100vh; width: 100vw;"></div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <a href="index.html" class="theme-toggle" aria-label="Go Home" style="margin-right: 8px;">
+            <i data-lucide="home"></i>
+        </a>
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle Dark Mode" style="margin-right: 12px;">
+            <i data-lucide="moon" id="themeIcon"></i>
+        </button>
+        <a href="interactive-portfolio-gold.html" class="btn btn-primary">
+            <span>View Portfolio</span>
+        </a>
+        <a href="images/cv.pdf" class="btn btn-primary" download style="padding: 12px 16px;">
+            <i data-lucide="arrow-down" size="16"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <div class="profile-pic-container">
+                <img src="images/balaji.webp" alt="Balaji K">
+            </div>
+            <h1 class="font-serif-editorial"><span class="gold-gradient-text italic font-bold">Balaji K</span></h1>
+            <p class="font-serif-editorial">CA Finalist</p>
+            
+            <div class="contact-links">
+                <a href="tel:+919943928120" class="btn"><i data-lucide="phone" size="18"></i> Call</a>
+                <a href="mailto:mail@balajik.in" class="btn"><i data-lucide="mail" size="18"></i> Email</a>
+                <a href="https://linkedin.com/in/balaji--k" target="_blank" class="btn"><i data-lucide="linkedin" size="18"></i> LinkedIn</a>
+                <a href="https://github.com/iambalaji-k" target="_blank" class="btn"><i data-lucide="github" size="18"></i> GitHub</a>
+            </div>
+        </div>
+        
+        <div style="position: absolute; bottom: 30px; opacity: 0; animation: fadeUp 1s forwards 1.2s;" class="flex flex-col items-center">
+            <p style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 10px;" class="font-mono-data tracking-widest">SCROLL TO EXPLORE</p>
+            <div style="width: 1px; height: 50px; background: linear-gradient(to bottom, var(--accent), transparent); margin: 0 auto;"></div>
+        </div>
+    </header>
+
+    <main class="scrolly-container">
+
+        <!-- Professional Summary -->
+        <section class="scrolly-section" id="about">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">About</h2>
+                <p>Professional Summary</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300;">
+                        A detail-oriented and analytical CA Finalist with extensive articleship experience in statutory audit, business valuation, and statutory compliance for high-turnover PSUs and NBFCs. Proven ability to identify control weaknesses, ensure Ind AS compliance, and deliver actionable recommendations to senior management. Passionate about leveraging technology to drive efficiency, with demonstrated success in developing custom automation tools using Power Query, Power Automate, and Excel to streamline financial processes. Seeking a challenging role in a finance or consulting environment where I can apply my analytical and technical skills to solve complex business problems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="scrolly-section" id="experience">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">Articleship</h2>
+                <p>Experience</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">R V K S & Associates</div>
+                            <div class="card-subtitle">Audit Executive</div>
+                        </div>
+                        <div class="card-date">Aug 2022 – Sep 2025</div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px; font-weight: 500;">
+                            <i data-lucide="shield-check" style="color: var(--accent);"></i> IND AS AUDIT & FINANCIAL CONTROLS (NBFC - PSU)
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Spearheaded the first-time Ind AS statutory audit, independently developing comprehensive checklists and working papers from the ground up.</li>
+                            <li>Identified and reported qualifications related to incorrect interest accrual methodologies as per Ind AS, ensuring accurate financial reporting.</li>
+                            <li>Uncovered significant internal control deficiencies and recommended strengthened controls for GST compliance, interest accrual, CRAR ratio maintenance, and other RBI-mandated regulations.</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="height: 1px; background: var(--glass-border); margin: 2rem 0;"></div>
+
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px; font-weight: 500;">
+                            <i data-lucide="search-check" style="color: var(--accent);"></i> INTERNAL CONTROL & PROCESS IMPROVEMENT (PSU)
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Identified critical weaknesses in inventory management due to reliance on manual records during the audit of a state-wide public distribution entity.</li>
+                            <li>Recommended the implementation of a robust IT system and modern control procedures to senior management (including IAS officers) to mitigate risk and enhance verification accuracy.</li>
+                        </ul>
+                    </div>
+
+                    <div style="height: 1px; background: var(--glass-border); margin: 2rem 0;"></div>
+
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px; font-weight: 500;">
+                            <i data-lucide="trending-up" style="color: var(--accent);"></i> BUSINESS VALUATION & CORPORATE FINANCE
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Conducted complex valuations for transactions including slump sales and goodwill impairment testing as per Ind AS.</li>
+                            <li>Applied the Discounted Cash Flow (DCF) method, rigorously validating key management assumptions for projections and determining variables such as risk-free rate, beta, and market returns.</li>
+                        </ul>
+                    </div>
+
+                    <div style="height: 1px; background: var(--glass-border); margin: 2rem 0;"></div>
+
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom:1rem; display:flex; align-items:center; gap:10px; font-weight: 500;">
+                            <i data-lucide="landmark" style="color: var(--accent);"></i> TAXATION & COMPLIANCE
+                        </h4>
+                        <ul class="custom-list">
+                            <li>Represented clients in hearings before Income Tax and GST authorities.</li>
+                            <li>Identified and advised on tax planning opportunities, particularly concerning capital gains from slump sales for corporate clients and individuals.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Skills Section -->
+        <section class="scrolly-section" id="skills">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">Skills</h2>
+                <p>Stack</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem; font-weight: 400; color: var(--text-primary);" class="font-serif-editorial text-3xl">Systems &amp; Applications</h3>
+                    <div class="tech-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        
+                        <!-- Skill 1: MS Office Suite -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="layout" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">MS Office Suite</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Executive Productivity</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 2: Zoho Books -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="book-open" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">Zoho Books</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Cloud Accounting</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 3: Tally -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="database" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">Tally</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">ERP &amp; Ledgers</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 4: Advanced Excel -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="file-spreadsheet" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">Advanced Excel</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Data Modeling</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 5: PowerBI -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="bar-chart-3" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">PowerBI</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Analytics Visuals</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 6: SQL -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="server" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">SQL</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Database Queries</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 7: KNIME -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="git-branch" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">KNIME</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Data Flow Automation</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 8: Python - Basics -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="code" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">Python - Basics</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Scripting Foundations</div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 9: Finance Automations -->
+                        <div class="tech-item" style="display: flex; align-items: center; gap: 14px; text-align: left; padding: 1.2rem; font-family: 'Outfit', sans-serif;">
+                            <div style="padding: 10px; background: rgba(197, 168, 128, 0.08); border-radius: 12px; color: var(--accent); border: 1px solid rgba(197, 168, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-lucide="cpu" size="20"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="font-serif-editorial text-2xl font-semibold leading-none text-primary-gold" style="font-size: 1.35rem; color: var(--text-primary);">Finance Automations</div>
+                                <div class="font-mono-data" style="font-size: 0.65rem; color: var(--accent); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Process Optimization</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="scrolly-section" id="education">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">Learn</h2>
+                <p>Education</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial gold-gradient-text font-semibold">CA Final</div>
+                            <div class="card-subtitle">ICAI</div>
+                        </div>
+                        <div class="card-date">2025</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="tag">First Attempt</span>
+                        <span class="tag">1 Exemption</span>
+                        <span class="tag">Group I</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial gold-gradient-text font-semibold">B.COM (General)</div>
+                            <div class="card-subtitle">Alagappa University</div>
+                        </div>
+                        <div class="card-date">2022-2023</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="tag">Percentage: 77%</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial gold-gradient-text font-semibold">CA Intermediate</div>
+                            <div class="card-subtitle">ICAI</div>
+                        </div>
+                        <div class="card-date">2022</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="tag">First Attempt</span>
+                        <span class="tag">6 Exemptions</span>
+                        <span class="tag">Group I (69%)</span>
+                        <span class="tag">Group II (55%)</span>
+                    </div>
+                </div>
+
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial gold-gradient-text font-semibold">CA Foundation</div>
+                            <div class="card-subtitle">ICAI</div>
+                        </div>
+                        <div class="card-date">2020</div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="tag">First Attempt</span>
+                        <span class="tag">Pass with Distinction (82%)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements -->
+        <section class="scrolly-section" id="achievements">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">Achievements</h2>
+                <p>Activities</p>
+            </div>
+            <div class="section-content">
+                <div class="card js-tilt">
+                    <ul class="custom-list">
+                        <li>Secured School First in SSLC (98%) and HSC (96%).</li>
+                        <li>Served as School Pupil Leader.</li>
+                        <li>Competed in Tennis at the District Level.</li>
+                        <li>Attained Yellow Belt in Karate.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="font-serif-editorial">
+        <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 20px;">
+             <a href="#home" style="color: var(--text-secondary); text-decoration: none; display:inline-flex; align-items:center; gap: 6px; font-weight: 500; font-size: 1.2rem;" class="btn">
+                <i data-lucide="arrow-up" size="18"></i> Back to Top
+            </a>
+        </div>
+        <div class="footer-text gold-gradient-text" style="font-weight: 700; font-size: 2.2rem; tracking-wide;">
+            Balaji K
+        </div>
+    </footer>
+
+    <script>
+        // --- Icon Initialization ---
+        lucide.createIcons();
+
+        // --- Create floating luxury gold particles in backdrop ---
+        const particlesContainer = document.getElementById('particles-container');
+        if (particlesContainer) {
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-20px`;
+                particle.style.animationDelay = `${Math.random() * 14}s`;
+                particle.style.animationDuration = `${Math.random() * 8 + 12}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // --- Theme Toggling ---
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+
+        // --- Scroll Progress Bar ---
+        window.addEventListener('scroll', () => {
+            const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollCurrent = document.documentElement.scrollTop;
+            const scrollPercentage = (scrollCurrent / scrollTotal) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercentage + "%";
+        });
+
+        // --- Intersection Observer for Reveal Animations ---
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate Skill Bars if present
+                    const bars = entry.target.querySelectorAll('.skill-bar-fill');
+                    bars.forEach(bar => {
+                        setTimeout(() => {
+                            bar.style.width = bar.getAttribute('data-width');
+                        }, 200);
+                    });
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+        // --- 3D Tilt Effect Logic ---
+        document.querySelectorAll('.js-tilt').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -4; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 4;
+
+                card.style.setProperty('--rotateX', rotateX + 'deg');
+                card.style.setProperty('--rotateY', rotateY + 'deg');
+                card.classList.add('card-tilt');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('card-tilt');
+                card.style.setProperty('--rotateX', '0deg');
+                card.style.setProperty('--rotateY', '0deg');
+            });
+        });
+
+        // --- Autohide Navigation ---
+        const nav = document.querySelector('.nav-controls');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (lastScrollY < window.scrollY && window.scrollY > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+    </script>
+</body>
+</html>

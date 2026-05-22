@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balaji K - Professional Portfolio (Luxury Gold Edition)</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            /* Light Theme (Warm Ivory & Bronze Gold Editorial Paper) */
+            --bg-primary: #faf9f6;
+            --bg-mesh-1: rgba(197, 168, 128, 0.08);
+            --bg-mesh-2: rgba(156, 131, 96, 0.04);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(197, 168, 128, 0.22);
+            --text-primary: #1a1e1b;
+            --text-secondary: #58605c;
+            --accent: #9c8360; /* Soft Bronze Gold */
+            --accent-hover: #b3956d;
+            --accent-glow: rgba(156, 131, 96, 0.15);
+            --card-shadow: 0 10px 40px -10px rgba(197, 168, 128, 0.15), 0 4px 6px rgba(0,0,0,0.02);
+            --nav-bg: rgba(250, 249, 246, 0.85);
+            --color-bg-opaque: #faf9f6;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme (Obsidian & Luxury Champagne Gold) */
+            --bg-primary: #07080a;
+            --bg-mesh-1: rgba(197, 168, 128, 0.02);
+            --bg-mesh-2: rgba(197, 168, 128, 0.04);
+            --glass-bg: rgba(14, 16, 21, 0.7);
+            --glass-border: rgba(197, 168, 128, 0.12);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #c5a880; /* Champagne Gold */
+            --accent-hover: #dfc49f;
+            --accent-glow: rgba(197, 168, 128, 0.25);
+            --card-shadow: 0 20px 50px -20px rgba(0,0,0,0.7), 0 0 25px rgba(197, 168, 128, 0.02);
+            --nav-bg: rgba(7, 8, 10, 0.8);
+            --color-bg-opaque: #07080a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.5s ease, border-color 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .font-serif-editorial {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .font-mono-data {
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* --- Fine Grain Noise Overlay --- */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            opacity: 0.015;
+            z-index: 999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- Dynamic Animated Background --- */
+        .background-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+
+        .mesh-blob {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.5;
+            animation: float 14s infinite ease-in-out;
+            border-radius: 50%;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--bg-mesh-1);
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--bg-mesh-2);
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -60px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.92); }
+        }
+
+        /* --- Golden Floating Particles --- */
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.18;
+            animation: float-up 18s infinite linear;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.22; }
+            90% { opacity: 0.22; }
+            100% { transform: translateY(-20px) translateX(60px); opacity: 0; }
+        }
+
+        /* --- Scroll Progress Bar --- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            z-index: 2000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* --- Navigation & Controls --- */
+        .nav-controls {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .nav-controls.hidden {
+            transform: translateY(-150%);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg) scale(1.15);
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-content {
+            z-index: 2;
+            transform-style: preserve-3d;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, var(--accent) 0%, #e2cfb6 50%, #9c8360 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p.hero-body {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--color-bg-opaque);
+            border-color: var(--accent);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px -5px var(--accent-glow);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--color-bg-opaque);
+            border-color: var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        /* --- Scrollytelling Layout --- */
+        .scrolly-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem 2rem;
+        }
+
+        .scrolly-section {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 5rem;
+            margin-bottom: 12vh;
+            position: relative;
+        }
+
+        .section-header {
+            position: sticky;
+            top: 140px;
+            height: fit-content;
+            text-align: right;
+            padding-right: 2rem;
+            border-right: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .section-content {
+            position: relative;
+            padding-top: 1.5rem;
+        }
+
+        /* Elegant gold-fading timeline vertical line */
+        .section-content::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--glass-border) 15%, var(--glass-border) 85%, transparent);
+            display: block;
+        }
+
+        /* --- Advanced Editorial Glass Cards --- */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            transform: translateY(50px) scale(0.96) translateZ(0);
+            box-shadow: var(--card-shadow);
+            transform-style: preserve-3d;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) translateZ(0);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.4), 0 0 25px rgba(197, 168, 128, 0.04);
+        }
+
+        .card-tilt {
+            transform: perspective(1000px) rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(1.01);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .card-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: 'Share Tech Mono', monospace;
+            background: rgba(197, 168, 128, 0.06);
+            color: var(--accent);
+            margin-right: 6px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: rgba(197, 168, 128, 0.12);
+        }
+
+        /* Staggered Editorial List Items */
+        ul.custom-list {
+            list-style: none;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        ul.custom-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0.2rem;
+            color: var(--accent);
+            font-size: 0.85rem;
+            line-height: 1.6rem;
+        }
+
+        /* Reveal list items when parent card is visible */
+        .card.visible ul.custom-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .card.visible ul.custom-list li:nth-child(1) { transition-delay: 0.1s; }
+        .card.visible ul.custom-list li:nth-child(2) { transition-delay: 0.2s; }
+        .card.visible ul.custom-list li:nth-child(3) { transition-delay: 0.3s; }
+        .card.visible ul.custom-list li:nth-child(4) { transition-delay: 0.4s; }
+
+        .card-section-title {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: transparent;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 968px) {
+            .scrolly-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                margin-bottom: 6rem;
+            }
+
+            .section-header {
+                position: relative;
+                top: 0;
+                text-align: left;
+                padding-right: 0;
+                border-right: none;
+                border-left: 3px solid var(--accent);
+                padding-left: 1.5rem;
+                margin-bottom: 1rem;
+                background: linear-gradient(90deg, var(--bg-mesh-1), transparent);
+                padding: 1rem 1.5rem;
+                border-radius: 0 16px 16px 0;
+            }
+
+            .section-content {
+                padding-left: 0;
+            }
+            
+            .section-content::before {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-controls {
+                top: auto;
+                bottom: 24px;
+                right: 50%;
+                transform: translateX(50%);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            
+            .nav-controls.hidden {
+                transform: translateY(150%) translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Elements -->
+    <div class="background-mesh">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+    </div>
+    
+    <!-- Fine Noise Grain Overlay -->
+    <div class="noise-bg" aria-hidden="true"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Dynamic Floating Particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" id="particles-container" style="position: fixed; z-index: 0; height: 100vh; width: 100vw;"></div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <a href="index.html" class="theme-toggle" aria-label="Go Home" style="margin-right: 8px;">
+            <i data-lucide="home"></i>
+        </a>
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle Dark Mode" style="margin-right: 12px;">
+            <i data-lucide="moon" id="themeIcon"></i>
+        </button>
+        <a href="interactive-cv-gold.html" class="btn btn-primary">
+            <span>View CV</span>
+        </a>
+        <a href="images/cv.pdf" class="btn btn-primary" download style="padding: 12px 16px;" aria-label="Download CV">
+            <i data-lucide="arrow-down" size="16"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="font-serif-editorial"><span class="gold-gradient-text italic font-bold">Professional Portfolio</span></h1>
+            <p class="font-serif-editorial" style="font-size: 1.3rem; color: var(--accent); font-weight: 400; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem; font-family: 'Share Tech Mono', monospace;">Selected Engagements &amp; Projects</p>
+            <p class="hero-body font-body">
+                A detailed look into my key projects, technical capabilities, and problem-solving approach developed during my CA articleship. The case studies presented here are based on real-world engagements (with all client information anonymized) and demonstrate my hands-on experience in audit, valuation, and process automation.
+            </p>
+        </div>
+        
+        <div style="position: absolute; bottom: 30px; opacity: 0; animation: fadeUp 1s forwards 1.2s;">
+            <p style="font-size: 0.75rem; color: var(--accent); margin-bottom: 10px; font-family: 'Share Tech Mono', monospace; letter-spacing: 2px;">SCROLL TO EXPLORE</p>
+            <div style="width: 1px; height: 50px; background: linear-gradient(to bottom, var(--accent), transparent); margin: 0 auto;"></div>
+        </div>
+    </header>
+
+    <main class="scrolly-container">
+
+        <!-- Case Studies Section -->
+        <section class="scrolly-section" id="case-studies">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">Case Studies</h2>
+                <p>Engagements</p>
+            </div>
+            <div class="section-content">
+                
+                <!-- Case Study 1 -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">Business Valuation for a Corporate Restructuring</div>
+                            <div class="card-subtitle">Demonstrating analytical rigor in complex financial modeling.</div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="users" style="color: var(--accent);"></i> Client Background</h4>
+                    <p>A mid-sized company in the manufacturing sector.</p>
+                    
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="alert-triangle" style="color: var(--accent);"></i> The Challenge</h4>
+                    <p>To determine the fair value of a business division for a slump sale and to conduct annual goodwill impairment testing as required by Ind AS 103.</p>
+
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="gantt-chart-square" style="color: var(--accent);"></i> My Approach &amp; Actions</h4>
+                    <ul class="custom-list">
+                        <li><strong>Methodology Selection:</strong> Chose the Discounted Cash Flow (DCF) method as the primary valuation tool due to its ability to capture future earning potential. Cross-verified the results using Net Asset Value (NAV) and Comparable Companies methods for a robust conclusion.</li>
+                        <li><strong>Data Collection &amp; Analysis:</strong> Rigorously validated management's financial projections by performing sensitivity analysis and comparing them against industry benchmarks. My process for calculating WACC involved determining beta for the non-listed entity and selecting an appropriate risk-free rate.</li>
+                        <li><strong>Reporting:</strong> Consolidated all findings, assumptions, and methodologies into a comprehensive valuation report suitable for both client decision-making and statutory audit purposes.</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2.5rem;">
+                        <span class="tag">Financial Modeling</span>
+                        <span class="tag">Business Valuation</span>
+                        <span class="tag">Ind AS 103</span>
+                        <span class="tag">Critical Analysis</span>
+                        <span class="tag">Assumption Validation</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">Ind AS Audit for an NBFC</div>
+                            <div class="card-subtitle">Highlighting adaptability and technical accounting knowledge.</div>
+                        </div>
+                    </div>
+
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="users" style="color: var(--accent);"></i> Client Background</h4>
+                    <p>A Public Sector Undertaking (PSU) in the Non-Banking Financial Company (NBFC) sector, specializing in power infrastructure financing.</p>
+                    
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="alert-triangle" style="color: var(--accent);"></i> The Challenge</h4>
+                    <p>The engagement required establishing audit procedures from scratch without prior precedent in the firm.</p>
+
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="gantt-chart-square" style="color: var(--accent);"></i> My Approach &amp; Actions</h4>
+                    <ul class="custom-list">
+                        <li><strong>Preparation:</strong> Took the initiative to develop a complete set of audit checklists and working paper templates tailored for an NBFC under Ind AS, focusing on financial instruments and loan portfolios.</li>
+                        <li><strong>Execution:</strong> Identified that the client's interest accrual method was not fully compliant with Ind AS. I meticulously documented the deviation and calculated the financial impact.</li>
+                        <li><strong>Reporting &amp; Recommendations:</strong> Drafted the formal audit qualification related to the non-compliant interest accrual. Further, I prepared a detailed management report recommending stronger internal controls over GST, CRAR ratio calculations, and other key RBI regulations.</li>
+                    </ul>
+
+                    <p><strong>Results &amp; Impact:</strong> My work ensured a rigorous audit and transparent financial statements. The management report provided a clear roadmap for improving financial controls and ensuring future compliance.</p>
+                    
+                    <div style="margin-top: 2.5rem;">
+                        <span class="tag">Ind AS (Financial Instruments)</span>
+                        <span class="tag">Statutory Audit</span>
+                        <span class="tag">Process Development</span>
+                        <span class="tag">Regulatory Compliance (RBI)</span>
+                        <span class="tag">Report Writing</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">Enhancing Internal Controls for a PSU</div>
+                            <div class="card-subtitle">Showcasing risk assessment and strategic communication skills.</div>
+                        </div>
+                    </div>
+
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="users" style="color: var(--accent);"></i> Client Background</h4>
+                    <p>A large PSU managing the state-wide public distribution of essential commodities with a turnover of ~₹25,000 Crores.</p>
+                    
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="alert-triangle" style="color: var(--accent);"></i> The Challenge</h4>
+                    <p>The audit was severely hampered by a complete reliance on manual inventory records, creating a high risk of misstatement or fraud and making verification difficult.</p>
+
+                    <h4 class="card-section-title font-serif-editorial gold-gradient-text"><i data-lucide="gantt-chart-square" style="color: var(--accent);"></i> My Approach &amp; Actions</h4>
+                    <ul class="custom-list">
+                        <li><strong>Problem Identification:</strong> Through audit procedures, I identified and documented the significant financial and operational risks associated with the manual inventory system.</li>
+                        <li><strong>Recommendation &amp; Justification:</strong> I prepared and presented a formal recommendation to senior management. My proposal detailed how a modern, integrated IT system would not only improve auditability but also enhance operational efficiency, reduce the risk of theft, and provide real-time data for decision-making.</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2.5rem;">
+                        <span class="tag">Risk Assessment</span>
+                        <span class="tag">Internal Controls</span>
+                        <span class="tag">Process Improvement</span>
+                        <span class="tag">Communication</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="scrolly-section" id="projects">
+            <div class="section-header">
+                <h2 class="font-serif-editorial italic">Projects</h2>
+                <p>Showcase</p>
+            </div>
+            <div class="section-content">
+                
+                <!-- Project 1: AIS Decryptor & Reverse Engineering Utility -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">AIS Decryptor &amp; Reverse Engineering Utility</div>
+                        </div>
+                    </div>
+                    <p><strong>Problem:</strong> The official 71MB Electron tax utility demands manual installation, runs slowly, and prevents automated batch reconciliation for auditors.</p>
+                    <p><strong>Solution:</strong> Deconstructed the binary using pefile, extracted the packed Electron app.asar, patched the main bundle runtime to expose the PBKDF2/SHA-256 salt secret, and re-implemented the decryption engine in a lightweight, sub-millisecond Python script.</p>
+                    <a href="https://github.com/iambalaji-k/aisdecrypt" target="_blank" class="btn" style="margin-top: 1.5rem; display: inline-flex; width: fit-content;"><i data-lucide="github"></i> View on GitHub</a>
+                </div>
+
+                <!-- Project 2: GST Returns Downloader -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">GST Returns Downloader</div>
+                        </div>
+                    </div>
+                    <p><strong>Problem:</strong> Tax practitioners manually downloading GSTR compliance files (1, 3B, 2A, 2B) for hundreds of clients face a massive monthly bottleneck.</p>
+                    <p><strong>Solution:</strong> Developed a Playwright-based bulk downloader that logs in, solves login CAPTCHAs, polls asynchronous APIs for zip files, and parses raw transaction JSON payloads directly into audit-ready structured Excel databases.</p>
+                    <a href="https://github.com/iambalaji-k/gst-returns-downloader" target="_blank" class="btn" style="margin-top: 1.5rem; display: inline-flex; width: fit-content;"><i data-lucide="github"></i> View on GitHub</a>
+                </div>
+
+                <!-- Project 3: 26AS Conversion Tool -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">26AS Conversion Tool</div>
+                        </div>
+                    </div>
+                    <p><strong>Problem:</strong> Manually comparing Form 26AS text files is tedious.</p>
+                    <p><strong>Solution:</strong> Built an Excel tool with Power Query to instantly ingest and structure the text file for analysis.</p>
+                    <a href="https://github.com/iambalaji-k/Form-26AS-Excel-Importer" target="_blank" class="btn" style="margin-top: 1.5rem; display: inline-flex; width: fit-content;"><i data-lucide="github"></i> View on GitHub</a>
+                </div>
+
+                <!-- Project 4: Automated Regulatory Feed -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">Automated Regulatory Feed</div>
+                        </div>
+                    </div>
+                    <p><strong>Problem:</strong> Keeping the team updated on regulatory changes in real time.</p>
+                    <p><strong>Solution:</strong> Built a Power Automate flow to monitor official websites (GST, MCA, Income Tax, IRDAI, RBI, Union Govt.) and post updates to a Microsoft Teams channel.</p>
+                </div>
+
+                <!-- Project 5: Sales Dashboard Development -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">Sales Dashboard Development</div>
+                        </div>
+                    </div>
+                    <p><strong>Problem:</strong> A publicly listed company struggled to monitor region-wise sales performance in real time due to fragmented data sources.</p>
+                    <p><strong>Solution:</strong> Designed an interactive, daily-updating Power BI dashboard that streamlined multi-source data ingestion, implemented DAX-powered performance calculations, and visualized key retail metrics for C-level leadership decisions.</p>
+                </div>
+
+                <!-- Project 6: Payroll Automation for Tally -->
+                <div class="card js-tilt">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title font-serif-editorial font-bold gold-gradient-text">Payroll Automation for Tally</div>
+                        </div>
+                    </div>
+                    <p><strong>Problem:</strong> A client manually re-formatted payroll data for Tally import.</p>
+                    <p><strong>Solution:</strong> Created a macro-enabled Excel sheet to auto-convert raw data into Tally's required import format.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="font-serif-editorial">
+        <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 20px;">
+             <a href="#home" style="color: var(--text-secondary); text-decoration: none; display:inline-flex; align-items:center; gap: 6px; font-weight: 500; font-size: 1.2rem;" class="btn">
+                <i data-lucide="arrow-up" size="18"></i> Back to Top
+             </a>
+        </div>
+        <div class="footer-text gold-gradient-text" style="font-weight: 700; font-size: 2.2rem; tracking-wide;">
+            Balaji K
+        </div>
+    </footer>
+
+    <script>
+        // --- Icon Initialization ---
+        lucide.createIcons();
+
+        // --- Create floating luxury gold particles in backdrop ---
+        const particlesContainer = document.getElementById('particles-container');
+        if (particlesContainer) {
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-20px`;
+                particle.style.animationDelay = `${Math.random() * 14}s`;
+                particle.style.animationDuration = `${Math.random() * 8 + 12}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // --- Theme Toggling ---
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+
+        // --- Scroll Progress Bar ---
+        window.addEventListener('scroll', () => {
+            const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollCurrent = document.documentElement.scrollTop;
+            const scrollPercentage = (scrollCurrent / scrollTotal) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercentage + "%";
+        });
+
+        // --- Intersection Observer for Reveal Animations ---
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+        // --- 3D Tilt Effect Logic ---
+        document.querySelectorAll('.js-tilt').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -4; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 4;
+
+                card.style.setProperty('--rotateX', rotateX + 'deg');
+                card.style.setProperty('--rotateY', rotateY + 'deg');
+                card.classList.add('card-tilt');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('card-tilt');
+                card.style.setProperty('--rotateX', '0deg');
+                card.style.setProperty('--rotateY', '0deg');
+            });
+        });
+
+        // --- Autohide Navigation ---
+        const nav = document.querySelector('.nav-controls');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (lastScrollY < window.scrollY && window.scrollY > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+    </script>
+</body>
+</html>
